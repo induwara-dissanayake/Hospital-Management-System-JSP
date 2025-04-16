@@ -67,8 +67,4 @@ public void setNic(String nic) {
 
 
 
-
-
-
-
 } 

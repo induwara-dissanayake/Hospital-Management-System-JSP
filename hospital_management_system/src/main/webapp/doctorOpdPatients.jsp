@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, com.hospital.model.OPDOrder" %>
 <%
     if (session == null || session.getAttribute("doctor_id") == null) {
@@ -8,25 +9,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>OPD Patients</title>
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/opdPatients.css">
+
 </head>
 <body>
-    <h2 style="text-align:center;">OPD Patient Orders</h2>
-    <table border="1" align="center" cellpadding="10">
+    <h2>OPD Patient Orders</h2>
+
+    <table>
         <tr>
             <th>Order ID</th>
             <th>Patient Name</th>
             <th>Age</th>
+            <th>Action</th>
         </tr>
         <%
             List<OPDOrder> patients = (List<OPDOrder>) request.getAttribute("opdpatients");
-            for (OPDOrder patient : patients) {
+            if (patients != null && !patients.isEmpty()) {
+                for (OPDOrder patient : patients) {
         %>
         <tr>
             <td><%= patient.getId() %></td>
             <td><%= patient.getName() %></td>
             <td><%= patient.getAge() %></td>
+            <td><a href="DoctorOPDViewServlet?id=<%= patient.getId() %>" class="view-link">View</a></td>
+        </tr>
+        <%
+                }
+            } else {
+        %>
+        <tr>
+            <td colspan="4">No OPD orders found.</td>
         </tr>
         <% } %>
     </table>

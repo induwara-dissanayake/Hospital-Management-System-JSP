@@ -22,15 +22,15 @@ public class DoctorLoginServlet extends HttpServlet {
         int doctorId = dao.validate(username, password);
 
         if (doctorId != -1) {
-            // Login successful
-            HttpSession session = request.getSession();
+
+        	HttpSession session = request.getSession();
             session.setAttribute("doctor_id", doctorId);
             session.setAttribute("username", username);
 
             response.sendRedirect("doctorDashboard.jsp"); 
         } else {
-            // Login failed
-            response.sendRedirect("doctorLogin.jsp?error=invalid");
+
+        	response.sendRedirect("doctorLogin.jsp?error=invalid");
         }
     }
 }

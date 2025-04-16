@@ -33,4 +33,25 @@ public class DoctorOPDOrderDao {
 
         return patientList;
     }
+    
+    
+    public OPDOrder getOrderById(int id) {
+        OPDOrder order = null;
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM opd_order WHERE id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                order = new OPDOrder();
+                order.setId(rs.getInt("id"));
+                order.setName(rs.getString("name"));
+                order.setAge(rs.getInt("age"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return order;
+    }
+
 }

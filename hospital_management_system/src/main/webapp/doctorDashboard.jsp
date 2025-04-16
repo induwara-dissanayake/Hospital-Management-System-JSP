@@ -19,7 +19,7 @@
     <p style="text-align:center;">Your Doctor ID: <%= session.getAttribute("doctor_id") %></p>
 
     <div class="dashboard-container">
-        <a href="patientList.jsp" class="card">Patient List</a>
+        <a href="doctorPatientList.jsp" class="card">Patient List</a>
         <a href="attendance.jsp" class="card">Attendance</a>
         <a href="appointment.jsp" class="card">Appointment</a>
         <a href="notification.jsp" class="card">Notification</a>

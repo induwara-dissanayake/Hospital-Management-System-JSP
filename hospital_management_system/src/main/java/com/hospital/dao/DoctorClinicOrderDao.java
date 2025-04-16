@@ -1,6 +1,8 @@
 package com.hospital.dao;
 
 import com.hospital.model.ClinicOrder;
+import com.hospital.model.OPDOrder;
+import com.hospital.model.Patient;
 import com.hospital.util.DBConnection;
 
 import java.sql.*;
@@ -32,4 +34,33 @@ public class DoctorClinicOrderDao {
 
         return patientList;
     }
+    
+    
+    public Patient getOrderById(int id) {
+        
+        Patient patient = null;
+
+        try (Connection con = DBConnection.getConnection()) {
+           
+                String sqlPatient = "SELECT * FROM patient WHERE id = ?";
+                PreparedStatement psPatient = con.prepareStatement(sqlPatient);
+                psPatient.setInt(1, id);
+                ResultSet rsPatient = psPatient.executeQuery();
+              
+                if (rsPatient.next()) {
+                     patient = new Patient();
+                    patient.setId(rsPatient.getInt("id"));
+                    patient.setName(rsPatient.getString("name"));
+                    patient.setNic(rsPatient.getString("nic"));
+                    
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patient;
+    }
+
+    
+    
 }
