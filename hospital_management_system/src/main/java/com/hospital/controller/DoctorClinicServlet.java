@@ -19,7 +19,7 @@ public class DoctorClinicServlet extends HttpServlet {
  
     public DoctorClinicServlet() {
         super();
-        
+       
     }
 
 
