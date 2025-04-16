@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Doctor Dashboard</title>
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/dashboard.css">
 </head>
 <body>
     <h1>Welcome, Dr. <%= session.getAttribute("username") %></h1>

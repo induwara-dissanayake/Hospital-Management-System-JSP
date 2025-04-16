@@ -27,10 +27,10 @@ public class DoctorLoginServlet extends HttpServlet {
             session.setAttribute("doctor_id", doctorId);
             session.setAttribute("username", username);
 
-            response.sendRedirect("doctorDashboard.jsp"); 
+            response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
         } else {
 
-        	response.sendRedirect("doctorLogin.jsp?error=invalid");
+        	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
         }
     }
 }

@@ -1,34 +1,39 @@
 package com.hospital.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hospital.dao.DoctorClinicOrderDao;
-import com.hospital.model.Patient;
+import com.google.gson.Gson;
+import com.hospital.dao.PrescriptionDao;
+import com.hospital.model.Prescription;
 
-@WebServlet("/DoctorClinicViewServlet")
-public class DoctorClinicViewServlet extends HttpServlet {
+
+@WebServlet("/PrescriptionSearchServlet")
+public class PrescriptionSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-  
-    public DoctorClinicViewServlet() {
+       
+    
+    public PrescriptionSearchServlet() {
         super();
     }
 
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int patientId = Integer.parseInt(request.getParameter("id"));
-		DoctorClinicOrderDao dao = new DoctorClinicOrderDao();
-		Patient patient = dao.getOrderById(patientId);
+		String query = request.getParameter("query");
 
-        request.setAttribute("patient", patient);
-        request.getRequestDispatcher("views/doctor/doctorClinicDetail.jsp").forward(request, response);
-		
+        List<Prescription> prescriptions = PrescriptionDao.searchPrescriptions(query);
+
+        response.setContentType("application/json");
+        new Gson().toJson(prescriptions, response.getWriter());
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

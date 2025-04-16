@@ -50,7 +50,7 @@
 
 <div class="login-container">
     <h2>Doctor Login</h2>
-    <form action="DoctorLoginServlet" method="post">
+    <form action="${pageContext.request.contextPath}/DoctorLoginServlet" method="post">
         <input type="text" name="username" placeholder="Username" required>
         <input type="password" name="password" placeholder="Password" required>
         <input type="submit" value="Login">

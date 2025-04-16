@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <title>OPD Patients</title>
-    <link rel="stylesheet" type="text/css" href="css/opdPatients.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/opdPatients.css">
 
 </head>
 <body>
@@ -33,7 +33,7 @@
             <td><%= patient.getId() %></td>
             <td><%= patient.getName() %></td>
             <td><%= patient.getAge() %></td>
-            <td><a href="DoctorOPDViewServlet?id=<%= patient.getId() %>" class="view-link">View</a></td>
+            <td><a href="${pageContext.request.contextPath}/DoctorOPDViewServlet?id=<%= patient.getId() %>" class="view-link">View</a></td>
         </tr>
         <%
                 }

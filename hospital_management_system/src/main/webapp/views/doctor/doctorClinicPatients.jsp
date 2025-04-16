@@ -10,7 +10,7 @@
 <html>
 <head>
     <title>Clinic Patients</title>
-    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/dashboard.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -80,7 +80,7 @@
             <td><%= patient.getId() %></td>
             <td><%= patient.getPatient_id() %></td>
             <td>
-                <a class="view-btn" href="DoctorClinicViewServlet?id=<%= patient.getPatient_id() %>">View</a>
+                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?id=<%= patient.getPatient_id() %>">View</a>
             </td>
         </tr>
         <%

@@ -26,7 +26,7 @@ public class DoctorOPDViewServlet extends HttpServlet {
         OPDOrder order = dao.getOrderById(orderId);
 
         request.setAttribute("order", order);
-        request.getRequestDispatcher("doctorOPDDetail.jsp").forward(request, response);
+        request.getRequestDispatcher("views/doctor/doctorOPDDetail.jsp").forward(request, response);
 		
 		
 		
@@ -35,6 +35,7 @@ public class DoctorOPDViewServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
 		
 	}
 

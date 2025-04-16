@@ -29,7 +29,7 @@ public class DoctorOPDServlet extends HttpServlet {
 		 ArrayList<OPDOrder> patientList = (ArrayList<OPDOrder>) dao.getAllOpdOrders();
 
 	        request.setAttribute("opdpatients", patientList);
-	        request.getRequestDispatcher("doctorOpdPatients.jsp").forward(request, response);
+	        request.getRequestDispatcher("views/doctor/doctorOpdPatients.jsp").forward(request, response);
 		
 		
 	}

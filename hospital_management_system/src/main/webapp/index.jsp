@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
 <div class="container">
     <div class="card">
         <h2>Doctor</h2>
-        <a href="doctorLogin.jsp" class="login-btn">Login</a>
+        <a href="views/doctor/doctorLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Receptio</h2>
