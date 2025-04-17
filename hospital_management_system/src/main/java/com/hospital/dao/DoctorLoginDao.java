@@ -18,6 +18,11 @@ public class DoctorLoginDao {
 
             if (rs.next()) {
                 doctorId = rs.getInt("doctor_id");
+                
+                String insertSql = "INSERT INTO doctor_attendance (doctor_id, time) VALUES (?, NOW())";
+                PreparedStatement insertPs = con.prepareStatement(insertSql);
+                insertPs.setInt(1, doctorId);
+                insertPs.executeUpdate();
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2025 at 11:45 AM
+-- Generation Time: Apr 17, 2025 at 08:47 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -74,6 +74,25 @@ INSERT INTO `doctor` (`id`, `name`, `adress`, `nic`, `licence`, `dob`, `email`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `doctor_attendance`
+--
+
+CREATE TABLE `doctor_attendance` (
+  `doctor_id` int(11) NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor_attendance`
+--
+
+INSERT INTO `doctor_attendance` (`doctor_id`, `time`) VALUES
+(1, '2025-04-17 22:39:57'),
+(1, '2025-04-17 22:41:55');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `doctor_login`
 --
 
@@ -140,6 +159,22 @@ CREATE TABLE `doctor_prescription` (
   `id` int(11) NOT NULL,
   `prescription` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor_prescription`
+--
+
+INSERT INTO `doctor_prescription` (`id`, `prescription`) VALUES
+(1, 'Paracetamol'),
+(2, 'Amoxicillin'),
+(3, 'Ibuprofen'),
+(4, 'Cetrizine'),
+(5, 'Metformin'),
+(6, 'Aspirin'),
+(7, 'Loratadine'),
+(8, 'Omeprazole'),
+(9, 'Salbutamol'),
+(10, 'Vitamin D');
 
 -- --------------------------------------------------------
 
@@ -283,7 +318,7 @@ ALTER TABLE `doctor`
 -- AUTO_INCREMENT for table `doctor_prescription`
 --
 ALTER TABLE `doctor_prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `doctor_routine`

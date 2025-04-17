@@ -20,7 +20,7 @@
 
     <div class="dashboard-container">
         <a href="doctorPatientList.jsp" class="card">Patient List</a>
-        <a href="attendance.jsp" class="card">Attendance</a>
+        <a href="${pageContext.request.contextPath}/DoctorAttendanceServlet" class="card">Attendance</a>
         <a href="appointment.jsp" class="card">Appointment</a>
         <a href="notification.jsp" class="card">Notification</a>
         <a href="logout.jsp" class="card">Logout</a>
