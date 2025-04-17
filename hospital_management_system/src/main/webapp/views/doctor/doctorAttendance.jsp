@@ -31,7 +31,7 @@
     <h2>Doctor Attendance History</h2>
     <table>
         <tr>
-            <th>Doctor ID</th>
+           
             <th>Date</th>
             <th>Time</th>
         </tr>
@@ -40,7 +40,6 @@
                 Date timestamp = da.getTime();
         %>
         <tr>
-            <td><%= da.getDoctorId() %></td>
             <td><%= dateFormat.format(timestamp) %></td>
             <td><%= timeFormat.format(timestamp) %></td>
         </tr>
