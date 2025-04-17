@@ -16,7 +16,7 @@
         <a href="views/doctor/doctorLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
-        <h2>Receptio</h2>
+        <h2>Reception</h2>
         <a href="receptionLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
