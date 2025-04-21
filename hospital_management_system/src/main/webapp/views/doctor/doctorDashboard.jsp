@@ -21,7 +21,7 @@
     <div class="dashboard-container">
         <a href="doctorPatientList.jsp" class="card">Patient List</a>
         <a href="${pageContext.request.contextPath}/DoctorAttendanceServlet" class="card">Attendance</a>
-        <a href="appointment.jsp" class="card">Appointment</a>
+        <a href="appointment.jsp" class="card">Customize</a>
         <a href="notification.jsp" class="card">Notification</a>
         <a href="${pageContext.request.contextPath}/DoctorLogoutServlet" class="card">Logout</a>
     </div>
