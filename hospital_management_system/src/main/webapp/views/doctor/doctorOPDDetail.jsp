@@ -46,7 +46,7 @@
                     resultDiv.innerHTML = '';
                     data.forEach(prescription => {
                         const div = document.createElement('div');
-                        div.textContent = prescription.prescription; // Show only the name
+                        div.textContent = prescription.prescription; 
                         div.onclick = () => addPrescription(prescription.id, prescription.prescription); // Pass both id and name
                         resultDiv.appendChild(div);
                     });
@@ -56,20 +56,17 @@
         function addPrescription(id, name) {
             const list = document.getElementById('selected-prescriptions');
 
-            // Container for display + hidden inputs
             const li = document.createElement('li');
             li.textContent = name + " ";
 
-            // Hidden input for prescription ID
             const inputId = document.createElement('input');
             inputId.type = 'hidden';
-            inputId.name = 'prescription_ids';  // Name for ID array
+            inputId.name = 'prescription_ids';  
             inputId.value = id;
 
-            // Hidden input for prescription name
             const inputName = document.createElement('input');
             inputName.type = 'hidden';
-            inputName.name = 'prescription_names';  // Name for name array
+            inputName.name = 'prescription_names';  
             inputName.value = name;
 
             li.appendChild(inputId);

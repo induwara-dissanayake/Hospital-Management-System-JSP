@@ -23,7 +23,7 @@
         <a href="${pageContext.request.contextPath}/DoctorAttendanceServlet" class="card">Attendance</a>
         <a href="appointment.jsp" class="card">Appointment</a>
         <a href="notification.jsp" class="card">Notification</a>
-        <a href="logout.jsp" class="card">Logout</a>
+        <a href="${pageContext.request.contextPath}/DoctorLogoutServlet" class="card">Logout</a>
     </div>
 </body>
 </html>
