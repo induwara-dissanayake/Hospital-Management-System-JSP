@@ -26,8 +26,11 @@ public class DoctorEyeClinicServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		DoctorClinicOrderDao dao = new DoctorClinicOrderDao();
+		
+		int clinic_id = Integer.parseInt(request.getParameter("clinic_id"));
 		HttpSession session = request.getSession();
-		int clinic_id =(int) session.getAttribute("clinic_id");
+        session.setAttribute("clinic_id", clinic_id);
+
 		
 		 ArrayList<ClinicOrder> patientList = (ArrayList<ClinicOrder>) dao.getAllEyeClinicOrders(clinic_id);
 

@@ -11,7 +11,7 @@ import com.hospital.dao.DoctorClinicOrderDao;
 import com.hospital.model.Patient;
 
 
-@WebServlet("/DoctorEyeClinicViewServlet")
+@WebServlet("/DoctorPediatricClinicViewServlet")
 public class DoctorPediatricClinicViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
