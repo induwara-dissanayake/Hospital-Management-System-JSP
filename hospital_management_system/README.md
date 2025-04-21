@@ -12,6 +12,7 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 - 📂 Patient record management
 - 📅 Appointment scheduling and tracking
 - 🧑‍🤝‍🧑 Staff information and role management
+- 💳 Billing and payment processing
 - 📝 Medical history and diagnosis logging
 - 🏪 Inventory and pharmacy management
 
@@ -22,9 +23,5 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 
 ## 📦 Installation and Setup
 1. Clone this repository:
-
----
-
+   ```bash
   [ git clone https://github.com/your-username/hospital-management-system.git](https://github.com/induwara-dissanayake/hospital-management-system.git)
-
----
