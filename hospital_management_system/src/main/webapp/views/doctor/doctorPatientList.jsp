@@ -17,8 +17,8 @@
     <h1 style="text-align:center;">Patient List</h1>
 
     <div class="dashboard-container">
-<a href="${pageContext.request.contextPath}/DoctorOPDServlet" class="card">OPD</a>
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet" class="card">Clinic</a>
+		<a href="${pageContext.request.contextPath}/DoctorOPDServlet" class="card">OPD</a>
+        <a href="doctorClinicDepartments.jsp" class="card">Clinic</a>
     </div>
 </body>
 </html>

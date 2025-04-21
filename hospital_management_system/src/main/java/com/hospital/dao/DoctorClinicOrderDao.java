@@ -36,6 +36,136 @@ public class DoctorClinicOrderDao {
     }
     
     
+    public ArrayList<ClinicOrder> getAllEyeClinicOrders(int clinic_id) {
+        ArrayList<ClinicOrder> patientList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "SELECT * FROM clinic_order where clinic_id= 1";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int patient_id = rs.getInt("patient_id");
+
+                ClinicOrder order = new ClinicOrder(id,patient_id);
+                patientList.add(order);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
+    
+    
+    public ArrayList<ClinicOrder> getAllCardiologyClinicOrders(int clinic_id) {
+        ArrayList<ClinicOrder> patientList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "SELECT * FROM clinic_order where clinic_id= 2";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int patient_id = rs.getInt("patient_id");
+
+                ClinicOrder order = new ClinicOrder(id,patient_id);
+                patientList.add(order);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
+    
+    
+    public ArrayList<ClinicOrder> getAllGynecologyClinicOrders(int clinic_id) {
+        ArrayList<ClinicOrder> patientList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "SELECT * FROM clinic_order where clinic_id= 3";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int patient_id = rs.getInt("patient_id");
+
+                ClinicOrder order = new ClinicOrder(id,patient_id);
+                patientList.add(order);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
+
+    
+    public ArrayList<ClinicOrder> getAllNeurologyClinicOrders(int clinic_id) {
+        ArrayList<ClinicOrder> patientList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "SELECT * FROM clinic_order where clinic_id= 4";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int patient_id = rs.getInt("patient_id");
+
+                ClinicOrder order = new ClinicOrder(id,patient_id);
+                patientList.add(order);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
+
+    
+    public ArrayList<ClinicOrder> getAllPediatricClinicOrders(int clinic_id) {
+        ArrayList<ClinicOrder> patientList = new ArrayList<>();
+
+        try {
+            Connection con = DBConnection.getConnection();
+            String sql = "SELECT * FROM clinic_order where clinic_id= 5";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int patient_id = rs.getInt("patient_id");
+
+                ClinicOrder order = new ClinicOrder(id,patient_id);
+                patientList.add(order);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return patientList;
+    }
+    
+    
     public Patient getOrderById(int id) {
         
         Patient patient = null;
