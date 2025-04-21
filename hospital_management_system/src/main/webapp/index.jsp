@@ -8,8 +8,8 @@
     <link rel="stylesheet" type="text/css" href="resources/css/index.css">
 </head>
 <body>
-
-<h1>Welcome to Hospital Management System</h1>
+<h1></h1>
+<h1>       Welcome to Hospital Management System</h1>
 <div class="container">
     <div class="card">
         <h2>Doctor</h2>
@@ -28,6 +28,7 @@
         <a href="adminLogin.jsp" class="login-btn">Login</a>
     </div>
 </div>
+
 
 </body>
 </html>
