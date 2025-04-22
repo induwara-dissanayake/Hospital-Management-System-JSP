@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2025 at 08:47 PM
+-- Generation Time: Apr 22, 2025 at 07:55 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -29,24 +29,25 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `clinic_order` (
   `id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL
+  `patient_id` int(11) NOT NULL,
+  `clinic_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `clinic_order`
 --
 
-INSERT INTO `clinic_order` (`id`, `patient_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 5),
-(6, 6),
-(7, 7),
-(8, 8),
-(9, 9),
-(10, 10);
+INSERT INTO `clinic_order` (`id`, `patient_id`, `clinic_id`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 3),
+(4, 4, 2),
+(5, 5, 5),
+(6, 6, 4),
+(7, 7, 2),
+(8, 8, 1),
+(9, 9, 3),
+(10, 10, 5);
 
 -- --------------------------------------------------------
 
@@ -88,7 +89,59 @@ CREATE TABLE `doctor_attendance` (
 
 INSERT INTO `doctor_attendance` (`doctor_id`, `time`) VALUES
 (1, '2025-04-17 22:39:57'),
-(1, '2025-04-17 22:41:55');
+(1, '2025-04-17 22:41:55'),
+(1, '2025-04-18 00:57:17'),
+(1, '2025-04-18 01:03:57'),
+(1, '2025-04-18 01:04:17'),
+(1, '2025-04-18 01:05:23'),
+(1, '2025-04-18 01:05:38'),
+(1, '2025-04-18 11:22:48'),
+(1, '2025-04-18 23:18:50'),
+(1, '2025-04-19 21:48:32'),
+(1, '2025-04-19 22:34:39'),
+(1, '2025-04-19 23:37:17'),
+(1, '2025-04-20 01:26:06'),
+(1, '2025-04-20 11:18:29'),
+(1, '2025-04-21 15:54:42'),
+(1, '2025-04-21 19:32:56'),
+(1, '2025-04-21 23:26:08'),
+(1, '2025-04-22 14:22:11'),
+(1, '2025-04-22 14:47:43'),
+(1, '2025-04-22 14:48:55'),
+(1, '2025-04-22 15:32:09'),
+(1, '2025-04-22 21:39:30'),
+(1, '2025-04-22 21:44:25'),
+(1, '2025-04-22 21:46:51'),
+(1, '2025-04-22 22:03:29'),
+(1, '2025-04-22 22:55:25'),
+(1, '2025-04-22 23:07:35'),
+(1, '2025-04-22 23:16:25'),
+(1, '2025-04-22 23:17:54'),
+(1, '2025-04-22 23:19:15'),
+(1, '2025-04-22 23:24:05'),
+(1, '2025-04-22 23:25:33');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctor_clinic_department`
+--
+
+CREATE TABLE `doctor_clinic_department` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `doctor_clinic_department`
+--
+
+INSERT INTO `doctor_clinic_department` (`id`, `name`) VALUES
+(1, 'Eye'),
+(2, '\r\nCardiology'),
+(3, 'Gynecology'),
+(4, '\r\nNeurology'),
+(5, '\r\nPediatric');
 
 -- --------------------------------------------------------
 
@@ -118,8 +171,10 @@ INSERT INTO `doctor_login` (`doctor_id`, `username`, `password`) VALUES
 CREATE TABLE `doctor_patient_prescription_opd` (
   `order_id` int(11) NOT NULL,
   `doctor_id` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `clinic_id` int(11) NOT NULL,
   `prescription_id` int(11) NOT NULL,
-  `routine_id` int(11) NOT NULL,
+  `routine` int(11) NOT NULL,
   `days` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -131,11 +186,19 @@ CREATE TABLE `doctor_patient_prescription_opd` (
 
 CREATE TABLE `doctor_patient_report_clinic` (
   `order_id` int(11) NOT NULL,
+  `doctor_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
+  `clinic_id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `sugar` int(11) NOT NULL,
-  `bp` int(11) NOT NULL,
-  `cholesterol` int(11) NOT NULL
+  `weight` varchar(100) DEFAULT NULL,
+  `sugar_level` varchar(100) DEFAULT NULL,
+  `bp` varchar(100) DEFAULT NULL,
+  `lipid_profile` varchar(100) DEFAULT NULL,
+  `hemoglobin` varchar(100) DEFAULT NULL,
+  `vision` varchar(100) DEFAULT NULL,
+  `eye_pressure` varchar(100) DEFAULT NULL,
+  `vdrl` varchar(100) DEFAULT NULL,
+  `hiv` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -175,17 +238,6 @@ INSERT INTO `doctor_prescription` (`id`, `prescription`) VALUES
 (8, 'Omeprazole'),
 (9, 'Salbutamol'),
 (10, 'Vitamin D');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `doctor_routine`
---
-
-CREATE TABLE `doctor_routine` (
-  `id` int(11) NOT NULL,
-  `routine` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -261,6 +313,18 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `doctor_attendance`
+--
+ALTER TABLE `doctor_attendance`
+  ADD KEY `fk_doctorid` (`doctor_id`);
+
+--
+-- Indexes for table `doctor_clinic_department`
+--
+ALTER TABLE `doctor_clinic_department`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `doctor_login`
 --
 ALTER TABLE `doctor_login`
@@ -272,18 +336,12 @@ ALTER TABLE `doctor_login`
 ALTER TABLE `doctor_patient_prescription_opd`
   ADD KEY `fk_presid` (`prescription_id`),
   ADD KEY `fk_docid` (`doctor_id`),
-  ADD KEY `fk_routinid` (`routine_id`);
+  ADD KEY `fk_orderid` (`order_id`);
 
 --
 -- Indexes for table `doctor_prescription`
 --
 ALTER TABLE `doctor_prescription`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `doctor_routine`
---
-ALTER TABLE `doctor_routine`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -315,16 +373,16 @@ ALTER TABLE `doctor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `doctor_clinic_department`
+--
+ALTER TABLE `doctor_clinic_department`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `doctor_prescription`
 --
 ALTER TABLE `doctor_prescription`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `doctor_routine`
---
-ALTER TABLE `doctor_routine`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `opd_order`
@@ -349,6 +407,12 @@ ALTER TABLE `clinic_order`
   ADD CONSTRAINT `fk_patientid` FOREIGN KEY (`patient_id`) REFERENCES `patient` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `doctor_attendance`
+--
+ALTER TABLE `doctor_attendance`
+  ADD CONSTRAINT `fk_doctorid` FOREIGN KEY (`doctor_id`) REFERENCES `doctor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `doctor_login`
 --
 ALTER TABLE `doctor_login`
@@ -358,7 +422,7 @@ ALTER TABLE `doctor_login`
 -- Constraints for table `doctor_patient_prescription_opd`
 --
 ALTER TABLE `doctor_patient_prescription_opd`
-  ADD CONSTRAINT `fk_routinid` FOREIGN KEY (`routine_id`) REFERENCES `doctor_routine` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_orderid` FOREIGN KEY (`order_id`) REFERENCES `opd_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
