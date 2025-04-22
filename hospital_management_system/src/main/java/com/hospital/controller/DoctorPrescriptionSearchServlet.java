@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.hospital.dao.PrescriptionDao;
+import com.hospital.dao.DoctorPrescriptionDao;
 import com.hospital.model.Prescription;
 
 
-@WebServlet("/PrescriptionSearchServlet")
-public class PrescriptionSearchServlet extends HttpServlet {
+@WebServlet("/DoctorPrescriptionSearchServlet")
+public class DoctorPrescriptionSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public PrescriptionSearchServlet() {
+    public DoctorPrescriptionSearchServlet() {
         super();
     }
 
@@ -28,7 +28,7 @@ public class PrescriptionSearchServlet extends HttpServlet {
 		
 		String query = request.getParameter("query");
 
-        List<Prescription> prescriptions = PrescriptionDao.searchPrescriptions(query);
+        List<Prescription> prescriptions = DoctorPrescriptionDao.searchPrescriptions(query);
 
         response.setContentType("application/json");
         new Gson().toJson(prescriptions, response.getWriter());
