@@ -39,7 +39,7 @@
                 return;
             }
 
-            fetch('PrescriptionSearchServlet?query=' + encodeURIComponent(query))
+            fetch('DoctorPrescriptionSearchServlet?query=' + encodeURIComponent(query))
                 .then(response => response.json())
                 .then(data => {
                     const resultDiv = document.getElementById('search-results');

@@ -20,6 +20,6 @@ Patient patient = (Patient) request.getAttribute("neurologypatient");
     <p><strong>Patient ID:</strong> <%= patient.getId() %></p>
     <p><strong>Patient Name:</strong> <%= patient.getName() %></p>
     <p><strong>Patient Nic:</strong> <%= patient.getNic() %></p>
-    <a href="${pageContext.request.contextPath}/DoctorNeurologyClinicServlet">Back to List</a>
+    <a href="${pageContext.request.contextPath}/DoctorNeurologyClinicServlet?clinic_id=4">Back to List</a>
 </body>
 </html>
