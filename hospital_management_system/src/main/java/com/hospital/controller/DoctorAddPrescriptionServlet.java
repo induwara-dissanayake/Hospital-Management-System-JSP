@@ -34,7 +34,17 @@ public class DoctorAddPrescriptionServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+		 String prescriptionName = request.getParameter("prescriptionName");
+	        if (prescriptionName != null && !prescriptionName.trim().isEmpty()) {
+	            DoctorPrescriptionDao dao = new DoctorPrescriptionDao();
+	            try {
+					dao.insertPrescription(prescriptionName.trim());
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	        }
+	        response.sendRedirect("DoctorAddPrescriptionServlet"); 
 	}
 
 }

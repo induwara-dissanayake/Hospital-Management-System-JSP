@@ -53,4 +53,40 @@ public class DoctorPrescriptionDao {
 
         return prescriptions;
     }
+	
+	  public void deletePrescription(int id) throws ClassNotFoundException {
+	        String sql = "DELETE FROM doctor_prescription WHERE id = ?";
+	        try (Connection con = DBConnection.getConnection()){
+	             PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1, id);
+	            stmt.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace(); 
+	        }
+	    }
+
+	    public void updatePrescription(int id, String newName) throws ClassNotFoundException {
+	        String sql = "UPDATE doctor_prescription SET prescription = ? WHERE id = ?";
+	        try (Connection con = DBConnection.getConnection()){
+	             PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setString(1, newName);
+	            stmt.setInt(2, id);
+	            stmt.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
+	    
+	    public void insertPrescription(String name) throws ClassNotFoundException {
+	        String sql = "INSERT INTO doctor_prescription (prescription) VALUES (?)";
+	        try (Connection con = DBConnection.getConnection()){
+	             PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setString(1, name);
+	            stmt.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    }
+
 }
