@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,22 +8,19 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
+      margin: 15%;
       padding: 20px;
       background-color: #f9f9f9;
     }
     .tiles-container {
       display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
-      align-items: flex-start;
-      padding: 20px;
+      align-items: center;
+      padding: 10px;
     }
     .tile {
-      flex: 1 1 300px;
-      max-width: 400px;
-      background-color: hsl(0, 0%, 100%);
+      width: 400px;
+      background-color: #ffffff;
       box-shadow: 0 2px 4px rgba(26, 26, 26, 0.532);
       padding: 20px;
       border-radius: 15px;
@@ -35,16 +32,17 @@
     .form-container {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 10px;
     }
     .form-header {
       font-weight: bold;
       color: #333;
-      font-size: 16px;
+      font-size: 18px;
+      text-align: center;
       margin-bottom: 10px;
     }
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 1px;
     }
     .form-group label {
       display: block;
@@ -54,8 +52,7 @@
     }
     .form-group input {
       margin-top: 10px;
-      width: 90%; 
-      height: 15px; 
+      width: 95%;
       padding: 10px;
       border-radius: 6px;
       border: 1px solid #ccc;
@@ -80,6 +77,8 @@
       cursor: pointer;
       border: none;
       outline: none;
+      display: block;
+      margin: 0 auto;
     }
     .submit-btn:hover {
       background-color: #3b44b1;
@@ -92,7 +91,7 @@
 <body>
   <section class="tiles-container">
     <div class="tile">
-      <form class="form-container" aria-label="OPD Patient Registration Form" action="your-server-endpoint.jsp" method="POST">
+      <form class="form-container" action="register.jsp" method="post">
         <h2 class="form-header">OPD Patient</h2>
         <div class="form-group">
           <label for="opdName">Patient Name</label>
