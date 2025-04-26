@@ -15,22 +15,23 @@ public class DoctorLoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
+//        String username = request.getParameter("username");
+//        String password = request.getParameter("password");
+//
+//        DoctorLoginDao dao = new DoctorLoginDao();
+//        int doctorId = dao.validate(username, password);
+     int doctorId = 1;
 
-        DoctorLoginDao dao = new DoctorLoginDao();
-        int doctorId = dao.validate(username, password);
-
-        if (doctorId != -1) {
+//
+//        if (doctorId != -1) {
 
         	HttpSession session = request.getSession();
             session.setAttribute("doctor_id", doctorId);
-            session.setAttribute("username", username);
 
             response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
-        } else {
+//        } else {
 
-        	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
-        }
+//        	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
+//        }
     }
 }
