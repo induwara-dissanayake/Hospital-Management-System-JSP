@@ -40,7 +40,6 @@ public class DoctorAddPrescriptionServlet extends HttpServlet {
 	            try {
 					dao.insertPrescription(prescriptionName.trim());
 				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	        }
