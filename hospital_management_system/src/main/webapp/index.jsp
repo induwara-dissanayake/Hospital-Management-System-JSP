@@ -17,15 +17,15 @@
     </div>
     <div class="card">
         <h2>Reception</h2>
-        <a href="receptionLogin.jsp" class="login-btn">Login</a>
+        <a href="views/receptionist/receptionLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Medical Counter</h2>
-        <a href="medicalLogin.jsp" class="login-btn">Login</a>
+        <a href="views/counter/medicalLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Admin</h2>
-        <a href="adminLogin.jsp" class="login-btn">Login</a>
+        <a href="views/admin/adminLogin.jsp" class="login-btn">Login</a>
     </div>
 </div>
 
