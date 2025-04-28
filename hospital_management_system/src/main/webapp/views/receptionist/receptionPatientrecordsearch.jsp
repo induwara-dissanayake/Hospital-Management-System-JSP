@@ -83,10 +83,7 @@
         <label for="nameorid">Search By</label>
         <input type="text" id="nameorid" name="nameorid" placeholder="Enter NIC or Patient ID" required />
       </div>
-      <div class="form-group">
-        <label for="searchValue">Enter Value</label>
-        <input type="text" id="searchValue" name="searchValue" placeholder="Enter search value" required />
-      </div>
+
       <button type="submit" class="submit-btn">Search</button>
     </form>
   </section>
