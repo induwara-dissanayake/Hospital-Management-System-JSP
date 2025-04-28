@@ -16,32 +16,28 @@ public class DoctorLoginServlet extends HttpServlet {
             throws ServletException, IOException {
         
 
-		  	int doctorId = 1;
-        	HttpSession session = request.getSession();
-            session.setAttribute("doctor_id", doctorId);
-
-            response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
+//		  	int doctorId = 1;
+//        	HttpSession session = request.getSession();
+//            session.setAttribute("doctor_id", doctorId);
+//
+//            response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
 
             
             //use this Code for login function
             
-//            String username = request.getParameter("username");
-//            String password = request.getParameter("password");
-//  
-//            DoctorLoginDao dao = new DoctorLoginDao();
-//            int doctorId = dao.validate(username, password);
-//            int doctorId = 1;
-//
-//  
-//            if (doctorId != -1) {
-//
-//          	HttpSession session = request.getSession();
-//              session.setAttribute("doctor_id", doctorId);
-//
-//              response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
-//            } else {
-//
-//          	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
-//          }
+         String username = request.getParameter("username");
+           String password = request.getParameter("password");
+
+          DoctorLoginDao dao = new DoctorLoginDao();
+            int doctorId = dao.validate(username, password);
+  
+           if (doctorId != -1) {
+          	HttpSession session = request.getSession();
+             session.setAttribute("doctor_id", doctorId);
+             response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
+           } else {
+
+        	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
+          }
     }
 }
