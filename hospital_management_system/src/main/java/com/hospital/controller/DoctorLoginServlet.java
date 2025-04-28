@@ -25,23 +25,19 @@ public class DoctorLoginServlet extends HttpServlet {
             
             //use this Code for login function
             
-//            String username = request.getParameter("username");
-//            String password = request.getParameter("password");
-//  
-//            DoctorLoginDao dao = new DoctorLoginDao();
+//         String username = request.getParameter("username");
+//           String password = request.getParameter("password");
+//
+//          DoctorLoginDao dao = new DoctorLoginDao();
 //            int doctorId = dao.validate(username, password);
-//            int doctorId = 1;
-//
 //  
-//            if (doctorId != -1) {
-//
+//           if (doctorId != -1) {
 //          	HttpSession session = request.getSession();
-//              session.setAttribute("doctor_id", doctorId);
+//             session.setAttribute("doctor_id", doctorId);
+//             response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
+//           } else {
 //
-//              response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
-//            } else {
-//
-//          	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
+//        	response.sendRedirect("views/doctor/doctorLogin.jsp?error=invalid");
 //          }
     }
 }
