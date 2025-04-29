@@ -147,3 +147,73 @@ body {
         margin-right: 5px;
         color: #3a7bd5;
     }
+    
+    
+   
+    .input-group {
+        position: relative;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .input-group i {
+        position: absolute;
+        left: 278px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 15px 12px 40px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+  
+    .input-group {
+        position: relative;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .input-group i:not(.toggle-password) {  /* Modified to exclude toggle-password icon */
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+    }
+
+    .input-group input {
+        width: 100%;
+        padding: 12px 15px 12px 40px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        box-sizing: border-box;
+    }
+
+    .input-group input[type="password"] {
+        padding-right: 40px;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #999;
+        cursor: pointer;
+        z-index: 1;
+        display: inline-block;  
+        width: 20px;  
+        height: 20px; 
+        line-height: 20px;  
+        text-align: center;  
+    }
