@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2025 at 10:30 PM
+-- Generation Time: Apr 30, 2025 at 11:03 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -53,7 +53,10 @@ INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `sta
 (11, 2, '2025-05-01 01:46:37', NULL, 'Present'),
 (12, 3, '2025-05-01 01:53:39', NULL, 'Present'),
 (13, 4, '2025-05-01 01:55:06', NULL, 'Present'),
-(14, 1, '2025-05-01 01:55:31', NULL, 'Present');
+(14, 1, '2025-05-01 01:55:31', NULL, 'Present'),
+(15, 2, '2025-05-01 02:13:32', NULL, 'Present'),
+(16, 2, '2025-05-01 02:26:51', NULL, 'Present'),
+(17, 2, '2025-05-01 02:31:40', NULL, 'Present');
 
 -- --------------------------------------------------------
 
@@ -246,7 +249,9 @@ CREATE TABLE `reception_patient_opd_record` (
   `id` int(11) NOT NULL,
   `patient_name` varchar(40) NOT NULL,
   `patient_age` int(11) NOT NULL,
-  `tolken_no` int(11) NOT NULL
+  `tolken_no` int(11) NOT NULL,
+  `doctor_complete` int(11) NOT NULL DEFAULT 0,
+  `counter_complete` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -392,7 +397,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `doctor_clinic_department`
