@@ -22,7 +22,9 @@ public class DoctorPrescriptionDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String prescription = rs.getString("prescription");
-                prescriptions.add(new Prescription(id, prescription));
+                String type = rs.getString("type");
+
+                prescriptions.add(new Prescription(id, prescription,type));
             }
 
         } catch (Exception e) {
@@ -44,7 +46,9 @@ public class DoctorPrescriptionDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String prescription = rs.getString("prescription");
-                prescriptions.add(new Prescription(id, prescription));
+                String type = rs.getString("type");
+
+                prescriptions.add(new Prescription(id, prescription,type));
             }
 
         } catch (Exception e) {
@@ -78,15 +82,20 @@ public class DoctorPrescriptionDao {
 	    }
 	    
 	    
-	    public void insertPrescription(String name) throws ClassNotFoundException {
-	        String sql = "INSERT INTO doctor_prescription (prescription) VALUES (?)";
-	        try (Connection con = DBConnection.getConnection()){
-	             PreparedStatement stmt = con.prepareStatement(sql);
+	    public void insertPrescription(String name, String type) throws ClassNotFoundException {
+	        String sql = "INSERT INTO doctor_prescription (prescription, type) VALUES (?, ?)";
+	        
+	        try (Connection con = DBConnection.getConnection();
+	             PreparedStatement stmt = con.prepareStatement(sql)) {
+	            
 	            stmt.setString(1, name);
+	            stmt.setString(2, type);
 	            stmt.executeUpdate();
+	            
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
 	    }
+
 
 }
