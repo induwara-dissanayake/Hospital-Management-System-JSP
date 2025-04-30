@@ -24,7 +24,9 @@
             </div>
         <% } %>
         
-        <form action="${pageContext.request.contextPath}/AdminLoginServlet" method="post">
+        <form action="${pageContext.request.contextPath}/CommonLoginServlet" method="post">
+                <input type="hidden" name="role" value="admin">
+        
             <div class="input-group">
                 <i class="fas fa-user"></i>
                 <input type="text" name="username" placeholder="Username" required autofocus>

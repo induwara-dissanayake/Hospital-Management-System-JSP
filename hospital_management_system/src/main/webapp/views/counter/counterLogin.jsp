@@ -35,7 +35,10 @@
       Hospital Management System
     </p>
 
-    <form class="w-full space-y-4" action="MedicalCounterLoginServlet" method="post">
+    <form class="w-full space-y-4" action="${pageContext.request.contextPath}/CommonLoginServlet" method="post">
+     
+             <input type="hidden" name="role" value="counter">
+     
       <div>
         <label class="relative block">
           <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">
