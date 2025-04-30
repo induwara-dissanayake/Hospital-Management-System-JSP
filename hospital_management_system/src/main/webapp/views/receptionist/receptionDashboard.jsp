@@ -1,9 +1,13 @@
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Receptionist Dashboard</title>
+<<<<<<< Updated upstream
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="receptiondashboard.css" />
 </head>
@@ -74,11 +78,28 @@
 <div class="content">
     <div class="header">
         <div class="page-title">Receptionist Dashboard</div>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionDashboard.css">
+</head>
+<body>
+
+<jsp:include page="receptionSidebar.jsp" />
+
+<!-- Main Content -->
+<div class="content">
+    <div class="header">
+        <h1 class="page-title">Receptionist Dashboard</h1>
+>>>>>>> Stashed changes
         <div class="date-display" id="currentDate"></div>
     </div>
 
     <div class="dashboard-container">
         <div class="dashboard-grid">
+<<<<<<< Updated upstream
           
             <a href="receptionOPD.jsp" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
@@ -120,6 +141,42 @@
            
            
             
+=======
+            <a href="receptionOPD.jsp" class="dashboard-card">
+                <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
+                <h3 class="card-title">OPD</h3>
+                <p class="card-desc">Manage Outpatient Department patients</p>
+                <span class="card-btn">Open</span>
+            </a>
+
+            <a href="receptionClinic.jsp" class="dashboard-card">
+                <div class="card-icon"><i class="fas fa-calendar-check"></i></div>
+                <h3 class="card-title">Clinic</h3>
+                <p class="card-desc">Check today's clinic appointments</p>
+                <span class="card-btn">Open</span>
+            </a>
+
+            <a href="receptionPatientrecordsearch.jsp" class="dashboard-card">
+                <div class="card-icon"><i class="fas fa-file-medical-alt"></i></div>
+                <h3 class="card-title">Medical History</h3>
+                <p class="card-desc">View patient treatment records</p>
+                <span class="card-btn">History</span>
+            </a>
+
+            <a href="receptionViewPatients.jsp" class="dashboard-card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <h3 class="card-title">View Patients</h3>
+                <p class="card-desc">Browse and search patient records</p>
+                <span class="card-btn">View</span>
+            </a>
+
+            <a href="receptionAttendance.jsp" class="dashboard-card">
+                <div class="card-icon"><i class="fas fa-user-check"></i></div>
+                <h3 class="card-title">Reception Attendance</h3>
+                <p class="card-desc">Mark and view receptionist attendance</p>
+                <span class="card-btn">Attendance</span>
+            </a>
+>>>>>>> Stashed changes
         </div>
     </div>
 </div>
