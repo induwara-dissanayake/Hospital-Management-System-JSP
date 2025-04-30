@@ -13,19 +13,19 @@
 <div class="container">
     <div class="card">
         <h2>Doctor</h2>
-        <a href="views/doctor/doctorLogin.jsp" class="login-btn">Login</a>
+        <a href="login.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Reception</h2>
-        <a href="views/receptionist/receptionLogin.jsp" class="login-btn">Login</a>
+        <a href="login.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Medical Counter</h2>
-        <a href="views/counter/medicalLogin.jsp" class="login-btn">Login</a>
+        <a href="login.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Admin</h2>
-        <a href="views/admin/adminLogin.jsp" class="login-btn">Login</a>
+        <a href="login.jsp" class="login-btn">Login</a>
     </div>
 </div>
 
