@@ -23,7 +23,7 @@
     <div class="dashboard-container">
         <div class="dashboard-grid">
             <!-- Patient Card -->
-            <a href="patient.jsp" class="dashboard-card">
+            <a href="patientManagement.jsp" class="dashboard-card">
                 <div class="card-icon">
                     <i class="fas fa-user-injured"></i>
                 </div>
