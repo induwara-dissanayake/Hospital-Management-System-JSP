@@ -13,7 +13,7 @@ public class DoctorOPDOrderDao {
 
         try {
             Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM opd_order";
+            String sql = "SELECT * FROM reception_patient_opd_record";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
