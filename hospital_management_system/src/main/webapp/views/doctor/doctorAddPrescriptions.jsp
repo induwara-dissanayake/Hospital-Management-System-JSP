@@ -16,17 +16,79 @@
     <title>Prescriptions</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/opdPatients.css">
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f6f9;
+            padding: 30px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
         .center-container {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
-        .center-container input[type="text"] {
-            padding: 5px;
-            width: 300px;
-        }
+
         .center-container form {
-            display: inline-block;
-            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        input[type="text"], select {
+            padding: 8px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #searchInput {
+            padding: 8px;
+            width: 250px;
+            margin-top: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
         }
     </style>
     <script>
@@ -61,6 +123,13 @@
     <!-- Insert Prescription Form -->
     <form action="DoctorAddPrescriptionServlet" method="post">
         <input type="text" name="prescriptionName" placeholder="New prescription..." required>
+        <select name="prescriptionType" required>
+            <option value="">Select Type</option>
+            <option value="Tablet">Tablet</option>
+            <option value="Liquid">Liquid</option>
+            <option value="Drops">Drops</option>
+            <option value="Inhalers">Inhalers</option>
+        </select>
         <button type="submit">Insert Prescription</button>
     </form>
 
@@ -73,6 +142,7 @@
         <tr>
             <th>Prescription ID</th>
             <th>Prescription Name</th>
+            <th>Prescription type</th>
             <th>Update</th>
             <th>Delete</th>
         </tr>
@@ -85,8 +155,9 @@
     %>
         <tr>
             <td><%= prescription.getId() %></td>
-            <td><%= prescription.getprescription() %></td>
-            <td><button onclick="promptUpdate(<%= prescription.getId() %>, '<%= prescription.getprescription() %>')">Update</button></td>
+            <td><%= prescription.getPrescription() %></td>
+			 <td><%= prescription.getType() %></td>
+            <td><button onclick="promptUpdate(<%= prescription.getId() %>, '<%= prescription.getPrescription() %>')">Update</button></td>
             <td><button onclick="confirmDelete(<%= prescription.getId() %>)">Delete</button></td>
         </tr>
     <%

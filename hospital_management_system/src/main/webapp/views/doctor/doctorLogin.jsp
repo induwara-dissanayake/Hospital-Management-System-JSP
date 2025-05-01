@@ -4,58 +4,71 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Doctor Login</title>
-<link rel="stylesheet" type="text/css" href="style.css">
-<style>
-    .login-container {
-        background-color: white;
-        width: 350px;
-        margin: 100px auto;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-container h2 {
-        margin-bottom: 25px;
-        color: #333;
-    }
-
-    .login-container input[type="text"],
-    .login-container input[type="password"] {
-        width: 100%;
-        padding: 12px;
-        margin: 8px 0 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    .login-container input[type="submit"] {
-        background-color: #4285F4;
-        color: white;
-        padding: 10px;
-        width: 100%;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .login-container input[type="submit"]:hover {
-        background-color: #306bdc;
-    }
-</style>
+<title>Doctor Login | Hospital Management System</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/login.css">
 </head>
 <body>
-
-<div class="login-container">
-    <h2>Doctor Login</h2>
-    <form action="${pageContext.request.contextPath}/DoctorLoginServlet" method="post">
-        <input type="text" name="username" placeholder="Username" required>
-        <input type="password" name="password" placeholder="Password" required>
-        <input type="submit" value="Login">
-    </form>
+<div class="login-wrapper">
+    <div class="login-container">
+        <div class="login-header">
+            <i class="fas fa-user-md doctor-icon"></i>
+            <h2>Doctor Login</h2>
+            <p>Hospital Management System</p>
+        </div>
+        
+        <%-- Display error message if authentication failed --%>
+        <% if(request.getParameter("error") != null) { %>
+            <div class="error-message">
+                Invalid username or password. Please try again.
+            </div>
+        <% } %>
+        
+        <form action="${pageContext.request.contextPath}/CommonLoginServlet" method="post">
+        <input type="hidden" name="role" value="doctor">
+        
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required autofocus>
+            </div>
+            
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" id="password" placeholder="Password" required>
+                <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
+            </div>
+            
+            <div class="options">
+                <label>
+                    <input type="checkbox" name="remember"> Remember me
+                </label>
+                <a href="forgot-password.jsp">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+        </form>
+    </div>
+    
+    <div class="security-notice">
+        <i class="fas fa-shield-alt"></i>
+        <span>Secure login protected by encryption</span>
+    </div>
 </div>
 
+<script>
+function togglePassword() {
+    const password = document.getElementById('password');
+    const icon = document.querySelector('.toggle-password');
+    if(password.type === 'password') {
+        password.type = 'text';
+        icon.classList.replace('fa-eye', 'fa-eye-slash');
+    } else {
+        password.type = 'password';
+        icon.classList.replace('fa-eye-slash', 'fa-eye');
+    }
+}
+</script>
 </body>
 </html>
