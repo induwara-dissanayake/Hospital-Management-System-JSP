@@ -2,10 +2,13 @@
 <%
     String loggedInUser = (String) session.getAttribute("username");
     if (loggedInUser == null || loggedInUser.isEmpty()) {
-        loggedInUser = "Guest Admin";
+        loggedInUser = "Admin";
     }
 %>
- 
+
+<!-- Sidebar Overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay" style="display:none;"></div>
+
 <div class="sidebar">
     <div class="sidebar-header">
         <img src="https://cdn-icons-png.flaticon.com/512/4567/4567890.png" alt="Admin Profile" class="profile-pic">
@@ -21,39 +24,45 @@
             </div>
         </a>
         
-        <a href="patient.jsp" class="nav-item">
-            <div class="nav-header">
-                <i class="fas fa-user-injured nav-icon"></i>
-                <span class="nav-text">Patient</span>
-            </div>
-        </a>
-        
-        <a href="doctor.jsp" class="nav-item">
-            <div class="nav-header">
-                <i class="fas fa-calendar-check nav-icon"></i>
-                <span class="nav-text">Doctor</span>
-            </div>
-        </a>
-
+        <!-- User Management Section -->
         <div class="nav-item" id="userItem">
             <div class="nav-header">
                 <i class="fas fa-users nav-icon"></i>
-                <span class="nav-text">User</span>
+                <span class="nav-text">User Management</span>
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
                 <a href="userRegistration.jsp" class="submenu-item">User Registration</a>
-                <a href="userLogin.jsp" class="submenu-item">User Login</a>
-                <a href="userUpdate.jsp" class="submenu-item">User Update</a>
+                <a href="userManagement.jsp" class="submenu-item">User List</a>
             </div>
         </div>
 
-        <a href="admin.jsp" class="nav-item">
+        <!-- Medicine Management Section -->
+        <div class="nav-item" id="medicineItem">
             <div class="nav-header">
-                <i class="fas fa-user-shield nav-icon"></i>
-                <span class="nav-text">Admin</span>
+                <i class="fas fa-pills nav-icon"></i>
+                <span class="nav-text">Medicine Management</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
-        </a>
+            <div class="submenu">
+                <a href="addMedicine.jsp" class="submenu-item">Add Medicines</a>
+                <a href="medicineList.jsp" class="submenu-item">Medicine List</a>
+            </div>
+        </div>
+
+        <!-- Reports Management Section -->
+        <div class="nav-item" id="reportsItem">
+            <div class="nav-header">
+                <i class="fas fa-file-alt nav-icon"></i>
+                <span class="nav-text">Reports Management</span>
+                <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
+            </div>
+            <div class="submenu">
+                <a href="generateReports.jsp" class="submenu-item">Generate Reports</a>
+                <a href="viewReports.jsp" class="submenu-item">View Reports</a>
+            </div>
+        </div>
+
     </div>
 
     <div class="logout">
@@ -65,4 +74,57 @@
         </a>
     </div>
 </div>
- 
+
+<script>
+(function() {
+  const sidebar = document.querySelector('.sidebar');
+  const toggleBtn = document.getElementById('sidebarToggleBtn');
+  const overlay = document.getElementById('sidebarOverlay');
+
+  function openSidebar() {
+    sidebar.classList.add('open');
+    overlay.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  function toggleSidebar() {
+    if (window.innerWidth <= 900) {
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+      } else {
+        openSidebar();
+      }
+    } else {
+      sidebar.classList.toggle('collapsed');
+    }
+  }
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleSidebar();
+  });
+  overlay.addEventListener('click', closeSidebar);
+  // Responsive: auto-close on resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 900) {
+      closeSidebar();
+    }
+  });
+  // Submenu animation
+  document.querySelectorAll('.nav-header').forEach(header => {
+    header.addEventListener('click', function(e) {
+      const navItem = this.closest('.nav-item');
+      if (navItem && navItem.querySelector('.submenu')) {
+        navItem.classList.toggle('active');
+        // Only one submenu open at a time
+        document.querySelectorAll('.nav-item').forEach(item => {
+          if (item !== navItem) item.classList.remove('active');
+        });
+      }
+    });
+  });
+})();
+</script>
