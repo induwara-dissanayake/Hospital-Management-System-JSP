@@ -1,18 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clinic  - Patient Registration Form</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionClinic.css">
+  <title> Patient Registration Form</title>
+  <link rel="stylesheet" href="register.css" />
 </head>
 <body>
 
 <section class="tiles-container">
   <div class="tile">
-    <form class="form-container" action="receptionClinic.jsp" method="post">
-      <h3 class="form-header">Clinic - Register New Patient</h3>
+    <form class="form-container" action="register.jsp" method="post">
+      <h3 class="form-header">Register New Patient</h3>
 
       <div class="form-group">
         <label for="clinicName">Patient Name</label>
@@ -38,6 +37,8 @@
           <option value="Other">Other</option>
         </select>
       </div>
+
+      
 
       <div class="form-group">
         <label for="clinicNIC">NIC</label>
