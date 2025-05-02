@@ -3,7 +3,7 @@
 <%@ page import="java.util.List" %>
 
 <%
-    if (session == null || session.getAttribute("doctor_id") == null) {
+    if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
