@@ -24,7 +24,7 @@
             </div>
         <% } %>
         
-        <form action="${pageContext.request.contextPath}/CommonLoginServlet" method="post">
+        <form action="${pageContext.request.contextPath}/DoctorLoginServlet" method="post">
         <input type="hidden" name="role" value="doctor">
         
             <div class="input-group">

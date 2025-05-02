@@ -1,6 +1,5 @@
 package com.hospital.controller;
 
-import com.hospital.dao.DoctorLoginDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +17,7 @@ public class DoctorLoginServlet extends HttpServlet {
 
 		  	int doctorId = 1;
         	HttpSession session = request.getSession();
-            session.setAttribute("doctor_id", doctorId);
+            session.setAttribute("userId", doctorId);
 
             response.sendRedirect("views/doctor/doctorDashboard.jsp"); 
 
