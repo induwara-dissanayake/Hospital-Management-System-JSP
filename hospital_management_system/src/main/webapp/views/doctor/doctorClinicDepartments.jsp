@@ -62,11 +62,11 @@
     <h2>Clinic Departments</h2>
 
     <div class="card-container">
-        <a href="${pageContext.request.contextPath}/DoctorEyeClinicServlet?clinic_id=1" class="clinic-card">Eye Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorCardiologyClinicServlet?clinic_id=2" class="clinic-card">Cardiology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorGynecologyClinicServlet?clinic_id=3" class="clinic-card">Gynecology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorNeurologyClinicServlet?clinic_id=4" class="clinic-card">Neurology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorPediatricClinicServlet?clinic_id=5" class="clinic-card">Pediatric Clinic</a>
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=1" class="clinic-card">Eye Clinic</a>
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=2" class="clinic-card">Cardiology Clinic</a>
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=3" class="clinic-card">Gynecology Clinic</a>
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=4" class="clinic-card">Neurology Clinic</a>
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=5" class="clinic-card">Pediatric Clinic</a>
     </div>
 
 </body>

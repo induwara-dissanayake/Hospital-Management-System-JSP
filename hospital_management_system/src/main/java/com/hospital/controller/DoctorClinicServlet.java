@@ -13,32 +13,35 @@ import javax.servlet.http.HttpSession;
 import com.hospital.dao.DoctorClinicOrderDao;
 import com.hospital.model.ClinicOrder;
 
-@WebServlet("/DoctorPediatricClinicServlet")
-public class DoctorPediatricClinicServlet extends HttpServlet {
+
+@WebServlet("/DoctorClinicServlet")
+public class DoctorClinicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    
-    public DoctorPediatricClinicServlet() {
+ 
+    public DoctorClinicServlet() {
         super();
     }
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		DoctorClinicOrderDao dao = new DoctorClinicOrderDao();
+		
 		int clinic_id = Integer.parseInt(request.getParameter("clinic_id"));
 		HttpSession session = request.getSession();
         session.setAttribute("clinic_id", clinic_id);
-		
-		 ArrayList<ClinicOrder> patientList = (ArrayList<ClinicOrder>) dao.getAllPediatricClinicOrders(clinic_id);
 
-	        request.setAttribute("pediatricclinicpatients", patientList);
-	        request.getRequestDispatcher("views/doctor/doctorPediatricClinicPatients.jsp").forward(request, response);
+		
+		 ArrayList<ClinicOrder> patientList = (ArrayList<ClinicOrder>) dao.getAllClinicOrdersByClinicId(clinic_id);
+
+	        request.setAttribute("clinicpatients", patientList);
+	        request.getRequestDispatcher("views/doctor/doctorClinicPatients.jsp").forward(request, response);
+		
 	}
 
-	
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		
 	}
 

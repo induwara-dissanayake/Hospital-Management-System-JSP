@@ -13,7 +13,7 @@ Patient patient = (Patient) request.getAttribute("eyepatient");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eye Clinic Order Details</title>
+    <title>Clinic Order Details</title>
 </head>
 <body>
     <h2>Order Details</h2>

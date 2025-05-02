@@ -1,7 +1,7 @@
 <%@ page import="com.hospital.model.ClinicOrder" %>
 <%@ page import="java.util.*" %>
 <%
-    if (session == null || session.getAttribute("doctor_id") == null) {
+    if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
@@ -9,8 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Neurology Clinic Patients</title>
-    <link rel="stylesheet" type="text/css" href="resources/css/dashboard.css">
+    <title>Clinic Patients</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,7 +62,7 @@
 </head>
 <body>
 
-    <h2>Neurology Clinic Patient Orders</h2>
+    <h2>Clinic Patient Orders</h2>
 
     <table>
         <tr>
@@ -72,15 +71,15 @@
             <th>Action</th>
         </tr>
         <%
-            List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("neurologyclinicpatients");
-            if (patients != null) {
+            List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
+            if (patients != null && !patients.isEmpty()) {
                 for (ClinicOrder patient : patients) {
         %>
         <tr>
             <td><%= patient.getId() %></td>
-            <td><%= patient.getPatient_id() %></td>
+            <td><%= patient.getPatientId() %></td>
             <td>
-                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorNeurologyClinicViewServlet?id=<%= patient.getPatient_id() %>">View</a>
+                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?id=<%= patient.getId() %>">View</a>
             </td>
         </tr>
         <%

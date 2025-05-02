@@ -1,6 +1,7 @@
 package com.hospital.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import com.hospital.dao.DoctorAttendanceDao;
-import com.hospital.model.DoctorAttendance;
+import com.hospital.dao.AttendanceLogDAO;
+import com.hospital.model.Attendance;
+
+
 
 
 @WebServlet("/DoctorAttendanceServlet")
@@ -25,8 +29,16 @@ public class DoctorAttendanceServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		 DoctorAttendanceDao dao = new DoctorAttendanceDao();
-	        List<DoctorAttendance> attendanceList = dao.getAllAttendances();
+			HttpSession session = request.getSession();
+			int userId=(int) session.getAttribute("userId");
+		
+		 AttendanceLogDAO dao = new AttendanceLogDAO();
+	        List<Attendance> attendanceList = null;
+			try {
+				attendanceList = dao.getAttendanceByUserId(userId);
+			} catch (ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 
 	        request.setAttribute("attendanceList", attendanceList);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("views/doctor/doctorAttendance.jsp");

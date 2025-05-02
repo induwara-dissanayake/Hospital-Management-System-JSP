@@ -11,47 +11,47 @@ public class DoctorOPDOrderDao {
     public ArrayList<OPDOrder> getAllOpdOrders() {
         ArrayList<OPDOrder> patientList = new ArrayList<>();
 
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM reception_patient_opd_record";
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM reception_patient_opd_record";  
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                int age = rs.getInt("age");
-
-                OPDOrder order = new OPDOrder(id,name, age);
+                OPDOrder order = new OPDOrder();
+                order.setId(rs.getInt("id"));
+                order.setPatientName(rs.getString("patient_name"));
+                order.setPatientAge(rs.getInt("patient_age"));
+                order.setTolkenNo(rs.getInt("tolken_no"));
+                order.setDoctorComplete(rs.getInt("doctor_complete"));
+                order.setCounterComplete(rs.getInt("counter_complete"));
                 patientList.add(order);
             }
-
-            con.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return patientList;
     }
-    
-    
+
     public OPDOrder getOrderById(int id) {
         OPDOrder order = null;
         try (Connection con = DBConnection.getConnection()) {
-            String sql = "SELECT * FROM opd_order WHERE id = ?";
+            String sql = "SELECT * FROM reception_patient_opd_record WHERE id = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 order = new OPDOrder();
                 order.setId(rs.getInt("id"));
-                order.setName(rs.getString("name"));
-                order.setAge(rs.getInt("age"));
+                order.setPatientName(rs.getString("patient_name"));
+                order.setPatientAge(rs.getInt("patient_age"));
+                order.setTolkenNo(rs.getInt("tolken_no"));
+                order.setDoctorComplete(rs.getInt("doctor_complete"));
+                order.setCounterComplete(rs.getInt("counter_complete"));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return order;
     }
-
 }
