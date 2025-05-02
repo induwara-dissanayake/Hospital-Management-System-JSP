@@ -40,7 +40,7 @@
             </div>
         </a>
 
-        <a href="receptionViewPatients.jsp" class="nav-item">
+        <a href="receptionPatientrecordsearch.jsp" class="nav-item">
             <div class="nav-header">
                 <i class="fas fa-users nav-icon"></i>
                 <span class="nav-text">View Patients</span>
