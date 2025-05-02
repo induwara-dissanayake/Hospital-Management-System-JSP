@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, com.hospital.model.OPDOrder" %>
+<%@ page import="com.hospital.model.OPDOrder" %>
+<%@ page import="java.util.*" %>
 <%
-    if (session == null || session.getAttribute("doctor_id") == null) {
+    if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
@@ -9,10 +9,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>OPD Patients</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/opdPatients.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+        }
 
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        table {
+            margin: 30px auto;
+            border-collapse: collapse;
+            width: 80%;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 18px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .view-btn {
+            padding: 6px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .view-btn:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
 
@@ -21,7 +67,7 @@
     <table>
         <tr>
             <th>Order ID</th>
-            <th>Patient Name</th>
+            <th>Name</th>
             <th>Age</th>
             <th>Action</th>
         </tr>
@@ -32,18 +78,21 @@
         %>
         <tr>
             <td><%= patient.getId() %></td>
-            <td><%= patient.getName() %></td>
-            <td><%= patient.getAge() %></td>
-            <td><a href="${pageContext.request.contextPath}/DoctorOPDViewServlet?id=<%= patient.getId() %>" class="view-link">View</a></td>
+            <td><%= patient.getPatientName() %></td>
+            <td><%= patient.getPatientAge() %></td>
+            <td>
+                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorOPDViewServlet?id=<%= patient.getId() %>">View</a>
+            </td>
         </tr>
         <%
                 }
             } else {
         %>
         <tr>
-            <td colspan="4">No OPD orders found.</td>
+            <td colspan="3">No clinic patient orders found.</td>
         </tr>
         <% } %>
     </table>
+
 </body>
 </html>

@@ -4,7 +4,7 @@
 %>
 
 <%
-    if (session == null || session.getAttribute("doctor_id") == null) {
+    if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
@@ -81,8 +81,8 @@
 <body>
     <h2>Order Details</h2>
     <p><strong>Order ID:</strong> <%= order.getId() %></p>
-    <p><strong>Patient Name:</strong> <%= order.getName() %></p>
-    <p><strong>Patient Age:</strong> <%= order.getAge() %></p>
+    <p><strong>Patient Name:</strong> <%= order.getPatientName() %></p>
+    <p><strong>Patient Age:</strong> <%= order.getPatientAge() %></p>
 
     <form method="post" action="SavePrescriptionServlet">
         <input type="hidden" name="order_id" value="<%= order.getId() %>">

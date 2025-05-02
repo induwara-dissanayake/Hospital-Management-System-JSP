@@ -17,11 +17,11 @@
     </div>
     <div class="card">
         <h2>Reception</h2>
-        <a href="views/receptionist/receptionLogin.jsp" class="login-btn">Login</a>
+        <a href="views/reception/receptionLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Medical Counter</h2>
-        <a href="views/counter/medicalLogin.jsp" class="login-btn">Login</a>
+        <a href="views/counter/counterLogin.jsp" class="login-btn">Login</a>
     </div>
     <div class="card">
         <h2>Admin</h2>

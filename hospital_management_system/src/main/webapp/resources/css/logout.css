@@ -1,0 +1,28 @@
+@charset "UTF-8";
+/* logout.css */
+body {
+    background-color: #eaf3f4;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 50px;
+}
+h1 {
+    color: #2e2e2e;
+}
+p {
+    margin-top: 8px;
+    color: #555555;
+}
+a {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4fa0a6;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+a:hover {
+    background-color: #4fa0a6;
+}

@@ -6,102 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminDashboard.css">
 </head>
 <body>
 
 <jsp:include page="adminSidebar.jsp" />
 
-
-
 <!-- Main Content -->
 <div class="content">
     <div class="header">
-        <h1 class="page-title">Admin Panel</h1>
+        <h1 class="page-title">Admin Overview</h1>
         <div class="date-display" id="currentDate"></div>
     </div>
     
     <div class="dashboard-container">
         <div class="dashboard-grid">
-            <!-- Patient Card -->
-            <a href="patient.jsp" class="dashboard-card">
+            <!-- User Management Card -->
+            <a href="userManagement.jsp" class="dashboard-card">
                 <div class="card-icon">
-                    <i class="fas fa-user-injured"></i>
+                    <i class="fas fa-users"></i>
                 </div>
-                <h3 class="card-title">Patient</h3>
-                <p class="card-desc">Patient List</p>
-                <span class="card-btn">View Details</span>
-            </a>
-    
-            <!-- Doctor Card -->
-            <a href="doctor.jsp" class="dashboard-card">
-                <div class="card-icon">
-                    <i class="fas fa-calendar-check"></i>
-                </div>
-                <h3 class="card-title">Doctor</h3>
-                <p class="card-desc">Doctor Appointments</p>
+                <h3 class="card-title">User Management</h3>
+                <p class="card-desc">Current List</p>
                 <span class="card-btn">View Details</span>
             </a>
             
-            <!-- Reception Card -->
-            <a href="reception.jsp" class="dashboard-card">
+            <!-- Medicine Management Card -->
+            <a href="medicineManagement.jsp" class="dashboard-card">
                 <div class="card-icon">
-                    <i class="fas fa-concierge-bell"></i>
+                    <i class="fas fa-pills"></i>
                 </div>
-                <h3 class="card-title">Reception</h3>
-                <p class="card-desc">Reception Desk</p>
+                <h3 class="card-title">Medicine Management</h3>
+                <p class="card-desc">Manage Medicines</p>
                 <span class="card-btn">View Details</span>
             </a>
-            
-            <!-- Pharmacy Card -->
-            <a href="pharmacy.jsp" class="dashboard-card">
+
+            <!-- Reports Management Card -->
+            <a href="reportsManagement.jsp" class="dashboard-card">
                 <div class="card-icon">
-                    <i class="fas fa-prescription-bottle"></i>
+                    <i class="fas fa-file-alt"></i>
                 </div>
-                <h3 class="card-title">Pharmacy</h3>
-                <p class="card-desc">Pharmacy Counter</p>
-                <span class="card-btn">View Details</span>
+                <h3 class="card-title">Reports Management</h3>
+                <p class="card-desc">Generate Reports</p>
+                <span class="card-btn">View Reports</span>
             </a>
             
-            <!-- User Registration Card -->
-            <a href="userRegistration.jsp" class="dashboard-card">
-                <div class="card-icon">
-                    <i class="fas fa-user-plus"></i>
-                </div>
-                <h3 class="card-title">User Registration</h3>
-                <p class="card-desc">Registration Form</p>
-                <span class="card-btn">View Form</span>
-            </a>
-            
-            <!-- User Login Card -->
-            <a href="userLogin.jsp" class="dashboard-card">
-               <div class="card-icon">
-                    <i class="fas fa-sign-in-alt"></i>
-                </div>
-                <h3 class="card-title">User Login</h3>
-                <p class="card-desc">Login Form</p>
-                <span class="card-btn">View Form</span>
-            </a>
-            
-            <!-- User Update Card -->
-            <a href="userUpdate.jsp" class="dashboard-card">
-                <div class="card-icon">
-                    <i class="fas fa-user-edit"></i>
-                </div>
-                <h3 class="card-title">User Update</h3>
-                <p class="card-desc">User List</p>
-                <span class="card-btn">View Details</span>
-            </a>
-            
-            <!-- Admin Card -->
-            <a href="admin.jsp" class="dashboard-card">
-                <div class="card-icon">
-                    <i class="fas fa-user-shield"></i>
-                </div>
-                <h3 class="card-title">Admin</h3>
-                <p class="card-desc">Admin Control</p>
-                <span class="card-btn">View Details</span>
-            </a>
         </div>
     </div>
 </div>
@@ -135,6 +85,4 @@
 </script>
 
 </body>
-</html>               
-                        
-    
+</html>

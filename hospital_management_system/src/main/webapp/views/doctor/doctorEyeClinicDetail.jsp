@@ -4,7 +4,7 @@ Patient patient = (Patient) request.getAttribute("eyepatient");
 %>
 
 <%
-    if (session == null || session.getAttribute("doctor_id") == null) {
+    if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
@@ -13,7 +13,7 @@ Patient patient = (Patient) request.getAttribute("eyepatient");
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eye Clinic Order Details</title>
+    <title>Clinic Order Details</title>
 </head>
 <body>
     <h2>Order Details</h2>
