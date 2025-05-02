@@ -1,8 +1,6 @@
 package com.hospital.dao;
 
 import com.hospital.model.ClinicOrder;
-import com.hospital.model.OPDOrder;
-import com.hospital.model.Patient;
 import com.hospital.util.DBConnection;
 
 import java.sql.*;
@@ -10,187 +8,59 @@ import java.util.ArrayList;
 
 public class DoctorClinicOrderDao {
 
+    private ClinicOrder mapResultSetToClinicOrder(ResultSet rs) throws SQLException {
+        ClinicOrder order = new ClinicOrder();
+        order.setId(rs.getInt("id"));
+        order.setTolkenNo(rs.getInt("tolken_no"));
+        order.setClinicId(rs.getInt("clinic_id"));
+        order.setPatientId(rs.getInt("patient_id"));
+        order.setDate(rs.getTimestamp("date"));
+        order.setDoctorComplete(rs.getInt("doctor_complete"));
+        order.setCounterComplete(rs.getInt("counter_complete"));
+        return order;
+    }
+
     public ArrayList<ClinicOrder> getAllClinicOrders() {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-    
-    
-    public ArrayList<ClinicOrder> getAllEyeClinicOrders(int clinic_id) {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order where clinic_id= 1";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-    
-    
-    public ArrayList<ClinicOrder> getAllCardiologyClinicOrders(int clinic_id) {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order where clinic_id= 2";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-    
-    
-    public ArrayList<ClinicOrder> getAllGynecologyClinicOrders(int clinic_id) {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order where clinic_id= 3";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-
-    
-    public ArrayList<ClinicOrder> getAllNeurologyClinicOrders(int clinic_id) {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order where clinic_id= 4";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-
-    
-    public ArrayList<ClinicOrder> getAllPediatricClinicOrders(int clinic_id) {
-        ArrayList<ClinicOrder> patientList = new ArrayList<>();
-
-        try {
-            Connection con = DBConnection.getConnection();
-            String sql = "SELECT * FROM clinic_order where clinic_id= 5";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int patient_id = rs.getInt("patient_id");
-
-                ClinicOrder order = new ClinicOrder(id,patient_id);
-                patientList.add(order);
-            }
-
-            con.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return patientList;
-    }
-    
-    
-    public Patient getOrderById(int id) {
-        
-        Patient patient = null;
+        ArrayList<ClinicOrder> orderList = new ArrayList<>();
 
         try (Connection con = DBConnection.getConnection()) {
-           
-                String sqlPatient = "SELECT * FROM patient WHERE id = ?";
-                PreparedStatement psPatient = con.prepareStatement(sqlPatient);
-                psPatient.setInt(1, id);
-                ResultSet rsPatient = psPatient.executeQuery();
-              
-                if (rsPatient.next()) {
-                     patient = new Patient();
-                    patient.setId(rsPatient.getInt("id"));
-                    patient.setName(rsPatient.getString("name"));
-                    patient.setNic(rsPatient.getString("nic"));
-                    
+            String sql = "SELECT * FROM reception_patient_clinic_records";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ClinicOrder order = mapResultSetToClinicOrder(rs);
+                orderList.add(order);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return patient;
+        return orderList;
+    }
+
+    public ArrayList<ClinicOrder> getAllClinicOrdersByClinicId(int clinic_id) {
+        ArrayList<ClinicOrder> orderList = new ArrayList<>();
+
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM reception_patient_clinic_records WHERE clinic_id = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, clinic_id);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                ClinicOrder order = mapResultSetToClinicOrder(rs);
+                orderList.add(order);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return orderList;
     }
 
     
-    
+
 }
