@@ -65,39 +65,13 @@
       background-color: #f0f0f0;
     }
   </style>
-
-  <script>
-    function fetchSuggestions(query) {
-      if (query.length < 1) {
-        document.getElementById("suggestions").innerHTML = "";
-        return;
-      }
-
-      fetch("PatientLiveSearchServlet?query=" + encodeURIComponent(query))
-        .then(response => response.json())
-        .then(data => {
-          let suggestions = document.getElementById("suggestions");
-          suggestions.innerHTML = "";
-          data.forEach(patient => {
-            let div = document.createElement("div");
-            div.className = "suggestion-item";
-            div.innerText = `${patient.id} - ${patient.name} (${patient.nic})`;
-            div.onclick = function () {
-              document.getElementById("nameorid").value = patient.nic;
-              document.getElementById("searchForm").submit();
-            };
-            suggestions.appendChild(div);
-          });
-        });
-    }
-  </script>
 </head>
 <body>
   <section id="patient-records-search">
     <h2>Patient Records Search</h2>
     <form id="searchForm" action="ReceptionPatientSearchServlet" method="post">
       <div class="form-row">
-        <input type="text" id="nameorid" name="nameorid" placeholder="Enter NIC or ID" onkeyup="fetchSuggestions(this.value)" autocomplete="off" required />
+        <input type="text" id="nameorid" name="nameorid" placeholder="Enter NIC or ID" autocomplete="off" required />
         <button type="submit">Search</button>
       </div>
       <div id="suggestions"></div>
