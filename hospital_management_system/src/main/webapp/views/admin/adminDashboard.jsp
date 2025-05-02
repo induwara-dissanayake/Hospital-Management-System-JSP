@@ -25,7 +25,7 @@
             <!-- User Management Card -->
             <a href="userManagement.jsp" class="dashboard-card">
                 <div class="card-icon">
-                    <i class="fas fa-user-injured"></i>
+                    <i class="fas fa-users"></i>
                 </div>
                 <h3 class="card-title">User Management</h3>
                 <p class="card-desc">Current List</p>
