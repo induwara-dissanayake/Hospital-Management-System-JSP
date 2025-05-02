@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2025 at 11:03 PM
+-- Generation Time: May 02, 2025 at 09:24 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,22 +41,43 @@ CREATE TABLE `attendance_log` (
 
 INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `status`) VALUES
 (1, 1, '2025-04-30 21:43:07', NULL, 'Present'),
-(2, 2, '2025-04-30 21:43:24', NULL, 'Present'),
+(2, 2, '2025-04-30 21:43:24', '2025-05-02 12:42:04', 'Present'),
 (3, 1, '2025-04-30 21:45:06', NULL, 'Present'),
 (4, 3, '2025-04-30 21:45:38', NULL, 'Present'),
-(5, 2, '2025-04-30 21:54:46', NULL, 'Present'),
-(6, 2, '2025-04-30 21:57:15', NULL, 'Present'),
-(7, 2, '2025-04-30 21:58:11', NULL, 'Present'),
-(8, 2, '2025-04-30 22:07:27', NULL, 'Present'),
+(5, 2, '2025-04-30 21:54:46', '2025-05-02 12:42:04', 'Present'),
+(6, 2, '2025-04-30 21:57:15', '2025-05-02 12:42:04', 'Present'),
+(7, 2, '2025-04-30 21:58:11', '2025-05-02 12:42:04', 'Present'),
+(8, 2, '2025-04-30 22:07:27', '2025-05-02 12:42:04', 'Present'),
 (9, 1, '2025-04-30 22:07:39', NULL, 'Present'),
-(10, 2, '2025-04-30 22:13:46', NULL, 'Present'),
-(11, 2, '2025-05-01 01:46:37', NULL, 'Present'),
+(10, 2, '2025-04-30 22:13:46', '2025-05-02 12:42:04', 'Present'),
+(11, 2, '2025-05-01 01:46:37', '2025-05-02 12:42:04', 'Present'),
 (12, 3, '2025-05-01 01:53:39', NULL, 'Present'),
 (13, 4, '2025-05-01 01:55:06', NULL, 'Present'),
 (14, 1, '2025-05-01 01:55:31', NULL, 'Present'),
-(15, 2, '2025-05-01 02:13:32', NULL, 'Present'),
-(16, 2, '2025-05-01 02:26:51', NULL, 'Present'),
-(17, 2, '2025-05-01 02:31:40', NULL, 'Present');
+(15, 2, '2025-05-01 02:13:32', '2025-05-02 12:42:04', 'Present'),
+(16, 2, '2025-05-01 02:26:51', '2025-05-02 12:42:04', 'Present'),
+(17, 2, '2025-05-01 02:31:40', '2025-05-02 12:42:04', 'Present'),
+(18, 2, '2025-05-01 20:56:24', '2025-05-02 12:42:04', 'Present'),
+(19, 2, '2025-05-01 20:58:16', '2025-05-02 12:42:04', 'Present'),
+(20, 3, '2025-05-02 10:10:08', NULL, 'Present'),
+(21, 3, '2025-05-02 10:21:35', NULL, 'Present'),
+(22, 3, '2025-05-02 10:22:19', NULL, 'Present'),
+(23, 2, '2025-05-02 10:22:24', '2025-05-02 12:42:04', 'Present'),
+(24, 3, '2025-05-02 10:22:42', NULL, 'Present'),
+(25, 3, '2025-05-02 10:32:08', NULL, 'Present'),
+(26, 2, '2025-05-02 10:53:07', '2025-05-02 12:42:04', 'Present'),
+(27, 3, '2025-05-02 10:53:35', NULL, 'Present'),
+(28, 4, '2025-05-02 10:54:08', NULL, 'Present'),
+(29, 1, '2025-05-02 10:54:38', NULL, 'Present'),
+(30, 2, '2025-05-02 12:35:33', '2025-05-02 12:42:04', 'Present'),
+(31, 2, '2025-05-02 12:37:11', '2025-05-02 12:42:04', 'Present'),
+(32, 2, '2025-05-02 12:40:10', '2025-05-02 12:42:04', 'Present'),
+(33, 2, '2025-05-02 12:42:03', '2025-05-02 12:42:04', 'Present'),
+(34, 2, '2025-05-02 12:42:08', NULL, 'Present'),
+(35, 2, '2025-05-02 12:42:15', NULL, 'Present'),
+(36, 3, '2025-05-02 12:43:07', NULL, 'Present'),
+(37, 4, '2025-05-02 12:43:59', NULL, 'Present'),
+(38, 1, '2025-05-02 12:44:12', NULL, 'Present');
 
 -- --------------------------------------------------------
 
@@ -175,14 +196,15 @@ CREATE TABLE `doctor_prescription` (
 --
 
 INSERT INTO `doctor_prescription` (`id`, `prescription`, `type`) VALUES
-(9, 'Salbutamol', '0'),
+(9, 'aaaaaaaaaaaaaaaaaaaaa', '0'),
 (10, 'Vitamin D', '0'),
 (11, 'qqq', '0'),
 (12, 'xxxxx', '0'),
 (15, 'ane manda', '0'),
 (16, 'qqq', 'Tablet'),
 (17, 'fewgwegweg', '1'),
-(18, 'bvvvvswvwevw', 'Drops');
+(18, 'bvvvvswvwevw', 'Drops'),
+(20, 'asdasfasascvasvcasv', 'Liquid');
 
 -- --------------------------------------------------------
 
@@ -319,6 +341,26 @@ INSERT INTO `users` (`id`, `name`, `username`, `password`, `role_id`, `created_a
 (3, 'Reception', 'reception', '1234', 3, '2025-04-29 19:38:04', '2025-04-29 19:38:04'),
 (4, 'Pharmacy', 'pharmacy', '1234', 4, '2025-04-29 19:38:04', '2025-04-29 19:38:04');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_registrations`
+--
+
+CREATE TABLE `user_registrations` (
+  `id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `address` text NOT NULL,
+  `role` enum('doctor','pharmacist','receptionist') NOT NULL,
+  `specialization` varchar(100) DEFAULT NULL,
+  `license_number` varchar(100) DEFAULT NULL,
+  `shift` varchar(100) DEFAULT NULL,
+  `registered_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -335,14 +377,6 @@ ALTER TABLE `attendance_log`
 --
 ALTER TABLE `doctor_clinic_department`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `doctor_patient_prescription_clinic`
---
-ALTER TABLE `doctor_patient_prescription_clinic`
-  ADD KEY `fk_presid` (`prescription_id`),
-  ADD KEY `fk_docid` (`doctor_id`),
-  ADD KEY `fk_orderid` (`order_id`);
 
 --
 -- Indexes for table `doctor_prescription`
@@ -390,6 +424,13 @@ ALTER TABLE `users`
   ADD KEY `role_id` (`role_id`);
 
 --
+-- Indexes for table `user_registrations`
+--
+ALTER TABLE `user_registrations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -397,7 +438,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `doctor_clinic_department`
@@ -409,7 +450,7 @@ ALTER TABLE `doctor_clinic_department`
 -- AUTO_INCREMENT for table `doctor_prescription`
 --
 ALTER TABLE `doctor_prescription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `reception_patient_clinic_records`
@@ -442,14 +483,10 @@ ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- Constraints for dumped tables
+-- AUTO_INCREMENT for table `user_registrations`
 --
-
---
--- Constraints for table `doctor_patient_prescription_clinic`
---
-ALTER TABLE `doctor_patient_prescription_clinic`
-  ADD CONSTRAINT `fk_orderid` FOREIGN KEY (`order_id`) REFERENCES `opd_order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `user_registrations`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

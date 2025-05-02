@@ -27,6 +27,6 @@ public class CommonLogoutServlet extends HttpServlet {
         }
 
         // Redirect to login page
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("index.jsp");
     }
 }
