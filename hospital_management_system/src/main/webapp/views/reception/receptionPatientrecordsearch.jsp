@@ -108,6 +108,20 @@
           color: #555;
         }
       }
+
+      .view-btn {
+        display: inline-block;
+        padding: 6px 12px;
+        background: #4caf50;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      .view-btn:hover {
+        background: #45a049;
+      }
     </style>
     <script>
       window.onload = function () {
@@ -152,7 +166,7 @@
 
         if (!data || data.length === 0) {
           tbody.innerHTML =
-            "<tr><td colspan='9' class='no-results'>No patients found</td></tr>";
+            "<tr><td colspan='6' class='no-results'>No patients found</td></tr>";
           return;
         }
 
@@ -178,6 +192,9 @@
             "</td>" +
             '<td data-label="NIC">' +
             (patient.patientNic || "") +
+            "</td>" +
+            '<td data-label="Action">' +
+            '<a href="ReceptionPatientDetailServlet?id=' + patient.id + '" class="view-btn">View</a>' +
             "</td>" +
             "</tr>";
         }
@@ -209,6 +226,7 @@
             <th>DOB</th>
             <th>Clinic ID</th>
             <th>NIC</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody id="patientResultsTbody"></tbody>
