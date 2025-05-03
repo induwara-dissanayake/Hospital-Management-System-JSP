@@ -76,4 +76,37 @@ public class ReceptionSearchPatientDao {
             rs.getString("patient_guardian_contact_no")
         );
     }
+    
+    
+    public Patient getPatientById(int id) throws SQLException, ClassNotFoundException {
+        Patient patient = null;
+
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM reception_patient_registration WHERE id = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, id);
+
+
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                	patient = new Patient(
+                		    rs.getInt("id"),
+                		    rs.getString("patient_name"),   
+                		    rs.getString("patient_dob"),    
+                		    rs.getString("clinic_id"),      
+                		    rs.getString("patient_address"),
+                		    rs.getString("patient_nic"),   
+                		    rs.getString("patient_contact_no"),
+                		    rs.getString("patient_guardian_name"), 
+                		    rs.getString("patient_guardian_contact_no") 
+                		);
+
+                }
+            }
+        }
+
+        return patient;
+    }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2025 at 09:24 AM
+-- Generation Time: May 03, 2025 at 08:59 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -73,11 +73,42 @@ INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `sta
 (31, 2, '2025-05-02 12:37:11', '2025-05-02 12:42:04', 'Present'),
 (32, 2, '2025-05-02 12:40:10', '2025-05-02 12:42:04', 'Present'),
 (33, 2, '2025-05-02 12:42:03', '2025-05-02 12:42:04', 'Present'),
-(34, 2, '2025-05-02 12:42:08', NULL, 'Present'),
-(35, 2, '2025-05-02 12:42:15', NULL, 'Present'),
+(34, 2, '2025-05-02 12:42:08', '2025-05-02 18:54:39', 'Present'),
+(35, 2, '2025-05-02 12:42:15', '2025-05-02 18:54:39', 'Present'),
 (36, 3, '2025-05-02 12:43:07', NULL, 'Present'),
 (37, 4, '2025-05-02 12:43:59', NULL, 'Present'),
-(38, 1, '2025-05-02 12:44:12', NULL, 'Present');
+(38, 1, '2025-05-02 12:44:12', NULL, 'Present'),
+(39, 1, '2025-05-02 12:55:55', NULL, 'Present'),
+(40, 2, '2025-05-02 12:57:46', '2025-05-02 18:54:39', 'Present'),
+(41, 2, '2025-05-02 18:31:05', '2025-05-02 18:54:39', 'Present'),
+(42, 3, '2025-05-02 18:33:14', NULL, 'Present'),
+(43, 2, '2025-05-02 18:54:18', '2025-05-02 18:54:39', 'Present'),
+(44, 2, '2025-05-02 18:54:41', '2025-05-02 18:55:19', 'Present'),
+(45, 2, '2025-05-02 18:55:23', '2025-05-02 20:24:17', 'Present'),
+(46, 2, '2025-05-02 19:48:18', '2025-05-02 20:24:17', 'Present'),
+(47, 2, '2025-05-02 20:17:31', '2025-05-02 20:24:17', 'Present'),
+(48, 2, '2025-05-02 20:23:30', '2025-05-02 20:24:17', 'Present'),
+(49, 2, '2025-05-02 20:24:19', NULL, 'Present'),
+(50, 2, '2025-05-02 20:43:58', NULL, 'Present'),
+(51, 2, '2025-05-02 21:19:00', NULL, 'Present'),
+(52, 2, '2025-05-02 21:25:21', NULL, 'Present'),
+(53, 2, '2025-05-02 21:28:35', NULL, 'Present'),
+(54, 3, '2025-05-03 01:29:44', NULL, 'Present'),
+(55, 3, '2025-05-03 02:19:32', NULL, 'Present'),
+(56, 3, '2025-05-03 02:23:23', NULL, 'Present'),
+(57, 3, '2025-05-03 02:37:46', NULL, 'Present'),
+(58, 3, '2025-05-03 02:43:15', NULL, 'Present'),
+(59, 3, '2025-05-03 02:48:48', NULL, 'Present'),
+(60, 3, '2025-05-03 02:58:39', NULL, 'Present'),
+(61, 3, '2025-05-03 03:07:32', NULL, 'Present'),
+(62, 3, '2025-05-03 03:11:35', NULL, 'Present'),
+(63, 3, '2025-05-03 10:31:26', NULL, 'Present'),
+(64, 3, '2025-05-03 10:58:18', NULL, 'Present'),
+(65, 3, '2025-05-03 11:07:20', NULL, 'Present'),
+(66, 3, '2025-05-03 11:10:32', NULL, 'Present'),
+(67, 1, '2025-05-03 11:15:13', NULL, 'Present'),
+(68, 3, '2025-05-03 11:22:39', NULL, 'Present'),
+(69, 3, '2025-05-03 11:26:23', NULL, 'Present');
 
 -- --------------------------------------------------------
 
@@ -261,6 +292,22 @@ CREATE TABLE `reception_patient_clinic_records` (
   `counter_complete` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reception_patient_clinic_records`
+--
+
+INSERT INTO `reception_patient_clinic_records` (`id`, `tolken_no`, `clinic_id`, `patient_id`, `date`, `doctor_complete`, `counter_complete`) VALUES
+(1, 1, 1, 1001, '2025-05-02 14:22:54', 0, 0),
+(2, 2, 1, 1002, '2025-05-02 14:22:54', 0, 0),
+(3, 3, 2, 1003, '2025-05-02 14:22:54', 0, 0),
+(4, 4, 2, 1004, '2025-05-02 14:22:54', 0, 0),
+(5, 5, 3, 1005, '2025-05-02 14:22:54', 0, 0),
+(6, 6, 3, 1006, '2025-05-02 14:22:54', 0, 0),
+(7, 7, 4, 1007, '2025-05-02 14:22:54', 0, 0),
+(8, 8, 4, 1008, '2025-05-02 14:22:54', 0, 0),
+(9, 9, 5, 1009, '2025-05-02 14:22:54', 0, 0),
+(10, 10, 5, 1010, '2025-05-02 14:22:54', 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -276,6 +323,22 @@ CREATE TABLE `reception_patient_opd_record` (
   `counter_complete` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `reception_patient_opd_record`
+--
+
+INSERT INTO `reception_patient_opd_record` (`id`, `patient_name`, `patient_age`, `tolken_no`, `doctor_complete`, `counter_complete`) VALUES
+(1, 'John Doe', 35, 101, 0, 0),
+(2, 'Jane Smith', 28, 102, 0, 0),
+(3, 'Michael Brown', 42, 103, 0, 0),
+(4, 'Emily Johnson', 30, 104, 0, 0),
+(5, 'William Lee', 50, 105, 0, 0),
+(6, 'Olivia Davis', 22, 106, 0, 0),
+(7, 'James Wilson', 60, 107, 0, 0),
+(8, 'Sophia Martinez', 19, 108, 0, 0),
+(9, 'David Anderson', 47, 109, 0, 0),
+(10, 'Emma Thomas', 33, 110, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -287,12 +350,29 @@ CREATE TABLE `reception_patient_registration` (
   `patient_name` varchar(100) NOT NULL,
   `patient_dob` date NOT NULL,
   `clinic_id` int(11) NOT NULL,
+  `gender` varchar(100) NOT NULL,
   `patient_address` varchar(100) NOT NULL,
   `patient_nic` varchar(20) NOT NULL,
   `patient_contact_no` int(10) NOT NULL,
   `patient_guardian_name` varchar(100) DEFAULT NULL,
   `patient_guardian_contact_no` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reception_patient_registration`
+--
+
+INSERT INTO `reception_patient_registration` (`id`, `patient_name`, `patient_dob`, `clinic_id`, `gender`, `patient_address`, `patient_nic`, `patient_contact_no`, `patient_guardian_name`, `patient_guardian_contact_no`) VALUES
+(1, 'John Doe', '1990-05-15', 1, '', '123 Main Street', '902345678V', 771234567, 'Jane Doe', 772345678),
+(2, 'Emily Smith', '1985-09-22', 2, '', '45 Park Avenue', '852347891V', 772345678, NULL, NULL),
+(3, 'Michael Johnson', '1978-03-10', 1, '', '789 Oak Road', '782341234V', 771112233, 'Sarah Johnson', 774445566),
+(4, 'Samantha Lee', '1995-11-30', 3, '', '12 Pine Street', '952348765V', 778899001, NULL, NULL),
+(5, 'David Brown', '2000-07-04', 2, '', '67 River Lane', '002349876V', 770987654, 'Mark Brown', 775551122),
+(6, 'Olivia White', '1992-02-17', 1, '', '89 Sunset Blvd', '922340123V', 776543210, NULL, NULL),
+(7, 'William Green', '1988-06-25', 3, '', '14 Maple Drive', '882349012V', 775432109, 'Anna Green', 778765432),
+(8, 'Sophia Taylor', '1993-12-09', 2, '', '56 Lake View', '932347890V', 774321098, NULL, NULL),
+(9, 'James Wilson', '1982-04-18', 1, '', '101 Hilltop Road', '822349876V', 773210987, 'Linda Wilson', 779876543),
+(10, 'Isabella Martin', '1999-08-27', 3, '', '23 Seaside Street', '992348901V', 772109876, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -438,7 +518,7 @@ ALTER TABLE `user_registrations`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `doctor_clinic_department`
@@ -456,19 +536,19 @@ ALTER TABLE `doctor_prescription`
 -- AUTO_INCREMENT for table `reception_patient_clinic_records`
 --
 ALTER TABLE `reception_patient_clinic_records`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reception_patient_opd_record`
 --
 ALTER TABLE `reception_patient_opd_record`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `reception_patient_registration`
 --
 ALTER TABLE `reception_patient_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `roles`
