@@ -14,15 +14,34 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorDashboard.css">
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorpatientkist.css">
 </head>
 <body>
-<jsp:include page="doctorSidebar.jsp" />
 
-    <h1 style="text-align:center;">Patient List</h1>
-
-    <div class="dashboard-container">
-		<a href="${pageContext.request.contextPath}/DoctorOPDServlet" class="card">OPD</a>
-        <a href="doctorClinicDepartments.jsp" class="card">Clinic</a>
+  <div class="sidebar-wrapper">
+        <jsp:include page="doctorSidebar.jsp" />
     </div>
+
+   <div class="cards-container">
+    <!-- OPD Card -->
+    <a href="${pageContext.request.contextPath}/DoctorOPDServlet" style="text-decoration: none;">
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-procedures"></i>
+            </div>
+            <h3>OPD</h3>
+        </div>
+    </a>
+
+    <!-- Clinic Card -->
+    <a  href="doctorClinicDepartments.jsp" style="text-decoration: none;">
+        <div class="card">
+            <div class="card-icon">
+                <i class="fas fa-clinic-medical"></i>
+            </div>
+            <h3>Clinic</h3>
+        </div>
+    </a>
+</div>
 </body>
 </html>
