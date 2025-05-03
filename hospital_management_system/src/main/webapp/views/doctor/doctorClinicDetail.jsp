@@ -1,6 +1,6 @@
 <%@ page import="com.hospital.model.Patient" %>
 <%
-    Patient patient = (Patient) request.getAttribute("eyepatient");
+    Patient patient = (Patient) request.getAttribute("patient");
 
     if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
@@ -38,8 +38,8 @@
 <body>
     <h2>Order Details</h2>
     <p><strong>Patient ID:</strong> <%= patient.getId() %></p>
-    <p><strong>Patient Name:</strong> <%= patient.getName() %></p>
-    <p><strong>Patient NIC:</strong> <%= patient.getNic() %></p>
+    <p><strong>Patient Name:</strong> <%= patient.getPatientName() %></p>
+    <p><strong>Patient NIC:</strong> <%= patient.getPatientNic() %></p>
 
     <form method="post" action="SavePrescriptionServlet">
         <!-- Common fields -->
