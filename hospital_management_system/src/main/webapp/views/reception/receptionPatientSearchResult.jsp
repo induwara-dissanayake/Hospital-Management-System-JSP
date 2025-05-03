@@ -83,18 +83,17 @@
       <%
         for (Patient patient : patients) {
       %>
-<tr>
-    <td><%= patient.getId() %></td>
-    <td><%= patient.getPatient_name() %></td>
-    <td><%= patient.getPatient_dob() %></td>
-    <td><%= patient.getClinic_id() %></td>
-    <td><%= patient.getPatient_address() %></td>
-    <td><%= patient.getPatient_nic() %></td>
-    <td><%= patient.getPatient_contact_no() %></td>
-    <td><%= patient.getPatient_guardian_name() %></td>
-    <td><%= patient.getPatient_guardian_contact_no() %></td>
-</tr>
-
+        <tr>
+          <td><%= patient.getId() %></td>
+          <td><%= patient.getPatientName() %></td>
+          <td><%= patient.getPatientDob() %></td>
+          <td><%= patient.getClinicId() %></td>
+          <td><%= patient.getPatientAddress() %></td>
+          <td><%= patient.getPatientNic() %></td>
+          <td><%= patient.getPatientContactNo() %></td>
+          <td><%= patient.getPatientGuardianName() %></td>
+          <td><%= patient.getPatientGuardianContactNo() %></td>
+        </tr>
       <%
         }
       %>
