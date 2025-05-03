@@ -48,7 +48,7 @@
                 <div class="card-desc">View patient treatment records.</div>
                 <span class="card-btn">History</span>
             </a>
-            <a href="receptionPatientrecordsearch.jsp" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/ReceptionPatientSearchServlet" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-users"></i></div>
                 <div class="card-title">View Patients</div>
                 <div class="card-desc">Browse and search patient records.</div>
