@@ -40,6 +40,7 @@
             </div>
         </a>
 
+
         <a href="${pageContext.request.contextPath}/ReceptionPatientSearchServlet" class="nav-item">
             <div class="nav-header">
                 <i class="fas fa-users nav-icon"></i>
