@@ -1,7 +1,13 @@
 <%@ page import="com.hospital.model.Patient" %>
+<%@ page import="com.hospital.model.PatientReport" %>
+<%@ page import="java.util.ArrayList" %>
+
+
+
 <%
     Patient patient = (Patient) request.getAttribute("patient");
-
+	ArrayList<PatientReport> reportList= (ArrayList<PatientReport>)request.getAttribute("patient_report");
+	
     if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
@@ -76,6 +82,6 @@
     </form>
 
     <br>
-    <a href="${pageContext.request.contextPath}/DoctorEyeClinicServlet?clinic_id=1">Back to List</a>
+    <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=<%=clinicId %>">>Back to List</a>
 </body>
 </html>
