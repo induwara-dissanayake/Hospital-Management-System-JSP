@@ -51,13 +51,14 @@
     }
     .view-btn {
       display: inline-block;
+      font-size: 14px;
       padding: 6px 12px;
       background: #4caf50;
+      border-radius: 4px;
       color: white;
       text-decoration: none;
-      border-radius: 4px;
-      font-size: 14px;
-    }
+      }
+      
     .view-btn:hover {
       background: #45a049;
     }
@@ -82,6 +83,8 @@
                     <th>Name</th>
                     <th>DOB</th>
                     <th>Clinic ID</th>
+                    <th>Gender</th>
+                    <th>Blood Type</th>
                     <th>Address</th>
                     <th>NIC</th>
                     <th>Contact No</th>
@@ -95,6 +98,8 @@
                     <td><%= patient.getPatientName() %></td>
                     <td><%= patient.getPatientDob() %></td>
                     <td><%= patient.getClinicId() %></td>
+                    <td><%= patient.getGender() %></td>
+                    <td><%= patient.getBloodType() %></td>          
                     <td><%= patient.getPatientAddress() %></td>
                     <td><%= patient.getPatientNic() %></td>
                     <td><%= patient.getPatientContactNo() %></td>
