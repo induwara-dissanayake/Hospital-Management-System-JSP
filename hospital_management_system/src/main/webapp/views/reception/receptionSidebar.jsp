@@ -64,7 +64,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
 
   <div class="logout">
     <a
-      href="${pageContext.request.contextPath}/ReceptionLogoutServlet"
+      href="${pageContext.request.contextPath}/CommonLogoutServlet"
       class="nav-item"
     >
       <div class="nav-header">
