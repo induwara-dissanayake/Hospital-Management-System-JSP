@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.hospital.model.Patient" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Search Results</title>
+  <title>Patient Details</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -50,59 +49,61 @@
       border: 1px solid #ffeeba;
       border-radius: 6px;
     }
+    .view-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      background: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .view-btn:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
-
-<h2>Search Results for: <%= request.getAttribute("searchInput") %></h2>
-
-<%
-  List<Patient> patients = (List<Patient>) request.getAttribute("patients");
-
-  if (patients == null || patients.isEmpty()) {
-%>
-    <div class="no-result">No patient found matching the input.</div>
-<%
-  } else {
-%>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>DOB</th>
-          <th>Clinic ID</th>
-          <th>Address</th>
-          <th>NIC</th>
-          <th>Contact No</th>
-          <th>Guardian Name</th>
-          <th>Guardian Contact No</th>
-        </tr>
-      </thead>
-      <tbody>
-      <%
-        for (Patient patient : patients) {
-      %>
-<tr>
-    <td><%= patient.getId() %></td>
-    <td><%= patient.getPatient_name() %></td>
-    <td><%= patient.getPatient_dob() %></td>
-    <td><%= patient.getClinic_id() %></td>
-    <td><%= patient.getPatient_address() %></td>
-    <td><%= patient.getPatient_nic() %></td>
-    <td><%= patient.getPatient_contact_no() %></td>
-    <td><%= patient.getPatient_guardian_name() %></td>
-    <td><%= patient.getPatient_guardian_contact_no() %></td>
-</tr>
-
-      <%
-        }
-      %>
-      </tbody>
-    </table>
-<%
-  }
-%>
-
+    <h2>Patient Details</h2>
+    
+    <%
+    Patient patient = (Patient) request.getAttribute("onepatient");
+    if (patient == null) {
+    %>
+        <div class="no-result">No patient found matching the input.</div>
+    <%
+    } else {
+    %>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>DOB</th>
+                    <th>Clinic ID</th>
+                    <th>Address</th>
+                    <th>NIC</th>
+                    <th>Contact No</th>
+                    <th>Guardian Name</th>
+                    <th>Guardian Contact No</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><%= patient.getId() %></td>
+                    <td><%= patient.getPatientName() %></td>
+                    <td><%= patient.getPatientDob() %></td>
+                    <td><%= patient.getClinicId() %></td>
+                    <td><%= patient.getPatientAddress() %></td>
+                    <td><%= patient.getPatientNic() %></td>
+                    <td><%= patient.getPatientContactNo() %></td>
+                    <td><%= patient.getPatientGuardianName() %></td>
+                    <td><%= patient.getPatientGuardianContactNo() %></td>
+                </tr>
+            </tbody>
+        </table>
+    <%
+    }
+    %>
 </body>
 </html>
