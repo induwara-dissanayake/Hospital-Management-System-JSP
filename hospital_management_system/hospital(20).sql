@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2025 at 08:59 AM
+-- Generation Time: May 03, 2025 at 10:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -40,20 +40,20 @@ CREATE TABLE `attendance_log` (
 --
 
 INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `status`) VALUES
-(1, 1, '2025-04-30 21:43:07', NULL, 'Present'),
+(1, 1, '2025-04-30 21:43:07', '2025-05-03 12:36:34', 'Present'),
 (2, 2, '2025-04-30 21:43:24', '2025-05-02 12:42:04', 'Present'),
-(3, 1, '2025-04-30 21:45:06', NULL, 'Present'),
+(3, 1, '2025-04-30 21:45:06', '2025-05-03 12:36:34', 'Present'),
 (4, 3, '2025-04-30 21:45:38', NULL, 'Present'),
 (5, 2, '2025-04-30 21:54:46', '2025-05-02 12:42:04', 'Present'),
 (6, 2, '2025-04-30 21:57:15', '2025-05-02 12:42:04', 'Present'),
 (7, 2, '2025-04-30 21:58:11', '2025-05-02 12:42:04', 'Present'),
 (8, 2, '2025-04-30 22:07:27', '2025-05-02 12:42:04', 'Present'),
-(9, 1, '2025-04-30 22:07:39', NULL, 'Present'),
+(9, 1, '2025-04-30 22:07:39', '2025-05-03 12:36:34', 'Present'),
 (10, 2, '2025-04-30 22:13:46', '2025-05-02 12:42:04', 'Present'),
 (11, 2, '2025-05-01 01:46:37', '2025-05-02 12:42:04', 'Present'),
 (12, 3, '2025-05-01 01:53:39', NULL, 'Present'),
 (13, 4, '2025-05-01 01:55:06', NULL, 'Present'),
-(14, 1, '2025-05-01 01:55:31', NULL, 'Present'),
+(14, 1, '2025-05-01 01:55:31', '2025-05-03 12:36:34', 'Present'),
 (15, 2, '2025-05-01 02:13:32', '2025-05-02 12:42:04', 'Present'),
 (16, 2, '2025-05-01 02:26:51', '2025-05-02 12:42:04', 'Present'),
 (17, 2, '2025-05-01 02:31:40', '2025-05-02 12:42:04', 'Present'),
@@ -68,7 +68,7 @@ INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `sta
 (26, 2, '2025-05-02 10:53:07', '2025-05-02 12:42:04', 'Present'),
 (27, 3, '2025-05-02 10:53:35', NULL, 'Present'),
 (28, 4, '2025-05-02 10:54:08', NULL, 'Present'),
-(29, 1, '2025-05-02 10:54:38', NULL, 'Present'),
+(29, 1, '2025-05-02 10:54:38', '2025-05-03 12:36:34', 'Present'),
 (30, 2, '2025-05-02 12:35:33', '2025-05-02 12:42:04', 'Present'),
 (31, 2, '2025-05-02 12:37:11', '2025-05-02 12:42:04', 'Present'),
 (32, 2, '2025-05-02 12:40:10', '2025-05-02 12:42:04', 'Present'),
@@ -77,8 +77,8 @@ INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `sta
 (35, 2, '2025-05-02 12:42:15', '2025-05-02 18:54:39', 'Present'),
 (36, 3, '2025-05-02 12:43:07', NULL, 'Present'),
 (37, 4, '2025-05-02 12:43:59', NULL, 'Present'),
-(38, 1, '2025-05-02 12:44:12', NULL, 'Present'),
-(39, 1, '2025-05-02 12:55:55', NULL, 'Present'),
+(38, 1, '2025-05-02 12:44:12', '2025-05-03 12:36:34', 'Present'),
+(39, 1, '2025-05-02 12:55:55', '2025-05-03 12:36:34', 'Present'),
 (40, 2, '2025-05-02 12:57:46', '2025-05-02 18:54:39', 'Present'),
 (41, 2, '2025-05-02 18:31:05', '2025-05-02 18:54:39', 'Present'),
 (42, 3, '2025-05-02 18:33:14', NULL, 'Present'),
@@ -106,9 +106,14 @@ INSERT INTO `attendance_log` (`id`, `user_id`, `login_time`, `logout_time`, `sta
 (64, 3, '2025-05-03 10:58:18', NULL, 'Present'),
 (65, 3, '2025-05-03 11:07:20', NULL, 'Present'),
 (66, 3, '2025-05-03 11:10:32', NULL, 'Present'),
-(67, 1, '2025-05-03 11:15:13', NULL, 'Present'),
+(67, 1, '2025-05-03 11:15:13', '2025-05-03 12:36:34', 'Present'),
 (68, 3, '2025-05-03 11:22:39', NULL, 'Present'),
-(69, 3, '2025-05-03 11:26:23', NULL, 'Present');
+(69, 3, '2025-05-03 11:26:23', NULL, 'Present'),
+(70, 3, '2025-05-03 12:36:41', NULL, 'Present'),
+(71, 3, '2025-05-03 13:24:00', NULL, 'Present'),
+(72, 4, '2025-05-03 13:24:21', NULL, 'Present'),
+(73, 1, '2025-05-03 13:24:29', NULL, 'Present'),
+(74, 3, '2025-05-03 13:30:25', NULL, 'Present');
 
 -- --------------------------------------------------------
 
@@ -351,6 +356,7 @@ CREATE TABLE `reception_patient_registration` (
   `patient_dob` date NOT NULL,
   `clinic_id` int(11) NOT NULL,
   `gender` varchar(100) NOT NULL,
+  `blood_type` varchar(100) NOT NULL,
   `patient_address` varchar(100) NOT NULL,
   `patient_nic` varchar(20) NOT NULL,
   `patient_contact_no` int(10) NOT NULL,
@@ -362,17 +368,17 @@ CREATE TABLE `reception_patient_registration` (
 -- Dumping data for table `reception_patient_registration`
 --
 
-INSERT INTO `reception_patient_registration` (`id`, `patient_name`, `patient_dob`, `clinic_id`, `gender`, `patient_address`, `patient_nic`, `patient_contact_no`, `patient_guardian_name`, `patient_guardian_contact_no`) VALUES
-(1, 'John Doe', '1990-05-15', 1, '', '123 Main Street', '902345678V', 771234567, 'Jane Doe', 772345678),
-(2, 'Emily Smith', '1985-09-22', 2, '', '45 Park Avenue', '852347891V', 772345678, NULL, NULL),
-(3, 'Michael Johnson', '1978-03-10', 1, '', '789 Oak Road', '782341234V', 771112233, 'Sarah Johnson', 774445566),
-(4, 'Samantha Lee', '1995-11-30', 3, '', '12 Pine Street', '952348765V', 778899001, NULL, NULL),
-(5, 'David Brown', '2000-07-04', 2, '', '67 River Lane', '002349876V', 770987654, 'Mark Brown', 775551122),
-(6, 'Olivia White', '1992-02-17', 1, '', '89 Sunset Blvd', '922340123V', 776543210, NULL, NULL),
-(7, 'William Green', '1988-06-25', 3, '', '14 Maple Drive', '882349012V', 775432109, 'Anna Green', 778765432),
-(8, 'Sophia Taylor', '1993-12-09', 2, '', '56 Lake View', '932347890V', 774321098, NULL, NULL),
-(9, 'James Wilson', '1982-04-18', 1, '', '101 Hilltop Road', '822349876V', 773210987, 'Linda Wilson', 779876543),
-(10, 'Isabella Martin', '1999-08-27', 3, '', '23 Seaside Street', '992348901V', 772109876, NULL, NULL);
+INSERT INTO `reception_patient_registration` (`id`, `patient_name`, `patient_dob`, `clinic_id`, `gender`, `blood_type`, `patient_address`, `patient_nic`, `patient_contact_no`, `patient_guardian_name`, `patient_guardian_contact_no`) VALUES
+(1, 'John Doe', '1990-05-15', 1, '', '', '123 Main Street', '902345678V', 771234567, 'Jane Doe', 772345678),
+(2, 'Emily Smith', '1985-09-22', 2, '', '', '45 Park Avenue', '852347891V', 772345678, NULL, NULL),
+(3, 'Michael Johnson', '1978-03-10', 1, '', '', '789 Oak Road', '782341234V', 771112233, 'Sarah Johnson', 774445566),
+(4, 'Samantha Lee', '1995-11-30', 3, '', '', '12 Pine Street', '952348765V', 778899001, NULL, NULL),
+(5, 'David Brown', '2000-07-04', 2, '', '', '67 River Lane', '002349876V', 770987654, 'Mark Brown', 775551122),
+(6, 'Olivia White', '1992-02-17', 1, '', '', '89 Sunset Blvd', '922340123V', 776543210, NULL, NULL),
+(7, 'William Green', '1988-06-25', 3, '', '', '14 Maple Drive', '882349012V', 775432109, 'Anna Green', 778765432),
+(8, 'Sophia Taylor', '1993-12-09', 2, '', '', '56 Lake View', '932347890V', 774321098, NULL, NULL),
+(9, 'James Wilson', '1982-04-18', 1, '', '', '101 Hilltop Road', '822349876V', 773210987, 'Linda Wilson', 779876543),
+(10, 'Isabella Martin', '1999-08-27', 3, '', '', '23 Seaside Street', '992348901V', 772109876, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -518,7 +524,7 @@ ALTER TABLE `user_registrations`
 -- AUTO_INCREMENT for table `attendance_log`
 --
 ALTER TABLE `attendance_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `doctor_clinic_department`
