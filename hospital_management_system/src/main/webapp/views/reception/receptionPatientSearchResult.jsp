@@ -64,6 +64,7 @@
   </style>
 </head>
 <body>
+
     <h2>Patient Details</h2>
     
     <%
@@ -105,5 +106,6 @@
     <%
     }
     %>
+
 </body>
 </html>
