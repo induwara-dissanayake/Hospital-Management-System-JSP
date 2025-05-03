@@ -13,13 +13,13 @@ body {
     height: 100vh; /* Full height */
 }
 
-.left {
+.sidebar-wrapper {
     width: 280px; /* Fixed width */
     height: 100%;
     border: none;
 }
 
-.right {
+.main-content {
     flex: 1; /* Takes up remaining space */
     height: 100%;
     border: none;
