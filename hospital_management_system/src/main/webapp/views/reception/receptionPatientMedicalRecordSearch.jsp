@@ -111,6 +111,13 @@
  	 	background-color: #e0f7e9;
   		transition: background-color 0.3s ease;
 	}
+	
+.sidebar-align {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
     
   </style>
   <script>
@@ -164,7 +171,11 @@
   </script>
 </head>
 <body>
-<jsp:include page="../doctor/doctorSidebar.jsp" />
+
+<div class="sidebar-align">
+  <jsp:include page="../doctor/doctorSidebar.jsp" />
+</div>
+
 
   <section id="medical-reports-search" aria-label="Medical Reports Search">
     <h2>Medical Reports Search</h2>
@@ -180,7 +191,7 @@
         />
       </div>
     </form>
-    <table id="reportResultsTable">
+    <table id="reportResultsTable" class="doctor_table">
       <thead>
         <tr>
           <th>Order ID</th>

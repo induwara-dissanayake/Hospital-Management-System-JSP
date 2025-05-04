@@ -48,7 +48,7 @@
             </div>
             <div class="submenu">
                 <a href="${pageContext.request.contextPath}/DoctorAddPrescriptionServlet" class="submenu-item">Add Prescription</a>
-                <a href="searchPatientRecords.jsp" class="submenu-item">Search Patient Records</a>
+                <a href="${pageContext.request.contextPath}/views/doctor/searchPatientRecords.jsp" class="submenu-item">Search Patient Records</a>
             </div>
         </div>
 
