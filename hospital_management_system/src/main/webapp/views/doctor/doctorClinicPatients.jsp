@@ -14,49 +14,49 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
         }
 
         h2 {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
             color: #333;
         }
 
         table {
-            margin: 30px auto;
+            margin: 20px auto;
             border-collapse: collapse;
             width: 80%;
             background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
-            padding: 12px 18px;
+            padding: 12px 15px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         th {
             background-color: #007BFF;
             color: white;
+            font-weight: normal;
+        }
+
+        tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f5f5f5;
         }
 
-        .view-btn {
-            padding: 6px 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .view-btn:hover {
-            background-color: #218838;
+        .no-patients {
+            text-align: center;
+            padding: 20px;
+            color: #666;
         }
     </style>
 </head>
@@ -65,31 +65,32 @@
     <h2>Clinic Patient Orders</h2>
 
     <table>
-        <tr>
-            <th>Order ID</th>
-            <th>Patient ID</th>
-            <th>Action</th>
-        </tr>
-        <%
-            List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
-            if (patients != null && !patients.isEmpty()) {
-                for (ClinicOrder patient : patients) {
-        %>
-        <tr>
-            <td><%= patient.getId() %></td>
-            <td><%= patient.getPatientId() %></td>
-            <td>
-                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?id=<%= patient.getId() %>">View</a>
-            </td>
-        </tr>
-        <%
-                }
-            } else {
-        %>
-        <tr>
-            <td colspan="3">No clinic patient orders found.</td>
-        </tr>
-        <% } %>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Patient ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
+                if (patients != null && !patients.isEmpty()) {
+                    for (ClinicOrder patient : patients) {
+                        String viewUrl = request.getContextPath() + "/DoctorClinicViewServlet?id=" + patient.getId();
+            %>
+            <tr onclick="window.location.href='<%= viewUrl %>'">
+                <td><%= patient.getId() %></td>
+                <td><%= patient.getPatientId() %></td>
+            </tr>
+            <%
+                    }
+                } else {
+            %>
+            <tr>
+                <td colspan="2" class="no-patients">No clinic patient orders found.</td>
+            </tr>
+            <% } %>
+        </tbody>
     </table>
 
 </body>
