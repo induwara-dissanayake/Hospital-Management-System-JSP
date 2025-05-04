@@ -10,64 +10,60 @@
 <head>
     <meta charset="UTF-8">
     <title>Clinic Departments</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 30px;
-            background-color: #f4f4f4;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .card-container {
-            display: flex;
-            flex-wrap: nowrap;
-            justify-content: center;
-            gap: 16px;
-            overflow-x: auto;
-        }
-
-        .clinic-card {
-            background-color: #ffffff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            width: 180px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 16px;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease-in-out;
-            flex-shrink: 0;
-            text-decoration: none;
-            color: #333;
-        }
-
-        .clinic-card:hover {
-            transform: scale(1.05);
-            background-color: #e8f4fc;
-            cursor: pointer;
-        }
-    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorclinicdepartment.css">
+     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
+   
 </head>
 <body>
 
+    <!-- Sidebar -->
+    <div class="sidebar-wrapper">
+        <jsp:include page="doctorSidebar.jsp" />
+    </div>
 
-    <h2>Clinic Departments</h2>
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Clinic Departments</h1>
+        </div>
 
-    <div class="card-container">
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=1" class="clinic-card">Eye Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=2" class="clinic-card">Cardiology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=3" class="clinic-card">Gynecology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=4" class="clinic-card">Neurology Clinic</a>
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=5" class="clinic-card">Pediatric Clinic</a>
+        <div class="departments-grid">
+            <!-- Eye Clinic -->
+             <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=1'">
+                <div class="department-icon"><i class="fas fa-eye"></i></div>
+                   <p class="department-name">Eye Clinic</p>
+             </div>
+
+
+            <!-- Cardiology Clinic -->
+            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=2'">
+                <div class="department-icon"><i class="fas fa-heartbeat"></i></div>
+                <p class="department-name">Cardiology Clinic</p>
+            </div>
+
+            <!-- Gynecology Clinic -->
+            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=3'">
+                <div class="department-icon"><i class="fas fa-female"></i></div>
+                <p class="department-name">Gynecology Clinic</p>
+            </div>
+
+            <!-- Neurology Clinic -->
+            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=4'">
+                <div class="department-icon"><i class="fas fa-brain"></i></div>
+                <p class="department-name">Neurology Clinic</p>
+            </div>
+
+            <!-- Pediatric Clinic -->
+            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=5'">
+                <div class="department-icon"><i class="fas fa-baby"></i></div>
+                <p class="department-name">Pediatric Clinic</p>
+            </div>
+        </div>
     </div>
 
 </body>
 </html>
+

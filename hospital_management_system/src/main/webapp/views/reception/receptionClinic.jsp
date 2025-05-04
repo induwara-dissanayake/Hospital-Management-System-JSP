@@ -1,13 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Patient Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionClinic.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSideLink.css">
 </head>
 <body>
 
+
+ <div class="sidebar-wrapper">
+    <jsp:include page="receptionSidebar.jsp" />
+  </div>
+
+
+
+<div class="main-content">
 <section class="tiles-container">
   <div class="tile">
     <form class="form-container" action="register.jsp" method="post">
@@ -89,6 +101,6 @@
     </form>
   </div>
 </section>
-
+</div>
 </body>
 </html>

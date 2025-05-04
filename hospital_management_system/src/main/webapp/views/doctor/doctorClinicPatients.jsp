@@ -14,49 +14,49 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
         }
 
         h2 {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 20px;
             color: #333;
         }
 
         table {
-            margin: 30px auto;
+            margin: 20px auto;
             border-collapse: collapse;
             width: 80%;
             background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         th, td {
-            padding: 12px 18px;
+            padding: 12px 15px;
             text-align: center;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         th {
             background-color: #007BFF;
             color: white;
+            font-weight: normal;
+        }
+
+        tr {
+            cursor: pointer;
+            transition: background-color 0.2s;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f5f5f5;
         }
 
-        .view-btn {
-            padding: 6px 12px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .view-btn:hover {
-            background-color: #218838;
+        .no-patients {
+            text-align: center;
+            padding: 20px;
+            color: #666;
         }
     </style>
 </head>
