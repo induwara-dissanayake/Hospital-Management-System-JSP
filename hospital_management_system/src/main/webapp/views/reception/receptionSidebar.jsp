@@ -54,7 +54,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
       </div>
     </a>
 
-    <a href="receptionAttendance.jsp" class="nav-item">
+    <a href="${pageContext.request.contextPath}/ReceptionAttendanceServlet" class="nav-item">
       <div class="nav-header">
         <i class="fas fa-calendar-alt nav-icon"></i>
         <span class="nav-text">Reception Attendance</span>
