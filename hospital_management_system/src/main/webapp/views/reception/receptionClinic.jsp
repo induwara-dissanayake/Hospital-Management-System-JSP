@@ -13,11 +13,9 @@
 <body>
 
 
- <div class="sidebar-wrapper">
+  <div class="sidebar-wrapper">
     <jsp:include page="receptionSidebar.jsp" />
   </div>
-
-
 
 <div class="main-content">
 <section class="tiles-container">
