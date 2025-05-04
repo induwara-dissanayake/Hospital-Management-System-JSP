@@ -17,6 +17,7 @@
     
     <!-- Bootstrap CDN for styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -47,6 +48,10 @@
     </style>
 </head>
 <body>
+<div class="sidebar-wrapper">
+    <jsp:include page="doctorSidebar.jsp" />
+</div>
+
 
     <h2>Doctor Attendance History</h2>
     <div class="table-container">
