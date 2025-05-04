@@ -4,6 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <title>Medical Reports Search</title>
+      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
+  
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -158,6 +160,8 @@
   </script>
 </head>
 <body>
+<jsp:include page="../doctor/doctorSidebar.jsp" />
+
   <section id="medical-reports-search" aria-label="Medical Reports Search">
     <h2>Medical Reports Search</h2>
     <form class="form-container" onsubmit="return false;">

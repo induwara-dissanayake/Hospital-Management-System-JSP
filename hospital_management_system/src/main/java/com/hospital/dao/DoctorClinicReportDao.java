@@ -25,6 +25,7 @@ public class DoctorClinicReportDao {
                 int order_id = rs.getInt("order_id");
                 int doctor_id = rs.getInt("doctor_id");
                 int patient_id = rs.getInt("patient_id");
+                int clinic_id = rs.getInt("clinic_id");
                 Date date = rs.getDate("date");
                 Date return_date = rs.getDate("return_date");
                 String weight = rs.getString("weight");
@@ -38,7 +39,7 @@ public class DoctorClinicReportDao {
                 String hiv = rs.getString("hiv");
 
                 
-                PatientReport patientReport=new PatientReport(order_id,doctor_id,patient_id,date,return_date,
+                PatientReport patientReport=new PatientReport(order_id,doctor_id,patient_id,clinic_id,date,return_date,
                 		weight,suger_level,bp,lipid_profile,hemoglobin,vision,eye_pressure,vdrl,hiv);
                 reportList.add(patientReport);
             }
@@ -75,7 +76,7 @@ public class DoctorClinicReportDao {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace(); // or use proper logging
+            e.printStackTrace(); 
         }
 
         return illnessList;

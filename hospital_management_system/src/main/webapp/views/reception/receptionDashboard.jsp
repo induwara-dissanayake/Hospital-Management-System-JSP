@@ -42,7 +42,7 @@
                 <div class="card-desc">Check today's clinic appointments.</div>
                 <span class="card-btn">View</span>
             </a>
-            <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-file-medical-alt"></i></div>
                 <div class="card-title">Medical History</div>
                 <div class="card-desc">View patient treatment records.</div>
