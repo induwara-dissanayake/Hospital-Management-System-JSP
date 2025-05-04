@@ -7,13 +7,9 @@
   <title>Receptionist Attendance</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionAttendance.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSideLink.css">
-</head>
-<body>
 
-    <jsp:include page="receptionSidebar.jsp" />
 
+<div>
     <section id="receptionist-attendance" aria-label="Receptionist Attendance">
       <h2>Receptionist Attendance</h2>
       <table>
@@ -37,6 +33,6 @@
       </table>
     </section>
 
-
+</div>
 </body>
 </html>
