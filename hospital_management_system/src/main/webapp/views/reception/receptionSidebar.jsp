@@ -37,7 +37,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
       </div>
     </div>
 
-    <a href="receptionMedicalHistory.jsp" class="nav-item">
+    <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet" class="nav-item">
       <div class="nav-header">
         <i class="fas fa-notes-medical nav-icon"></i>
         <span class="nav-text">Medical History</span>
