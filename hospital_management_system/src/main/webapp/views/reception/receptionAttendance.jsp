@@ -138,7 +138,7 @@
             <table>
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>id</th>
                         <th>Login Date</th>
                         <th>Login Time</th>
                         <th>Logout Time</th>
