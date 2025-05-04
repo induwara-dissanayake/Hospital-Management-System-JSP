@@ -102,6 +102,14 @@
         color: #555;
       }
     }
+    tr.clickable-row {
+      cursor: pointer;
+    }
+    tr.clickable-row:hover {
+ 	 	background-color: #e0f7e9;
+  		transition: background-color 0.3s ease;
+	}
+    
   </style>
   <script>
     window.onload = function () {
@@ -140,17 +148,13 @@
       for (let i = 0; i < data.length; i++) {
         const report = data[i];
 
-        tableContent += "<tr>" +
-        "<td data-label='Order ID'>" + (report.order_id || "") + "</td>" +
-        "<td data-label='Doctor ID'>" + (report.doctor_id || "") + "</td>" +
-        "<td data-label='Patient ID'>" + (report.patient_id || "") + "</td>" +
-        "<td data-label='Clinic ID'>" + (report.clinic_id || "") + "</td>" +
-        "<td data-label='Date'>" + (report.date || "") + "</td>" +
-        "<td data-label='Action'>" +
-        '<a href="ReceptionMedicalDetailServlet?patient_id=' + report.patient_id + '" class="view-btn">View</a>' +
-        "</td>" +
+        tableContent += "<tr class='clickable-row' onclick=\"window.location.href='ReceptionMedicalDetailServlet?patient_id=" + report.patient_id + "'\">" +
+          "<td data-label='Order ID'>" + (report.order_id || "") + "</td>" +
+          "<td data-label='Doctor ID'>" + (report.doctor_id || "") + "</td>" +
+          "<td data-label='Patient ID'>" + (report.patient_id || "") + "</td>" +
+          "<td data-label='Clinic ID'>" + (report.clinic_id || "") + "</td>" +
+          "<td data-label='Date'>" + (report.date || "") + "</td>" +
         "</tr>";
-
       }
 
       tbody.innerHTML = tableContent;
@@ -180,7 +184,6 @@
           <th>Patient ID</th>
           <th>Clinic ID</th>
           <th>Date</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody id="reportResultsTbody"></tbody>

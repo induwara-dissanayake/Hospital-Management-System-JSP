@@ -56,7 +56,7 @@
   <h2>Medical Report</h2>
 
   <%
-    PatientReport report = (PatientReport) request.getAttribute("medicalReport");
+  PatientReport report = (PatientReport) request.getAttribute("report");
     if (report == null) {
   %>
     <div class="no-result">No medical report available for this patient.</div>
