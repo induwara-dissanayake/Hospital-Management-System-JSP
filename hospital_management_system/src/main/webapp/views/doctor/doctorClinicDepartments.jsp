@@ -25,45 +25,37 @@
     </div>
 
     <!-- Main content -->
-    <div class="main-content">
-        <div class="header">
-            <h1>Clinic Departments</h1>
+   <div class="container">
+    <h1 class="departments-title">Clinic Departments</h1>
+
+    <!-- Top Row - 3 Cards -->
+    <div class="departments-row">
+        <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=1'">
+            <div class="department-icon"><i class="fas fa-eye"></i></div>
+            <p class="department-name">Eye Clinic</p>
         </div>
-
-        <div class="departments-grid">
-            <!-- Eye Clinic -->
-             <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=1'">
-                <div class="department-icon"><i class="fas fa-eye"></i></div>
-                   <p class="department-name">Eye Clinic</p>
-             </div>
-
-
-            <!-- Cardiology Clinic -->
-            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=2'">
-                <div class="department-icon"><i class="fas fa-heartbeat"></i></div>
-                <p class="department-name">Cardiology Clinic</p>
-            </div>
-
-            <!-- Gynecology Clinic -->
-            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=3'">
-                <div class="department-icon"><i class="fas fa-female"></i></div>
-                <p class="department-name">Gynecology Clinic</p>
-            </div>
-
-            <!-- Neurology Clinic -->
-            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=4'">
-                <div class="department-icon"><i class="fas fa-brain"></i></div>
-                <p class="department-name">Neurology Clinic</p>
-            </div>
-
-            <!-- Pediatric Clinic -->
-            <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=5'">
-                <div class="department-icon"><i class="fas fa-baby"></i></div>
-                <p class="department-name">Pediatric Clinic</p>
-            </div>
+        <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=2'">
+            <div class="department-icon"><i class="fas fa-heartbeat"></i></div>
+            <p class="department-name">Cardiology Clinic</p>
+        </div>
+        <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=3'">
+            <div class="department-icon"><i class="fas fa-female"></i></div>
+            <p class="department-name">Gynecology Clinic</p>
         </div>
     </div>
 
+    <!-- Bottom Row - 2 Cards Centered -->
+    <div class="departments-row center">
+        <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=4'">
+            <div class="department-icon"><i class="fas fa-brain"></i></div>
+            <p class="department-name">Neurology Clinic</p>
+        </div>
+        <div class="department-box" onclick="location.href='${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=5'">
+            <div class="department-icon"><i class="fas fa-baby"></i></div>
+            <p class="department-name">Pediatric Clinic</p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
 

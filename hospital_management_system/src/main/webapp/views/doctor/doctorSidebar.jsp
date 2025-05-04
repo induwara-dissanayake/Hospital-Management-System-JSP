@@ -29,7 +29,7 @@
             </div>
             <div class="submenu">
                 <a href="${pageContext.request.contextPath}/DoctorOPDServlet" class="submenu-item">OPD</a>
-                <a href="doctorClinicDepartments.jsp" class="submenu-item">Clinic</a>
+                <a href="${pageContext.request.contextPath}/views/doctor/doctorClinicDepartments.jsp" class="submenu-item">Clinic</a>
             </div>
         </div>
 
