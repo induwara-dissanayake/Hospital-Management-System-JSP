@@ -7,10 +7,11 @@ public class PatientReport {
     int order_id;
     int doctor_id;
     int patient_id;
+    int clinic_id;
     Date date;
     Date return_date;
     String weight;
-    String suger_level;
+    String sugar_level;
     String bp;
     String lipid_profile;
     String hemoglobin;
@@ -22,17 +23,18 @@ public class PatientReport {
     
     
     
-	public PatientReport(int order_id, int doctor_id, int patient_id, Date date, Date return_date, String weight,
-			String suger_level, String bp, String lipid_profile, String hemoglobin, String vision, String eye_pressure,
+	public PatientReport(int order_id, int doctor_id, int patient_id, int clinic_id, Date date, Date return_date, String weight,
+			String sugar_level, String bp, String lipid_profile, String hemoglobin, String vision, String eye_pressure,
 			String vdrl, String hiv) {
 		super();
 		this.order_id = order_id;
 		this.doctor_id = doctor_id;
 		this.patient_id = patient_id;
+		this.clinic_id = clinic_id;
 		this.date = date;
 		this.return_date = return_date;
 		this.weight = weight;
-		this.suger_level = suger_level;
+		this.sugar_level = sugar_level;
 		this.bp = bp;
 		this.lipid_profile = lipid_profile;
 		this.hemoglobin = hemoglobin;
@@ -50,6 +52,12 @@ public class PatientReport {
 	}
 	public void setOrder_id(int order_id) {
 		this.order_id = order_id;
+	}
+	public int getClinic_id() {
+		return clinic_id;
+	}
+	public void setClinic_id(int clinic_id) {
+		this.clinic_id = clinic_id;
 	}
 	public int getDoctor_id() {
 		return doctor_id;
@@ -81,11 +89,11 @@ public class PatientReport {
 	public void setWeight(String weight) {
 		this.weight = weight;
 	}
-	public String getSuger_level() {
-		return suger_level;
+	public String getSugar_level() {
+		return sugar_level;
 	}
-	public void setSuger_level(String suger_level) {
-		this.suger_level = suger_level;
+	public void setSugar_level(String sugar_level) {
+		this.sugar_level = sugar_level;
 	}
 	public String getBp() {
 		return bp;

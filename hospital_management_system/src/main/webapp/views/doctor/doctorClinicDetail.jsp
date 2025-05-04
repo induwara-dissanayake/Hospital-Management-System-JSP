@@ -1,7 +1,13 @@
 <%@ page import="com.hospital.model.Patient" %>
-<%
-    Patient patient = (Patient) request.getAttribute("eyepatient");
+<%@ page import="com.hospital.model.PatientReport" %>
+<%@ page import="java.util.ArrayList" %>
 
+
+
+<%
+    Patient patient = (Patient) request.getAttribute("patient");
+	ArrayList<PatientReport> reportList= (ArrayList<PatientReport>)request.getAttribute("patient_report");
+	
     if (session == null || session.getAttribute("userId") == null) {
         response.sendRedirect("doctorLogin.jsp");
         return;
@@ -38,8 +44,8 @@
 <body>
     <h2>Order Details</h2>
     <p><strong>Patient ID:</strong> <%= patient.getId() %></p>
-    <p><strong>Patient Name:</strong> <%= patient.getName() %></p>
-    <p><strong>Patient NIC:</strong> <%= patient.getNic() %></p>
+    <p><strong>Patient Name:</strong> <%= patient.getPatientName() %></p>
+    <p><strong>Patient NIC:</strong> <%= patient.getPatientNic() %></p>
 
     <form method="post" action="SavePrescriptionServlet">
         <!-- Common fields -->
@@ -76,6 +82,6 @@
     </form>
 
     <br>
-    <a href="${pageContext.request.contextPath}/DoctorEyeClinicServlet?clinic_id=1">Back to List</a>
+    <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=<%=clinicId %>">>Back to List</a>
 </body>
 </html>

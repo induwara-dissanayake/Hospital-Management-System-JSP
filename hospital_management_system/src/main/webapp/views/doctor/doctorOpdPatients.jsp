@@ -10,14 +10,12 @@
 <html>
 <head>
     <title>OPD Patients</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
+            background-color: #f5f7fa;
             margin: 0;
-            padding: 0;
+            padding: 20px;
         }
 
         h2 {
@@ -29,7 +27,7 @@
         table {
             margin: 20px auto;
             border-collapse: collapse;
-            width: 90%;
+            width: 80%;
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
@@ -43,6 +41,7 @@
         th {
             background-color: #007BFF;
             color: white;
+            font-weight: normal;
         }
 
         tr {
@@ -71,51 +70,38 @@
 </head>
 <body>
 
-<div style="display: flex; min-height: 100vh;">
+    <h2>OPD Patient Orders</h2>
 
-    <!-- Sidebar -->
-    <div class="sidebar-wrapper">
-        <jsp:include page="doctorSidebar.jsp" />
-    </div>
-
-    <!-- Main Content -->
-    <div style="flex: 1; padding: 30px;">
-        <h2>OPD Patient Orders</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Order ID</th>
-                    <th>Name</th>
-                    <th>Age</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    List<OPDOrder> patients = (List<OPDOrder>) request.getAttribute("opdpatients");
-                    if (patients != null && !patients.isEmpty()) {
-                        for (OPDOrder patient : patients) {
-                            String viewUrl = request.getContextPath() + "/DoctorOPDViewServlet?id=" + patient.getId();
-                %>
-                <tr onclick="window.location.href='<%= viewUrl %>'">
-                    <td><%= patient.getId() %></td>
-                    <td><%= patient.getPatientName() %></td>
-                    <td><%= patient.getPatientAge() %></td>
-                </tr>
-                <%
-                        }
-                    } else {
-                %>
-                <tr>
-                    <td colspan="3" class="no-patients">No clinic patient orders found.</td>
-                </tr>
-                <% } %>
-            </tbody>
-        </table>
-    </div>
-</div>
+    <table>
+        <thead>
+            <tr>
+                <th>Tolken No</th>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%
+                List<OPDOrder> patients = (List<OPDOrder>) request.getAttribute("opdpatients");
+                if (patients != null && !patients.isEmpty()) {
+                    for (OPDOrder patient : patients) {
+                        String viewUrl = request.getContextPath() + "/DoctorOPDViewServlet?id=" + patient.getId();
+            %>
+            <tr onclick="window.location.href='<%= viewUrl %>'">
+                <td><%= patient.getTolkenNo() %></td>
+                <td><%= patient.getPatientName() %></td>
+                <td><%= patient.getPatientAge() %></td>
+            </tr>
+            <%
+                    }
+                } else {
+            %>
+            <tr>
+                <td colspan="3" class="no-patients">No clinic patient orders found.</td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 
 </body>
-</html>
-
 </html>

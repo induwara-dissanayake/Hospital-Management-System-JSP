@@ -10,32 +10,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Doctor Dashboard</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorcustomize.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
-
+    <title>Customize</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/dashboard.css">
 </head>
 <body>
-    <div class="sidebar-wrapper">
-        <jsp:include page="doctorSidebar.jsp" />
-    </div>
+    <h1 style="text-align:center;">Customize Tables</h1>
 
-    <div class="main-content">
-        <h1>Doctor Dashboard</h1>
-
-        <div class="dashboard-container">
-            <a href="${pageContext.request.contextPath}/DoctorSearchPatientServlet" class="card">
-                <i class="fas fa-search"></i>
-                Search Patient Records
-            </a>
-
-            <a href="${pageContext.request.contextPath}/DoctorAddPrescriptionServlet" class="card">
-                <i class="fas fa-prescription-bottle-alt"></i>
-                Add Prescriptions
-            </a>
-        </div>
+    <div class="dashboard-container">
+		<a href="${pageContext.request.contextPath}/DoctorAddPrescriptionServlet" class="card">Add Prescriptions</a>
+        <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=1" class="card">Search Patient Records</a>
     </div>
 </body>
 </html>
