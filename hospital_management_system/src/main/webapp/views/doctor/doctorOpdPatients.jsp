@@ -75,7 +75,7 @@
     <table>
         <thead>
             <tr>
-                <th>Order ID</th>
+                <th>Tolken No</th>
                 <th>Name</th>
                 <th>Age</th>
             </tr>
@@ -88,7 +88,7 @@
                         String viewUrl = request.getContextPath() + "/DoctorOPDViewServlet?id=" + patient.getId();
             %>
             <tr onclick="window.location.href='<%= viewUrl %>'">
-                <td><%= patient.getId() %></td>
+                <td><%= patient.getTolkenNo() %></td>
                 <td><%= patient.getPatientName() %></td>
                 <td><%= patient.getPatientAge() %></td>
             </tr>
