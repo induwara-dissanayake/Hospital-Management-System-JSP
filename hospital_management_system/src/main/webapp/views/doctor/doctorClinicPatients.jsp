@@ -65,32 +65,31 @@
     <h2>Clinic Patient Orders</h2>
 
     <table>
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Patient ID</th>
-            </tr>
-        </thead>
-        <tbody>
-            <%
-                List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
-                if (patients != null && !patients.isEmpty()) {
-                    for (ClinicOrder patient : patients) {
-                        String viewUrl = request.getContextPath() + "/DoctorClinicViewServlet?id=" + patient.getId();
-            %>
-            <tr onclick="window.location.href='<%= viewUrl %>'">
-                <td><%= patient.getId() %></td>
-                <td><%= patient.getPatientId() %></td>
-            </tr>
-            <%
-                    }
-                } else {
-            %>
-            <tr>
-                <td colspan="2" class="no-patients">No clinic patient orders found.</td>
-            </tr>
-            <% } %>
-        </tbody>
+        <tr>
+            <th>Order ID</th>
+            <th>Patient ID</th>
+            <th>Action</th>
+        </tr>
+        <%
+            List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
+            if (patients != null && !patients.isEmpty()) {
+                for (ClinicOrder patient : patients) {
+        %>
+        <tr>
+            <td><%= patient.getId() %></td>
+            <td><%= patient.getPatientId() %></td>
+            <td>
+                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?patient_id=<%= patient.getPatientId() %>&order_id=<%= patient.getId() %>">View</a>
+            </td>
+        </tr>
+        <%
+                }
+            } else {
+        %>
+        <tr>
+            <td colspan="3">No clinic patient orders found.</td>
+        </tr>
+        <% } %>
     </table>
 
 </body>

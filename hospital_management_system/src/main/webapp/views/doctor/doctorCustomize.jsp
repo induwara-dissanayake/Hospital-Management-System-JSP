@@ -18,7 +18,7 @@
 
     <div class="dashboard-container">
 		<a href="${pageContext.request.contextPath}/DoctorAddPrescriptionServlet" class="card">Add Prescriptions</a>
-        <a href="${pageContext.request.contextPath}/DoctorSearchPatientServlet" class="card">Search Patient Records</a>
+        <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=1" class="card">Search Patient Records</a>
     </div>
 </body>
 </html>
