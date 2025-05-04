@@ -59,6 +59,11 @@
             padding: 20px;
             color: #666;
         }
+
+        /* Hide the a tag visually but keep it accessible */
+        .hidden-link {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -87,11 +92,15 @@
                     List<ClinicOrder> patients = (List<ClinicOrder>) request.getAttribute("clinicpatients");
                     if (patients != null && !patients.isEmpty()) {
                         for (ClinicOrder patient : patients) {
-                            String viewUrl = request.getContextPath() + "/DoctorClinicViewServlet?id=" + patient.getId();
+                            String viewUrl = request.getContextPath() + "/DoctorClinicViewServlet?patient_id=" + patient.getPatientId() + "&order_id=" + patient.getId();
                 %>
                 <tr onclick="window.location.href='<%= viewUrl %>'">
                     <td><%= patient.getId() %></td>
                     <td><%= patient.getPatientId() %></td>
+                    <!-- hidden link inside the row -->
+                    <td style="display: none;">
+                        <a class="hidden-link" href="<%= viewUrl %>">View</a>
+                    </td>
                 </tr>
                 <%
                         }
@@ -109,4 +118,3 @@
 
 </body>
 </html>
-

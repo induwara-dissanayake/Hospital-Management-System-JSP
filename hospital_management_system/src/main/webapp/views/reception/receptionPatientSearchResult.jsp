@@ -1,108 +1,204 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.hospital.model.Patient" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Search Results</title>
+  <title>Patient Details</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
+      padding: 0;
       background-color: #f9f9f9;
+      display: flex;
     }
+
+    .content-wrapper {
+      flex: 1;
+      margin-left: 280px;
+      padding: 20px;
+    }
+
+    .page-header {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
     h2 {
-      text-align: center;
-      font-weight: 600;
-      color: #1a202c;
-      font-size: 18px;
+      color: #2d3748;
+      margin: 0;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid #477ac6;
-      border-radius: 6px;
+
+    h2 i {
+      margin-right: 10px;
+      color: #4a5568;
+    }
+
+    .patient-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       overflow: hidden;
+    }
+
+    .patient-header {
+      background: #4a5568;
+      color: white;
+      padding: 15px 20px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    .patient-header i {
+      margin-right: 10px;
+    }
+
+    .patient-info {
+      padding: 20px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .info-item {
+      background: #f7fafc;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .info-label {
+      font-size: 12px;
+      color: #718096;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .info-value {
       font-size: 14px;
-      color: #182946;
-      text-align: left;
-      margin-top: 30px;
+      color: #2d3748;
+      font-weight: 500;
     }
-    thead {
-      background-color: #a3c2d7;
-    }
-    th, td {
-      padding: 8px 12px;
-      border-bottom: 1px solid #afc5e7;
-    }
-    td {
-      font-size: 14px;
-    }
+
     .no-result {
       text-align: center;
-      padding: 20px;
-      background: #fff3cd;
-      color: #856404;
-      margin-top: 30px;
-      border: 1px solid #ffeeba;
-      border-radius: 6px;
+      padding: 40px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .no-result i {
+      font-size: 48px;
+      color: #cbd5e0;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .no-result p {
+      color: #4a5568;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .content-wrapper {
+        margin-left: 0;
+      }
+      
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="sidebar-align">
+    <jsp:include page="../reception/receptionSidebar.jsp" />
+  </div>
 
-<h2>Search Results for: <%= request.getAttribute("searchInput") %></h2>
-
-<%
-  List<Patient> patients = (List<Patient>) request.getAttribute("patients");
-
-  if (patients == null || patients.isEmpty()) {
-%>
-    <div class="no-result">No patient found matching the input.</div>
-<%
-  } else {
-%>
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>DOB</th>
-          <th>Clinic ID</th>
-          <th>Address</th>
-          <th>NIC</th>
-          <th>Contact No</th>
-          <th>Guardian Name</th>
-          <th>Guardian Contact No</th>
-        </tr>
-      </thead>
-      <tbody>
-      <%
-        for (Patient patient : patients) {
-      %>
-<tr>
-    <td><%= patient.getId() %></td>
-    <td><%= patient.getPatient_name() %></td>
-    <td><%= patient.getPatient_dob() %></td>
-    <td><%= patient.getClinic_id() %></td>
-    <td><%= patient.getPatient_address() %></td>
-    <td><%= patient.getPatient_nic() %></td>
-    <td><%= patient.getPatient_contact_no() %></td>
-    <td><%= patient.getPatient_guardian_name() %></td>
-    <td><%= patient.getPatient_guardian_contact_no() %></td>
-</tr>
-
-      <%
-        }
-      %>
-      </tbody>
-    </table>
-<%
-  }
-%>
-
+  <div class="content-wrapper">
+    <div class="page-header">
+      <h2><i class="fas fa-user-circle"></i>Patient Details</h2>
+    </div>
+    
+    <%
+    Patient patient = (Patient) request.getAttribute("onepatient");
+    if (patient == null) {
+    %>
+      <div class="no-result">
+        <i class="fas fa-user-slash"></i>
+        <p>No patient found matching the input.</p>
+      </div>
+    <%
+    } else {
+    %>
+      <div class="patient-card">
+        <div class="patient-header">
+          <i class="fas fa-id-card"></i>
+          Patient ID: <%= patient.getId() %>
+        </div>
+        <div class="patient-info">
+          <div class="info-grid">
+            <div class="info-item">
+              <div class="info-label">Name</div>
+              <div class="info-value"><%= patient.getPatientName() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Date of Birth</div>
+              <div class="info-value"><%= patient.getPatientDob() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Clinic ID</div>
+              <div class="info-value"><%= patient.getClinicId() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Gender</div>
+              <div class="info-value"><%= patient.getGender() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Blood Type</div>
+              <div class="info-value"><%= patient.getBloodType() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Address</div>
+              <div class="info-value"><%= patient.getPatientAddress() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">NIC</div>
+              <div class="info-value"><%= patient.getPatientNic() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Contact Number</div>
+              <div class="info-value"><%= patient.getPatientContactNo() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Guardian Name</div>
+              <div class="info-value"><%= patient.getPatientGuardianName() %></div>
+            </div>
+            <div class="info-item">
+              <div class="info-label">Guardian Contact</div>
+              <div class="info-value"><%= patient.getPatientGuardianContactNo() %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <%
+    }
+    %>
+  </div>
 </body>
 </html>

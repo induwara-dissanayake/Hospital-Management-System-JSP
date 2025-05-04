@@ -78,6 +78,7 @@
         <jsp:include page="doctorSidebar.jsp" />
     </div>
 
+
     <!-- Main Content -->
     <div style="flex: 1; padding: 30px;">
         <h2>OPD Patient Orders</h2>
@@ -114,6 +115,7 @@
         </table>
     </div>
 </div>
+
 
 </body>
 </html>

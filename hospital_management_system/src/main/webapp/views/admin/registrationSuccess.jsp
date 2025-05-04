@@ -7,22 +7,22 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/admin.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
             text-align: center;
             padding-top: 100px;
         }
         .message {
             font-size: 20px;
-            color: green;
+            color: #1d4ed8;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="message">
-            <p>Registration successful!</p>
-            <p>Redirecting to the admin dashboard...</p>
+            <p>Registration Successful!</p>
+            <p>Redirecting to the Admin Panel...</p>
         </div>
     </div>
     <script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>

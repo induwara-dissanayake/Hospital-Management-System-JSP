@@ -8,18 +8,21 @@ body {
   
   .tiles-container {
     display: flex;
-    justify-content: center;
+    
     padding: 20px;
   }
   
   .tile {
     width: 90%;
-    max-width: 900px;
+    max-width: 800px;
     background-color: #ffffff;
     box-shadow: 0 2px 8px rgba(39, 36, 36, 0.412);
     padding: 25px;
     border-radius: 15px;
     transition: transform 0.3s ease-in-out;
+    position: absolute; 
+ 	top: 50px; 
+  	left: 480px;
   }
   
  

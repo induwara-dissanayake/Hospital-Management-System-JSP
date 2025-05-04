@@ -26,7 +26,7 @@
         <h1>Doctor Dashboard</h1>
 
         <div class="dashboard-container">
-            <a href="${pageContext.request.contextPath}/DoctorSearchPatientServlet" class="card">
+            <a href="$${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=1" class="card">
                 <i class="fas fa-search"></i>
                 Search Patient Records
             </a>
@@ -36,6 +36,7 @@
                 Add Prescriptions
             </a>
         </div>
+
     </div>
 </body>
 </html>
