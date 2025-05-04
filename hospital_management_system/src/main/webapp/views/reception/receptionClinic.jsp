@@ -16,6 +16,7 @@
   <jsp:include page="receptionSidebar.jsp" />
 </div>
 
+
 <div class="main-content">
 <section class="tiles-container">
   <div class="tile">
