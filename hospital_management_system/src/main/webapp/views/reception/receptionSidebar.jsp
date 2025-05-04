@@ -15,7 +15,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
   </div>
 
   <div class="nav">
-    <a href="receptionDashboard.jsp" class="nav-item active">
+    <a href="${pageContext.request.contextPath}/views/reception/receptionDashboard.jsp" class="nav-item active">
       <div class="nav-header">
         <i class="fas fa-home nav-icon"></i>
         <span class="nav-text">Dashboard</span>
@@ -32,8 +32,8 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
         ></i>
       </div>
       <div class="submenu">
-        <a href="receptionOPD.jsp" class="submenu-item">OPD</a>
-        <a href="receptionClinic.jsp" class="submenu-item">Clinic</a>
+        <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" class="submenu-item">OPD</a>
+        <a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" class="submenu-item">Clinic</a>
       </div>
     </div>
 

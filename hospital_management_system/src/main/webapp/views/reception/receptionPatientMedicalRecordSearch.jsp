@@ -1,16 +1,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    Integer roleId = (Integer) session.getAttribute("role_id");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Medical Reports Search</title>
-      <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
+  <!-- Add Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <%
+    if (roleId != null) {
+        if (roleId == 1) {
+  %>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
+  <%
+        } else if (roleId == 2) {
+  %>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
+  <%
+        }
+    }
+  %>
   
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f9f9f9;
       margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .sidebar-align {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 100;
+    }
+
+    #medical-reports-search {
+      flex: 1;
+      margin-left: 250px; /* Adjust this value based on your sidebar width */
       padding: 20px;
     }
 
@@ -112,13 +144,10 @@
   		transition: background-color 0.3s ease;
 	}
 	
-.sidebar-align {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-}
-
-    
+	.sidebar{
+	width: 259px;
+	}
+	  
   </style>
   <script>
     window.onload = function () {
@@ -171,11 +200,23 @@
   </script>
 </head>
 <body>
-
-<div class="sidebar-align">
-  <jsp:include page="../doctor/doctorSidebar.jsp" />
-</div>
-
+<%
+    if (roleId != null) {
+        if (roleId == 1) {
+%>
+            <div class="sidebar-align">
+                <jsp:include page="../doctor/doctorSidebar.jsp" />
+            </div>
+<%
+        } else if (roleId == 2) {
+%>
+            <div class="sidebar-align">
+                <jsp:include page="../reception/receptionSidebar.jsp" />
+            </div>
+<%
+        }
+    }
+%>
 
   <section id="medical-reports-search" aria-label="Medical Reports Search">
     <h2>Medical Reports Search</h2>
@@ -191,7 +232,7 @@
         />
       </div>
     </form>
-    <table id="reportResultsTable" class="doctor_table">
+    <table id="reportResultsTable" class="table-align">
       <thead>
         <tr>
           <th>Order ID</th>

@@ -63,37 +63,36 @@ public class ReceptionMedicalRecordDao {
 
     private PatientReport createReportFromResultSet(ResultSet rs) throws SQLException {
         return new PatientReport(
-        	rs.getInt("order_id"),
-            rs.getInt("doctor_id"),
-            rs.getInt("patient_id"),
-            rs.getInt("clinic_id"),
-            rs.getDate("date"),
-            rs.getDate("return_date"),
-            rs.getString("weight"),
-            rs.getString("sugar_level"),
-            rs.getString("bp"),
-            rs.getString("lipid_profile"),
-            rs.getString("hemoglobin"),
-            rs.getString("vision"),
-            rs.getString("eye_pressure"),
-            rs.getString("vdrl"),
-            rs.getString("hiv")
-        );
+                rs.getInt("order_id"),
+                rs.getInt("doctor_id"),
+                rs.getInt("patient_id"),
+                rs.getInt("clinic_id"),
+                rs.getDate("date"),
+                rs.getDate("return_date"),
+                rs.getString("weight"),
+                rs.getString("sugar_level"),
+                rs.getString("bp"),
+                rs.getString("lipid_profile"),
+                rs.getString("hemoglobin"),
+                rs.getString("vision"),
+                rs.getString("eye_pressure"),
+                rs.getString("vdrl"),
+                rs.getString("hiv"));
     }
-    
-    public PatientReport getPatientReportById(int patientId) throws SQLException, ClassNotFoundException {
-        PatientReport report = null;
 
-        try (Connection con = DBConnection.getConnection()) {   
-            String sql = "SELECT * FROM doctor_patient_report_clinic WHERE patient_id = ?";
+    public List<PatientReport> getPatientReportById(int patientId) throws SQLException, ClassNotFoundException {
+        List<PatientReport> reports = new ArrayList<>();
+
+        try (Connection con = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM doctor_patient_report_clinic WHERE patient_id = ? ORDER BY date DESC";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, patientId);
 
             try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    report = new PatientReport(
-                    		rs.getInt("order_id"),
+                while (rs.next()) {
+                    reports.add(new PatientReport(
+                            rs.getInt("order_id"),
                             rs.getInt("doctor_id"),
                             rs.getInt("patient_id"),
                             rs.getInt("clinic_id"),
@@ -107,13 +106,12 @@ public class ReceptionMedicalRecordDao {
                             rs.getString("vision"),
                             rs.getString("eye_pressure"),
                             rs.getString("vdrl"),
-                            rs.getString("hiv")
-                    );
+                            rs.getString("hiv")));
                 }
             }
         }
 
-        return report;
+        return reports;
     }
 
 }
