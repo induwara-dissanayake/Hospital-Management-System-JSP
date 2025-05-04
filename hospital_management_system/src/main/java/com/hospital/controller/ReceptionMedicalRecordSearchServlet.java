@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hospital.dao.ReceptionMedicalRecordDao;
 import com.hospital.model.PatientReport;
@@ -18,21 +19,27 @@ public class ReceptionMedicalRecordSearchServlet extends HttpServlet {
     private ReceptionMedicalRecordDao receptionMedicalRecordDao;
 
     public ReceptionMedicalRecordSearchServlet() {
-        super();        
+        super();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	ReceptionMedicalRecordDao receptionMedicalRecordDao = new ReceptionMedicalRecordDao();
-    	
+
+        int role_id = Integer.parseInt(request.getParameter("role_id"));
+        HttpSession session = request.getSession();
+        session.setAttribute("role_id", role_id);
+
+        ReceptionMedicalRecordDao receptionMedicalRecordDao = new ReceptionMedicalRecordDao();
+
         List<PatientReport> patientReports = receptionMedicalRecordDao.getAllReports();
         request.setAttribute("patientReports", patientReports);
-        request.getRequestDispatcher("views/reception/receptionPatientMedicalRecordSearch.jsp").forward(request, response);
+        request.getRequestDispatcher("views/reception/receptionPatientMedicalRecordSearch.jsp").forward(request,
+                response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    	
+
         String searchField = request.getParameter("searchField");
         List<PatientReport> patientReports = receptionMedicalRecordDao.searchReports(searchField);
 
