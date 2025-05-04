@@ -50,7 +50,7 @@ public class CommonLoginServlet extends HttpServlet {
                         session.setAttribute("role", "Doctor");
                         break;
                     case 3: // Receptionist
-                        redirectPath = "/views/receptionist/receptionDashboard.jsp";
+                        redirectPath = "/views/reception/receptionDashboard.jsp";
                         session.setAttribute("role", "Receptionist");
                         break;
                     case 4: // Medical Counter

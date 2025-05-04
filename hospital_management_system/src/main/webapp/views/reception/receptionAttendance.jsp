@@ -1,67 +1,92 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Receptionist Attendance</title>
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionAttendance.css">
+<%@ page import="java.util.List" %>
+<%@ page import="com.hospital.model.Attendance" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 
+<%
+    List<Attendance> attendanceList = (List<Attendance>) request.getAttribute("attendanceList");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reception Attendance Records</title>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 30px;
+            font-family: Arial, sans-serif;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .table-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
-  <section id="receptionist-attendance" aria-label="Receptionist Attendance">
-    <h2>Receptionist Attendance</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Date</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-        <td>John Doe</td>
-        <td>2025-04-14</td>
-        <td>08:30 AM</td>
-        </tr>
-        <tr>
-        <td>Jane Smith</td>
-        <td>2025-04-14</td>
-        <td>08:45 AM</td>
-        </tr>
-        <tr>
-        <td>John Doe</td>
-        <td>2025-04-15</td>
-        <td>08:32 AM</td>
-        </tr>
-        <tr>
-        <td>Jane Smith</td>
-        <td>2025-04-15</td>
-        <td>08:46 AM</td>
-        </tr>
-        <tr>
-        <td>John Doe</td>
-        <td>2025-04-16</td>
-        <td>—</td>
-        </tr>
-        <tr>
-        <td>Jane Smith</td>
-        <td>2025-04-16</td>
-        <td>08:50 AM</td>
-        </tr>
-        <tr>
-        <td>John Doe</td>
-        <td>2025-04-17</td>
-        <td>08:31 AM</td>
-        </tr>
-        <tr>
-        <td>Jane Smith</td>
-        <td>2025-04-17</td>
-        <td>09:00 AM</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
+
+    <h2>Reception Attendance History</h2>
+    <div class="table-container">
+        <table class="table table-bordered table-hover w-75">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Login Date</th>
+                    <th>Login Time</th>
+                    <th>Logout Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                    int count = 1;
+                    if (attendanceList != null && !attendanceList.isEmpty()) {
+                        for (Attendance att : attendanceList) {
+                            Date login = att.getLoginTime();
+                            Date logout = att.getLogoutTime();
+                %>
+                <tr>
+                    <td><%= count++ %></td>
+                    <td><%= dateFormat.format(login) %></td>
+                    <td><%= timeFormat.format(login) %></td>
+                    <td>
+                        <%= logout != null ? timeFormat.format(logout) : "N/A" %>
+                    </td>
+                    <td><%= att.getStatus() %></td>
+                </tr>
+                <%
+                        }
+                    } else {
+                %>
+                <tr>
+                    <td colspan="5" class="text-center text-muted">No attendance records found.</td>
+                </tr>
+                <%
+                    }
+                %>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
