@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Patient Registration Form</title>
+  <title>Patient Registration Form</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionClinic.css">
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
@@ -12,25 +12,25 @@
 </head>
 <body>
 
+<div class="sidebar-wrapper">
+  <jsp:include page="receptionSidebar.jsp" />
+</div>
 
-  <div class="sidebar-wrapper">
-    <jsp:include page="receptionSidebar.jsp" />
-  </div>
 
 <div class="main-content">
 <section class="tiles-container">
   <div class="tile">
-    <form class="form-container" action="register.jsp" method="post">
+    <form class="form-container" action="${pageContext.request.contextPath}/ReceptionClinicServlet" method="post">
       <h3 class="form-header">Register New Patient</h3>
 
       <div class="form-group">
-        <label for="clinicName">Patient Name</label>
-        <input type="text" id="clinicName" name="clinicName" placeholder="Enter patient name" required />
+        <label for="patientName">Patient Name</label>
+        <input type="text" id="patientName" name="patientName" placeholder="Enter patient name" required />
       </div>
 
       <div class="form-group">
-        <label for="clinicDob">Date of Birth</label>
-        <input type="date" id="clinicDob" name="clinicDob" required />
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required />
       </div>
 
       <div class="form-group">
@@ -43,8 +43,8 @@
       </div>
 
       <div class="form-group">
-        <label for="clinicNIC">NIC</label>
-        <input type="text" id="clinicNIC" name="clinicNIC" placeholder="Enter NIC" required />
+        <label for="nic">NIC</label>
+        <input type="text" id="nic" name="nic" placeholder="Enter NIC" required />
       </div>
 
       <div class="form-group">
@@ -74,24 +74,24 @@
         </select>
       </div>
 
-	  <div class="form-group">
-        <label for="clinicTp">Telephone Number</label>
-        <input type="tel" id="clinicTp" name="clinicTp" placeholder="Enter telephone number" required />
-      </div>
-      
       <div class="form-group">
-        <label for="clinicAddress">Address</label>
-        <textarea id="clinicAddress" name="clinicAddress" rows="2" placeholder="Enter address" required></textarea>
+        <label for="telephone">Telephone Number</label>
+        <input type="tel" id="telephone" name="telephone" placeholder="Enter telephone number" required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="2" placeholder="Enter address" required></textarea>
       </div>
 
       <div class="form-group">
         <label for="guardianName">Guardian Name</label>
         <input type="text" id="guardianName" name="guardianName" placeholder="Enter guardian name" />
       </div>
-      
+
       <div class="form-group">
-        <label for="clinicTp">Guardian Telephone Number</label>
-        <input type="tel" id="gclinicTp" name="gclinicTp" placeholder="Enter telephone number" required />
+        <label for="guardianTelephone">Guardian Telephone Number</label>
+        <input type="tel" id="guardianTelephone" name="guardianTelephone" placeholder="Enter telephone number" required />
       </div>
 
       <button type="submit" class="submit-btn">Register Clinic Patient</button>
