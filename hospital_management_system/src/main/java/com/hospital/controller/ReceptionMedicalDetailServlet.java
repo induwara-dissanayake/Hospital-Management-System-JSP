@@ -43,7 +43,7 @@ public class ReceptionMedicalDetailServlet extends HttpServlet {
             }
 
             request.setAttribute("report", report);
-            request.getRequestDispatcher("receptionMedicalDetails.jsp").forward(request, response);
+            request.getRequestDispatcher("views/reception/receptionPatientMedicalRecord.jsp").forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();
