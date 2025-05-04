@@ -1,11 +1,13 @@
 package com.hospital.dao;
 
 
+import com.hospital.model.Ilness;
 import com.hospital.model.PatientReport;
 import com.hospital.util.DBConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DoctorClinicReportDao {
 
@@ -49,6 +51,35 @@ public class DoctorClinicReportDao {
         return reportList;
     }
 
+    
+    
+    public List<Ilness> getIllnessesByPatientId(int patientId) throws ClassNotFoundException {
+        List<Ilness> illnessList = new ArrayList<>();
+        String sql = "SELECT order_id, patient_id, clinic_id, illness FROM doctor_patient_illness_clinic WHERE patient_id = ?";
+
+        try  {
+            Connection con = DBConnection.getConnection();
+
+        	PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, patientId);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Ilness illness = new Ilness(
+                    rs.getInt("order_id"),
+                    rs.getInt("patient_id"),
+                    rs.getInt("clinic_id"),
+                    rs.getString("illness")
+                );
+                illnessList.add(illness);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace(); // or use proper logging
+        }
+
+        return illnessList;
+    }
     
     
 }

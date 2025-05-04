@@ -79,7 +79,7 @@
             <td><%= patient.getId() %></td>
             <td><%= patient.getPatientId() %></td>
             <td>
-                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?id=<%= patient.getId() %>">View</a>
+                <a class="view-btn" href="${pageContext.request.contextPath}/DoctorClinicViewServlet?patient_id=<%= patient.getPatientId() %>&order_id=<%= patient.getId() %>">View</a>
             </td>
         </tr>
         <%
