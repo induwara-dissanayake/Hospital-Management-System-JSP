@@ -16,38 +16,38 @@ public class ReceptionClinicServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    
-		 String patientName = request.getParameter("patientName");
-	        String dob = request.getParameter("dob");
-	        String gender = request.getParameter("gender");
-	        String nic = request.getParameter("nic");
-	        String clinicType = request.getParameter("clinicType");
-	        String bloodGroup = request.getParameter("bloodGroup");
-	        String telephone = request.getParameter("telephone");
-	        String address = request.getParameter("address");
-	        String guardianName = request.getParameter("guardianName");
-	        String guardianTelephone = request.getParameter("guardianTelephone");
+	    String patient_name = request.getParameter("patientName");
+	    String patient_dob = request.getParameter("dob");
+	    String gender = request.getParameter("gender");
+	    String patient_nic = request.getParameter("nic");
+	    String clinic_id = request.getParameter("clinicType");
+	    String blood_type = request.getParameter("bloodGroup");
+	    String patient_contact_no = request.getParameter("telephone");
+	    String patient_address = request.getParameter("address");
+	    String patient_guardian_name = request.getParameter("guardianName");
+	    String patient_guardian_contact_no = request.getParameter("guardianTelephone");
 
-	        Clinic clinic = new Clinic();
-	        clinic.setPatientName(patientName);
-	        clinic.setDob(dob);
-	        clinic.setGender(gender);
-	        clinic.setNic(nic);
-	        clinic.setClinicType(clinicType);
-	        clinic.setBlood_group(bloodGroup);
-	        clinic.setTelephone(telephone);
-	        clinic.setAddress(address);
-	        clinic.setGuardian_name(guardianName);
-	        clinic.setGuardianTelephone(guardianTelephone);
+	    Clinic clinic = new Clinic();
+	    clinic.setPatient_name(patient_name);
+	    clinic.setPatient_dob(patient_dob);
+	    clinic.setGender(gender);
+	    clinic.setPatient_nic(patient_nic);
+	    clinic.setClinic_id(clinic_id);
+	    clinic.setBlood_type(blood_type);
+	    clinic.setPatient_contact_no(patient_contact_no);
+	    clinic.setPatient_address(patient_address);
+	    clinic.setPatient_guardian_name(patient_guardian_name);
+	    clinic.setPatient_guardian_contact_no(patient_guardian_contact_no);
 
-	        ReceptionClinicDao dao = new ReceptionClinicDao();
-	        try {
-	            dao.insertClinicPatient(clinic);
-	            request.setAttribute("message", "Patient registered successfully!");
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            request.setAttribute("message", "Registration failed!");
-	        }
-
-	        request.getRequestDispatcher("views/reception/receptionRegistrationsuccess.jsp").forward(request, response);
+	    ReceptionClinicDao dao = new ReceptionClinicDao();
+	    try {
+	        dao.insertClinicPatient(clinic);
+	        request.setAttribute("message", "Patient registered successfully!");
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        request.setAttribute("message", "Registration failed!");
 	    }
+
+	    request.getRequestDispatcher("views/reception/receptionRegistrationsuccess.jsp").forward(request, response);
 	}
+}
