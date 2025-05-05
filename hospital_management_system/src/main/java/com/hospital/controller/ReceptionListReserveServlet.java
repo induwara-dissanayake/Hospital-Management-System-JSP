@@ -29,12 +29,22 @@ public class ReceptionListReserveServlet extends HttpServlet {
         try {
             int patientId = Integer.parseInt(request.getParameter("id"));
             Patient patient = patientDao.getPatientById(patientId);
-            
+
             if (patient == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Patient not found.");
                 return;
             }
 
+            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientIdAndDate(
+                patientId, LocalDate.now());
+
+            if (clinicOrder == null) {
+                int clinicId = Integer.parseInt(patient.getClinicId());
+                int nextToken = receptionListDao.getNextTokenNoForClinicToday(clinicId);
+
+                clinicOrder = new ClinicOrder();
+                clinicOrder.setTolkenNo(nextToken);
+                clinicOrder.setClinicId(clinicId);
             ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientId(patientId);
 
             if (clinicOrder == null) {
