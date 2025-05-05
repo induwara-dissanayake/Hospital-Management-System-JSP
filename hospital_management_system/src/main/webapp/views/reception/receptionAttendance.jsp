@@ -111,6 +111,18 @@
             font-size: 16px;
             color: #4a5568;
         }
+        
+        .text-muted {
+            color: #6c757d;
+        }
+        
+        .status-badge {
+            background-color: #10b981;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
 
         @media (max-width: 768px) {
             .content-wrapper {
@@ -157,8 +169,8 @@
                         <td><%= count++ %></td>
                         <td><%= dateFormat.format(login) %></td>
                         <td><%= timeFormat.format(login) %></td>
-                        <td><%= logout != null ? timeFormat.format(logout) : "N/A" %></td>
-                        <td><%= att.getStatus() %></td>
+                        <td><%= logout != null ? timeFormat.format(logout) : "<span class='text-muted'>Not logged out</span>" %></td>
+                        <td><span class="status-badge"><%= att.getStatus() %></span></td>
                     </tr>
                     <%
                             }
