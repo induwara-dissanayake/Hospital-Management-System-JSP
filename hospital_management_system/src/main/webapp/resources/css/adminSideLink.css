@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@charset "UTF-8";
+
+  /*admin final Split layout */
+  
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh; /* Full height */
+}
+
+.sidebar-wrapper {
+    width: 280px; /* Fixed width */
+    height: 100%;
+    border: none;
+}
+
+.main-content {
+    flex: 1; /* Takes up remaining space */
+    height: 100%;
+    border: none;
+}
