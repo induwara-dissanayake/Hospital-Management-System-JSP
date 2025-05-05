@@ -15,7 +15,7 @@
     <jsp:include page="receptionSidebar.jsp" />
   </div>
   <div class="tile">
-    <form class="form-container" action="register.jsp" method="post">
+    <form class="form-container" action="${pageContext.request.contextPath}/ReceptionOPDServlet" method="post">
       <div class="form-header">OPD Patient</div>
 
       <div class="form-group">
