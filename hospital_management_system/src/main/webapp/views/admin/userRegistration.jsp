@@ -4,56 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <title>User Registration</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/admin.css">
-</head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/userRegistration.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
+
 <body>
-    <div class="container">
-        <h2>User Registration Form</h2>
-        <form action="${pageContext.request.contextPath}/userRegister" method="POST">
 
-            <label>First Name:</label>
-            <input type="text" name="firstName" required><br><br>
+<div class="sidebar-wrapper">
+  <jsp:include page="adminSidebar.jsp" />
+</div>
 
-            <label>Last Name:</label>
-            <input type="text" name="lastName" required><br><br>
 
-            <label>Email:</label>
-            <input type="email" name="email" required><br><br>
+<div class="main-content">
+<section class="tiles-container">
+  <div class="tile">
+    <form class="form-container" action="${pageContext.request.contextPath}/userRegister" method="post">
+      <h3 class="form-header">User Registration</h3>
 
-            <label>Phone:</label>
-            <input type="tel" name="phone" required><br><br>
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" name="firstName" placeholder="Enter first name" required />
+      </div>
+      
+       <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Enter last name" required />
+      </div>
+      
+       <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" required />
+      </div>
 
-            <label>Address:</label>
-            <textarea name="address" required></textarea><br><br>
+       <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" required />
+      </div>
 
-            <label>Select Role:</label>
-            <select name="role" id="role" required>
-                <option value="">-- Select --</option>
-                <option value="doctor">Doctor</option>
-                <option value="pharmacist">Pharmacist</option>
-                <option value="receptionist">Receptionist</option>
-            </select><br><br>
 
-            <!-- Role-specific fields -->
+
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" name="role">
+          <option value="">Select Role</option>
+          <option value="doctor">Doctor</option>
+          <option value="pharmacist">Pharmacist</option>
+          <option value="receptionist">Receptionist</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="2" placeholder="Enter address" required></textarea>
+      </div>
+      
+       <!-- Role-specific fields -->
             <div id="doctorFields" style="display:none;">
-                <label>Specialization:</label>
+                <label>Specialization</label>
                 <input type="text" name="specialization"><br><br>
             </div>
 
             <div id="pharmacistFields" style="display:none;">
-                <label>License Number:</label>
+                <label>License Number</label>
                 <input type="text" name="license"><br><br>
             </div>
 
             <div id="receptionistFields" style="display:none;">
-                <label>Preferred Shift:</label>
+                <label>Preferred Shift</label>
                 <input type="text" name="shift"><br><br>
             </div>
+      
+      
+       <button type="submit" class="submit-btn">Register</button>
 
-            <button type="submit">Register</button>
-        </form>
-    </div>
-    <script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>
+</form>
+</div>
+</section>
+  
+<script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>
     <script>
         const role = document.getElementById("role");
         const doctorFields = document.getElementById("doctorFields");
@@ -74,5 +103,6 @@
             }
         });
     </script>
+    
 </body>
 </html>
