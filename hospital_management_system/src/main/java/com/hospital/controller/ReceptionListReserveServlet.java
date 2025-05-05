@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.servlet.ServletContext;
 
 import com.hospital.dao.ReceptionListDao;
 import com.hospital.dao.ReceptionSearchPatientDao;
@@ -45,33 +44,11 @@ public class ReceptionListReserveServlet extends HttpServlet {
                 clinicOrder = new ClinicOrder();
                 clinicOrder.setTolkenNo(nextToken);
                 clinicOrder.setClinicId(clinicId);
-            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientId(patientId);
-
-            if (clinicOrder == null) {
-                ServletContext context = getServletContext();
-                LocalDate today = LocalDate.now();
-                String todayStr = today.toString();
-
-                String lastTokenDate = (String) context.getAttribute("clinicLastTokenDate");
-                Integer lastTokenValue = (Integer) context.getAttribute("clinicLastTokenValue");
-
-                if (lastTokenDate == null || !lastTokenDate.equals(todayStr)) {
-                    lastTokenValue = 1;
-                } else {
-                    lastTokenValue = (lastTokenValue == null) ? 1 : lastTokenValue + 1;
-                }
-
-                context.setAttribute("clinicLastTokenDate", todayStr);
-                context.setAttribute("clinicLastTokenValue", lastTokenValue);
-
-                clinicOrder = new ClinicOrder();
-                clinicOrder.setTolkenNo(lastTokenValue);
-                clinicOrder.setClinicId(Integer.parseInt(patient.getClinicId())); 
-                clinicOrder.setPatientId(patientId);
-
-                clinicOrder = receptionListDao.insertClinicOrder(clinicOrder);
+                clinicOrder.setPatientId(patientId);  // Ensure patientId is set here
+                clinicOrder = receptionListDao.insertClinicOrder(clinicOrder); // Insert the new order
             }
 
+            // Set attributes for the JSP
             request.setAttribute("onepatient", patient);
             request.setAttribute("clinicOrder", clinicOrder);
 
@@ -79,8 +56,9 @@ public class ReceptionListReserveServlet extends HttpServlet {
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid patient ID");
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();  // Consider replacing with proper logging
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
         }
     }
 }
+
