@@ -5,6 +5,31 @@
         response.sendRedirect("doctorLogin.jsp");
         return;
     }
+    
+    // Get clinic name based on clinic_id
+    Integer clinicId = (Integer) session.getAttribute("clinic_id");
+    String clinicName = "";
+    if(clinicId != null) {
+        switch(clinicId) {
+            case 1:
+                clinicName = "Eye";
+                break;
+            case 2:
+                clinicName = "Cardiology";
+                break;
+            case 3:
+                clinicName = "Gynecology";
+                break;
+            case 4:
+                clinicName = "Neurology";
+                break;
+            case 5:
+                clinicName = "Pediatric";
+                break;
+            default:
+                clinicName = "";
+        }
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -54,6 +79,7 @@
             padding: 15px 20px;
             font-weight: 500;
             font-size: 0.95rem;
+
         }
 
         .custom-table td {
@@ -70,6 +96,7 @@
         .custom-table tr:hover {
             background-color: #f8f9fa;
         }
+
 
         .custom-table tr:last-child td {
             border-bottom: none;
@@ -112,7 +139,9 @@
     <div class="content-wrapper">
         <h2 class="page-title">
             <i class="fas fa-user-injured"></i>
-            Clinic Patient Orders
+
+            <%= clinicName %> Clinic Patient Orders
+
         </h2>
 
         <table class="custom-table">
