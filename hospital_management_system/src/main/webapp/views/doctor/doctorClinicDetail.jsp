@@ -302,6 +302,7 @@
             }
         }
 
+
         .medical-history {
             margin-top: 20px;
             background: white;
@@ -408,6 +409,7 @@
         .input-item input::placeholder {
             color: #a0aec0;
         }
+
     </style>
 </head>
 <body>
@@ -434,6 +436,7 @@
                     <div class="info-value"><%= patient.getPatientNic() %></div>
                 </div>
             </div>
+
 
             <!-- Medical History Section -->
             <div class="medical-history">
