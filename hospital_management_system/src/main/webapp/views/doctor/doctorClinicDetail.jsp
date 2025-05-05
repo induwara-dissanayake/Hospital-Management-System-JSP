@@ -301,6 +301,115 @@
                 grid-template-columns: 1fr;
             }
         }
+
+
+        .medical-history {
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .medical-history h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .history-table-wrapper {
+            overflow-x: auto;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .history-table th {
+            background: #f1f5f9;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            white-space: nowrap;
+        }
+
+        .history-table td {
+            padding: 12px;
+            border-top: 1px solid #e2e8f0;
+            color: #4a5568;
+        }
+
+        .history-table tr:hover {
+            background-color: #f7fafc;
+        }
+
+        .no-history {
+            color: #718096;
+            text-align: center;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 6px;
+        }
+
+        .clinic-inputs {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .clinic-inputs h3 {
+            color: #2d3748;
+            font-size: 18px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .input-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-item label {
+            color: #4a5568;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .input-item input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .input-item input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+        }
+
+        .input-item input::placeholder {
+            color: #a0aec0;
+        }
+
     </style>
 </head>
 <body>
@@ -328,9 +437,165 @@
                 </div>
             </div>
 
-            <form method="post" action="SavePrescriptionServlet" class="prescription-form">
+
+            <!-- Medical History Section -->
+            <div class="medical-history">
+                <h3><i class="fas fa-history"></i> Medical History</h3>
+                <% if(reportList != null && !reportList.isEmpty()) { %>
+                    <div class="history-table-wrapper">
+                        <table class="history-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <% if(clinicId == 1) { // Eye clinic %>
+                                        <th>Vision</th>
+                                        <th>Eye Pressure</th>
+                                        <th>Sugar Level</th>
+                                    <% } else if(clinicId == 2) { // Cardiology clinic %>
+                                        <th>Blood Pressure</th>
+                                        <th>Sugar Level</th>
+                                        <th>Lipid Profile</th>
+                                    <% } else if(clinicId == 3) { // Gynecology clinic %>
+                                        <th>Blood Pressure</th>
+                                        <th>Weight</th>
+                                        <th>Sugar Level</th>
+                                        <th>Hemoglobin</th>
+                                        <th>VDRL</th>
+                                        <th>HIV</th>
+                                    <% } else if(clinicId == 4) { // Neurology clinic %>
+                                        <th>Blood Pressure</th>
+                                        <th>Sugar Level</th>
+                                    <% } else if(clinicId == 5) { // Pediatric clinic %>
+                                        <th>Lipid Profile</th>
+                                        <th>Hemoglobin</th>
+                                    <% } %>
+                                    <th>Return Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(PatientReport report : reportList) { %>
+                                    <tr>
+                                        <td><%= report.getDate() %></td>
+                                        <% if(clinicId == 1) { // Eye clinic %>
+                                            <td><%= report.getVision() != null ? report.getVision() : "-" %></td>
+                                            <td><%= report.getEye_pressure() != null ? report.getEye_pressure() : "-" %></td>
+                                            <td><%= report.getSugar_level() != null ? report.getSugar_level() : "-" %></td>
+                                        <% } else if(clinicId == 2) { // Cardiology clinic %>
+                                            <td><%= report.getBp() != null ? report.getBp() : "-" %></td>
+                                            <td><%= report.getSugar_level() != null ? report.getSugar_level() : "-" %></td>
+                                            <td><%= report.getLipid_profile() != null ? report.getLipid_profile() : "-" %></td>
+                                        <% } else if(clinicId == 3) { // Gynecology clinic %>
+                                            <td><%= report.getBp() != null ? report.getBp() : "-" %></td>
+                                            <td><%= report.getWeight() != null ? report.getWeight() : "-" %></td>
+                                            <td><%= report.getSugar_level() != null ? report.getSugar_level() : "-" %></td>
+                                            <td><%= report.getHemoglobin() != null ? report.getHemoglobin() : "-" %></td>
+                                            <td><%= report.getVdrl() != null ? report.getVdrl() : "-" %></td>
+                                            <td><%= report.getHiv() != null ? report.getHiv() : "-" %></td>
+                                        <% } else if(clinicId == 4) { // Neurology clinic %>
+                                            <td><%= report.getBp() != null ? report.getBp() : "-" %></td>
+                                            <td><%= report.getSugar_level() != null ? report.getSugar_level() : "-" %></td>
+                                        <% } else if(clinicId == 5) { // Pediatric clinic %>
+                                            <td><%= report.getLipid_profile() != null ? report.getLipid_profile() : "-" %></td>
+                                            <td><%= report.getHemoglobin() != null ? report.getHemoglobin() : "-" %></td>
+                                        <% } %>
+                                        <td><%= report.getReturn_date() != null ? report.getReturn_date() : "-" %></td>
+                                    </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                <% } else { %>
+                    <p class="no-history">No medical history records found.</p>
+                <% } %>
+            </div>
+
+            <form method="post" action="DoctorClinicViewServlet?next=true" class="prescription-form">
                 <input type="hidden" name="patient_id" value="<%= patient.getId() %>">
                 
+                <!-- Clinic Specific Input Fields -->
+                <div class="form-group clinic-inputs">
+                    <h3><i class="fas fa-clipboard-list"></i> Clinical Measurements</h3>
+                    
+                    <div class="input-grid">
+                        <% if(clinicId == 1) { // Eye clinic %>
+                            <div class="input-item">
+                                <label class="form-label">Vision</label>
+                                <input type="text" name="vision" class="form-input" placeholder="Enter vision">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Eye Pressure</label>
+                                <input type="text" name="eye_pressure" class="form-input" placeholder="Enter eye pressure">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Sugar Level</label>
+                                <input type="text" name="sugar_level" class="form-input" placeholder="Enter sugar level">
+                            </div>
+                        <% } else if(clinicId == 2) { // Cardiology clinic %>
+                            <div class="input-item">
+                                <label class="form-label">Blood Pressure</label>
+                                <input type="text" name="bp" class="form-input" placeholder="Enter blood pressure">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Sugar Level</label>
+                                <input type="text" name="sugar_level" class="form-input" placeholder="Enter sugar level">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Lipid Profile</label>
+                                <input type="text" name="lipid_profile" class="form-input" placeholder="Enter lipid profile">
+                            </div>
+                        <% } else if(clinicId == 3) { // Gynecology clinic %>
+                            <div class="input-item">
+                                <label class="form-label">Blood Pressure</label>
+                                <input type="text" name="bp" class="form-input" placeholder="Enter blood pressure">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Weight</label>
+                                <input type="text" name="weight" class="form-input" placeholder="Enter weight">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Sugar Level</label>
+                                <input type="text" name="sugar_level" class="form-input" placeholder="Enter sugar level">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Hemoglobin</label>
+                                <input type="text" name="hemoglobin" class="form-input" placeholder="Enter hemoglobin">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">VDRL</label>
+                                <input type="text" name="vdrl" class="form-input" placeholder="Enter VDRL">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">HIV</label>
+                                <input type="text" name="hiv" class="form-input" placeholder="Enter HIV">
+                            </div>
+                        <% } else if(clinicId == 4) { // Neurology clinic %>
+                            <div class="input-item">
+                                <label class="form-label">Blood Pressure</label>
+                                <input type="text" name="bp" class="form-input" placeholder="Enter blood pressure">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Sugar Level</label>
+                                <input type="text" name="sugar_level" class="form-input" placeholder="Enter sugar level">
+                            </div>
+                        <% } else if(clinicId == 5) { // Pediatric clinic %>
+                            <div class="input-item">
+                                <label class="form-label">Lipid Profile</label>
+                                <input type="text" name="lipid_profile" class="form-input" placeholder="Enter lipid profile">
+                            </div>
+                            <div class="input-item">
+                                <label class="form-label">Hemoglobin</label>
+                                <input type="text" name="hemoglobin" class="form-input" placeholder="Enter hemoglobin">
+                            </div>
+                        <% } %>
+
+                        <!-- Return Date field for all clinics -->
+                        <div class="input-item">
+                            <label class="form-label">Return Date</label>
+                            <input type="date" name="return_date" class="form-input" required>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label class="form-label">Add Illness</label>
                     <div class="input-group">
@@ -376,7 +641,7 @@
             </form>
         </div>
 
-        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=<%=clinicId %>" class="back-link">
+        <a href="${pageContext.request.contextPath}/DoctorClinicServlet?clinic_id=<%=clinicId %>&show_list=true" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to List
         </a>
     </div>
@@ -425,11 +690,19 @@
             const routineSelect = document.createElement('select');
             routineSelect.className = 'routine-select';
             routineSelect.name = 'prescription_routines';
-            const routines = ['morning', 'day', 'night', 'morning/day', 'morning/night', 'day/night', 'morning/day/night'];
+            const routines = [
+                {value: '1', text: 'morning'},
+                {value: '2', text: 'day'},
+                {value: '3', text: 'night'},
+                {value: '4', text: 'morning/day'},
+                {value: '5', text: 'morning/night'},
+                {value: '6', text: 'day/night'},
+                {value: '7', text: 'morning/day/night'}
+            ];
             routines.forEach(routine => {
                 const option = document.createElement('option');
-                option.value = routine;
-                option.textContent = routine;
+                option.value = routine.value;
+                option.textContent = routine.text;
                 routineSelect.appendChild(option);
             });
             routineCell.appendChild(routineSelect);
