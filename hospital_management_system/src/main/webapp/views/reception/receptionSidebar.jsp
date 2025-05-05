@@ -63,7 +63,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
   </div>
 
   <div class="logout">
-    <a href="receptionLogout.jsp" class="nav-item">
+    <a href="${pageContext.request.contextPath}/CommonLogoutServlet" class="nav-item">
       <div class="nav-header">
         <i class="fas fa-sign-out-alt nav-icon"></i>
         <span class="nav-text">Logout</span>
