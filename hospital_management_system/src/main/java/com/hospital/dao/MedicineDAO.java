@@ -45,4 +45,14 @@ public class MedicineDAO {
         }
         return medicines;
     }
+
+    public void removeMedicine(int medicineId) throws SQLException, ClassNotFoundException {
+    String query = "DELETE FROM medicine WHERE medicine_id = ?";
+    try (Connection connection = DBConnection.getConnection();
+         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+        preparedStatement.setInt(1, medicineId);
+        preparedStatement.executeUpdate();
+        }
+    }
+
 }
