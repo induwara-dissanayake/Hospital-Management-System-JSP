@@ -79,6 +79,7 @@
             padding: 15px 20px;
             font-weight: 500;
             font-size: 0.95rem;
+
         }
 
         .custom-table td {
@@ -95,6 +96,7 @@
         .custom-table tr:hover {
             background-color: #f8f9fa;
         }
+
 
         .custom-table tr:last-child td {
             border-bottom: none;
@@ -137,7 +139,9 @@
     <div class="content-wrapper">
         <h2 class="page-title">
             <i class="fas fa-user-injured"></i>
+
             <%= clinicName %> Clinic Patient Orders
+
         </h2>
 
         <table class="custom-table">

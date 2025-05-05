@@ -4,10 +4,21 @@
 <html>
 <head>
     <title>User Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/admin.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
+    
 </head>
 <body>
-    <div class="container">
+
+<div class="sidebar-wrapper">
+  <jsp:include page="adminSidebar.jsp" />
+</div>
+
+
+<div class="container">
+
         <h2>User Management</h2>
 
         <%

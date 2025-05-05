@@ -69,7 +69,7 @@
     }
 
     .form-row input[type="text"]:focus {
-      border-color: #4caf50;
+      border-color: #2b6cb0;
       box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
       outline: none;
     }
@@ -91,7 +91,7 @@
     }
 
     th {
-      background: #4caf50;
+      background: #2b6cb0;
       color: white;
       font-weight: bold;
     }
