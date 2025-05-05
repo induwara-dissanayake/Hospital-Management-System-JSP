@@ -32,15 +32,24 @@ public class MedicineServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            List<Medicine> medicines = medicineDAO.getAllMedicines();
-            request.setAttribute("medicines", medicines);
-            request.getRequestDispatcher("/views/admin/medicineManagement.jsp").forward(request, response);
-        } catch (SQLException | ClassNotFoundException e) {
-            throw new ServletException(e);
+        String action = request.getParameter("action");
+
+        if ("removeMedicine".equals(action)) {
+            removeMedicine(request, response);
+        } else {
+            try {
+                List<Medicine> medicines = medicineDAO.getAllMedicines();
+                request.setAttribute("medicines", medicines);
+                // Debugging: Check if medicines list is populated
+                System.out.println("Number of medicines fetched: " + medicines.size());
+                request.getRequestDispatcher("/views/admin/medicineManagement.jsp").forward(request, response);
+            } catch (SQLException | ClassNotFoundException e) {
+                throw new ServletException(e);
+            }
         }
     }
 
+    // Method to add new medicine
     private void addMedicine(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Medicine medicine = new Medicine();
         medicine.setMedicineName(request.getParameter("medicineName"));
@@ -52,7 +61,18 @@ public class MedicineServlet extends HttpServlet {
 
         try {
             medicineDAO.addMedicine(medicine);
-            response.sendRedirect("/MedicineServlet");
+            response.sendRedirect("views/admin/registrationSuccess.jsp");
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new IOException(e);
+        }
+    }
+
+    // Method to remove medicine by ID
+    private void removeMedicine(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int medicineId = Integer.parseInt(request.getParameter("medicineId"));
+        try {
+            medicineDAO.removeMedicine(medicineId);
+            response.sendRedirect("MedicineServlet"); // Redirect back to medicine management page
         } catch (SQLException | ClassNotFoundException e) {
             throw new IOException(e);
         }
