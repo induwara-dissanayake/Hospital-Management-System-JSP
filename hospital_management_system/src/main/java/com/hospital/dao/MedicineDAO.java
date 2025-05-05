@@ -1,58 +1,50 @@
 package com.hospital.dao;
 
-import com.hospital.model.Medicine;
-import com.hospital.util.DBConnection;
-
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import com.hospital.model.Medicine;
 
 public class MedicineDAO {
+    private String jdbcURL = "jdbc:mysql://localhost:3306/hospital";
+    private String jdbcUsername = "root";
+    private String jdbcPassword = ""; // adjust if needed
 
-    public void addMedicine(Medicine medicine) throws SQLException, ClassNotFoundException {
-        String query = "INSERT INTO medicine (medicine_name, dosage_form, dosage_strength, stock_quantity, prescribed_for, category) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection connection = DBConnection.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, medicine.getMedicineName());
-            preparedStatement.setString(2, medicine.getDosageForm());
-            preparedStatement.setString(3, medicine.getDosageStrength());
-            preparedStatement.setInt(4, medicine.getStockQuantity());
-            preparedStatement.setString(5, medicine.getPrescribedFor());
-            preparedStatement.setString(6, medicine.getCategory());
-            preparedStatement.executeUpdate();
+    private static final String SELECT_ALL = "SELECT * FROM medicine";
+
+    static {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
-    public List<Medicine> getAllMedicines() throws SQLException, ClassNotFoundException {
+    private Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+    }
+
+    public List<Medicine> selectAllMedicines() {
         List<Medicine> medicines = new ArrayList<>();
-        String query = "SELECT * FROM medicine";
-        try (Connection connection = DBConnection.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-            while (resultSet.next()) {
-                Medicine medicine = new Medicine();
-                medicine.setMedicineId(resultSet.getInt("medicine_id"));
-                medicine.setMedicineName(resultSet.getString("medicine_name"));
-                medicine.setDosageForm(resultSet.getString("dosage_form"));
-                medicine.setDosageStrength(resultSet.getString("dosage_strength"));
-                medicine.setStockQuantity(resultSet.getInt("stock_quantity"));
-                medicine.setPrescribedFor(resultSet.getString("prescribed_for"));
-                medicine.setCategory(resultSet.getString("category"));
-                medicine.setCreatedAt(resultSet.getString("created_at"));
-                medicine.setUpdatedAt(resultSet.getString("updated_at"));
-                medicines.add(medicine);
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL);
+             ResultSet rs = statement.executeQuery()) {
+
+            while (rs.next()) {
+                Medicine med = new Medicine();
+                med.setMedicineName(rs.getString("medicine_name"));
+                med.setQuantity(rs.getInt("stock_available"));
+                med.setDosage(rs.getString("dosage"));
+                med.setPrescribedFor(rs.getString("prescribed_for"));
+
+                medicines.add(med);
             }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return medicines;
     }
-
-    public void removeMedicine(int medicineId) throws SQLException, ClassNotFoundException {
-    String query = "DELETE FROM medicine WHERE medicine_id = ?";
-    try (Connection connection = DBConnection.getConnection();
-         PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-        preparedStatement.setInt(1, medicineId);
-        preparedStatement.executeUpdate();
-        }
-    }
-
 }
+
