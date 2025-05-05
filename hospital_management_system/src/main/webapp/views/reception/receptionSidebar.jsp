@@ -25,7 +25,7 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
     <div class="nav-item">
       <div class="nav-header">
         <div class="nav-icon"><i class="fas fa-hospital"></i></div>
-        <div class="nav-text">Patient Registation</div>
+        <div class="nav-text">Patient Registration</div>
         <i
           class="fas fa-chevron-down"
           style="margin-left: auto; font-size: 0.8rem"
