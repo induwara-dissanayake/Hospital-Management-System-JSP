@@ -33,7 +33,7 @@
             </a>
             
             <!-- Medicine Management Card -->
-            <a href="medicineManagement.jsp" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/MedicineServlet" class="dashboard-card">
                 <div class="card-icon">
                     <i class="fas fa-pills"></i>
                 </div>

@@ -4,11 +4,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>Patient Records Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
     <style>
       body {
         font-family: Arial, sans-serif;
         background: #f9f9f9;
         margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .content-wrapper {
+        flex: 1;
+        margin-left: 280px;
         padding: 20px;
       }
 
@@ -16,6 +25,14 @@
         text-align: center;
         color: #333;
         margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      h2 i {
+        margin-right: 10px;
+        color: #4caf50;
       }
 
       .form-container {
@@ -35,7 +52,7 @@
       }
 
       .form-row input[type="text"]:focus {
-        border-color: #4caf50;
+        border-color: #2b6cb0;
         box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
         outline: none;
       }
@@ -58,7 +75,7 @@
       }
 
       th {
-        background: #4caf50;
+        background: #2b6cb0;
         color: white;
         font-weight: bold;
       }
@@ -122,7 +139,17 @@
       .view-btn:hover {
         background: #45a049;
       }
+
+      tr.clickable-row {
+        cursor: pointer;
+      }
+
+      tr.clickable-row:hover {
+        background-color: #e0f7e9;
+        transition: background-color 0.3s ease;
+      }
     </style>
+
     <script>
       window.onload = function () {
         loadAllPatients();
@@ -166,7 +193,7 @@
 
         if (!data || data.length === 0) {
           tbody.innerHTML =
-            "<tr><td colspan='6' class='no-results'>No patients found</td></tr>";
+            "<tr><td colspan='5' class='no-results'>No patients found</td></tr>";
           return;
         }
 
@@ -177,7 +204,7 @@
           console.log("Processing patient:", i, patient);
 
           tableContent +=
-            "<tr>" +
+        	  "<tr class='clickable-row' onclick=\"window.location.href='ReceptionPatientDetailServlet?id=" + patient.id + "'\">" +
             '<td data-label="ID">' +
             (patient.id || "") +
             "</td>" +
@@ -193,9 +220,6 @@
             '<td data-label="NIC">' +
             (patient.patientNic || "") +
             "</td>" +
-            '<td data-label="Action">' +
-            '<a href="ReceptionPatientDetailServlet?id=' + patient.id + '" class="view-btn">View</a>' +
-            "</td>" +
             "</tr>";
         }
 
@@ -204,33 +228,38 @@
     </script>
   </head>
   <body>
-    <section id="patient-records-search" aria-label="Patient Records Search">
-      <h2>Patient Records Search</h2>
-      <form class="form-container" onsubmit="return false;">
-        <div class="form-row">
-          <input
-            type="text"
-            id="nameorid"
-            name="nameorid"
-            placeholder="Enter NIC or Patient ID"
-            onkeyup="livePatientSearch()"
-            autocomplete="off"
-          />
-        </div>
-      </form>
-      <table id="patientResultsTable">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>DOB</th>
-            <th>Clinic ID</th>
-            <th>NIC</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody id="patientResultsTbody"></tbody>
-      </table>
-    </section>
+    <div class="sidebar-align">
+      <jsp:include page="../reception/receptionSidebar.jsp" />
+    </div>
+
+    <div class="content-wrapper">
+      <section id="patient-records-search" aria-label="Patient Records Search">
+        <h2><i class="fas fa-search"></i>Patient Records Search</h2>
+        <form class="form-container" onsubmit="return false;">
+          <div class="form-row">
+            <input
+              type="text"
+              id="nameorid"
+              name="nameorid"
+              placeholder="Enter NIC or Patient ID"
+              onkeyup="livePatientSearch()"
+              autocomplete="off"
+            />
+          </div>
+        </form>
+        <table id="patientResultsTable">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>DOB</th>
+              <th>Clinic ID</th>
+              <th>NIC</th>
+            </tr>
+          </thead>
+          <tbody id="patientResultsTbody"></tbody>
+        </table>
+      </section>
+    </div>
   </body>
 </html>
