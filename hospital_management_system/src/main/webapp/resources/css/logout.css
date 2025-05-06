@@ -52,3 +52,130 @@ a:hover {
 a:active {
     background-color: #348181;
 }
+
+/* Additions for OPD Success Page */
+
+/* Information list styling */
+.info-list {
+    margin-top: 30px;
+    text-align: left;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.info-item {
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #0072ff;
+    border-radius: 8px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+
+.info-label {
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+}
+
+.token-box {
+    margin-top: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #e3f2fd;
+    border: 2px dashed #0072ff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: #004085;
+}
+
+.token-box span {
+    display: block;
+    font-size: 36px;
+    color: #0072ff;
+    margin-top: 10px;
+}
+
+.redirect-msg {
+    font-size: 16px;
+    color: #666;
+    margin-top: 30px;
+}
+
+/* Enhanced header styles */
+h1 {
+    font-size: 36px;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+/* Paragraph text enhancements */
+p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+/* Info Box Styling */
+.info-item {
+    background-color: #f8f9fa;
+    border-left: 5px solid #0072ff;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Info Label */
+.info-label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0072ff;
+}
+
+/* Token Box Styling */
+.token-box {
+    background-color: #e0f7fa;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px dashed #0072ff;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #0072ff;
+    text-align: center;
+}
+
+/* Token Number Styling */
+.token-box span {
+    font-size: 36px;
+    font-weight: bold;
+    color: #0072ff;
+}
+
+/* Link Styling */
+a {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #0072ff;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 25px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+a:hover {
+    background-color: #005bb5;
+    transform: scale(1.05);
+}
+
+a:active {
+    background-color: #00488f;
+}
