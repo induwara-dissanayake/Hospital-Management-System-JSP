@@ -211,7 +211,7 @@
       </div> 
 
       <div class="back-button">
-        <a href="${pageContext.request.contextPath}/views/reception/receptionPatientList.jsp">
+        <a href="${pageContext.request.contextPath}/ReceptionListSearchServlet">
           ← Back to Patient List
         </a>
       </div>
