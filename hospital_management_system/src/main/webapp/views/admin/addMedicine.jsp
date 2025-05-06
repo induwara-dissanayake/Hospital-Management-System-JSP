@@ -3,30 +3,61 @@
 <html>
 <head>
     <title>Add Medicine</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/addMedicine.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
+    
 </head>
 <body>
-    <h1>Add Medicine</h1>
-    <form action="${pageContext.request.contextPath}/MedicineServlet" method="POST">
-        <input type="hidden" name="action" value="addMedicine">
-        <label for="medicineName">Medicine Name:</label>
-        <input type="text" id="medicineName" name="medicineName" required><br>
 
-        <label for="dosageForm">Dosage Form:</label>
-        <input type="text" id="dosageForm" name="dosageForm" required><br>
+<div class="sidebar-wrapper">
+  <jsp:include page="adminSidebar.jsp" />
+</div>
 
-        <label for="dosageStrength">Dosage Strength:</label>
-        <input type="text" id="dosageStrength" name="dosageStrength" required><br>
+<div class="main-content">
+<section class="tiles-container">
+  <div class="tile">
+    <form class="form-container" action="${pageContext.request.contextPath}/MedicineServlet" method="post">
+      <h3 class="form-header">Add Medicine</h3>
 
-        <label for="stockQuantity">Stock Quantity:</label>
-        <input type="number" id="stockQuantity" name="stockQuantity" required><br>
+      <div class="form-group">
+        <label for="medicineName">Medicine Name</label>
+        <input type="text" id="medicineName" name="medicineName" placeholder="Enter medicine name" required />
+      </div>
+      
+       <div class="form-group">
+        <label for="dosageName">Dosage Name</label>
+        <input type="text" id="dosageName" name="dosageName" placeholder="Enter dosage name" required />
+      </div>
+      
+       <div class="form-group">
+        <label for="dosageStrength">Dosage Strength</label>
+        <input type="text" id="dosageStrength" name="dosageStrength" placeholder="Enter dosage strength" required />
+      </div>
 
-        <label for="prescribedFor">Prescribed For:</label>
-        <input type="text" id="prescribedFor" name="prescribedFor" required><br>
+       <div class="form-group">
+        <label for="stockQuantity">Stock Quantity</label>
+        <input type="number" id="stockQuantity" name="stockQuantity" placeholder="Enter stock quantity" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="prescribedFor">Prescribed For</label>
+        <input type="text" id="prescribedFor" name="prescribedFor" placeholder="Enter prescribed for" required />
+      </div>
+      
+      <div class="form-group">
+        <label for="category">Category</label>
+        <input type="text" id="category" name="category" placeholder="Enter category" required />
+      </div>
+           
+      <button type="submit" class="submit-btn">Add Medicine</button>
 
-        <label for="category">Category:</label>
-        <input type="text" id="category" name="category"><br>
+    </form>
+</div>
+</section>
 
-        <button type="submit">Add Medicine</button>
-	</form>
 </body>
-</html>
+</html>    
+

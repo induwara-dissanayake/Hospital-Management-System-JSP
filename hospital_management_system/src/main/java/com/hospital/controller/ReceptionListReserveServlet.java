@@ -2,10 +2,10 @@ package com.hospital.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import javax.servlet.ServletContext;
 
 import com.hospital.dao.ReceptionListDao;
 import com.hospital.dao.ReceptionSearchPatientDao;
@@ -29,43 +29,38 @@ public class ReceptionListReserveServlet extends HttpServlet {
         try {
             int patientId = Integer.parseInt(request.getParameter("id"));
             Patient patient = patientDao.getPatientById(patientId);
-            
+
+            // Check if the patient exists
             if (patient == null) {
                 response.sendError(HttpServletResponse.SC_NOT_FOUND, "Patient not found.");
                 return;
             }
 
-            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientId(patientId);
+            // Fetch existing clinic order for today
+            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientIdAndDate(patientId, LocalDate.now());
 
             if (clinicOrder == null) {
-                ServletContext context = getServletContext();
-                LocalDate today = LocalDate.now();
-                String todayStr = today.toString();
+                // Patient has no order yet, generate token per clinic
+                int clinicId = Integer.parseInt(patient.getClinicId());
+                int nextToken = receptionListDao.getNextTokenNoForClinicToday(clinicId);
 
-                String lastTokenDate = (String) context.getAttribute("clinicLastTokenDate");
-                Integer lastTokenValue = (Integer) context.getAttribute("clinicLastTokenValue");
-
-                if (lastTokenDate == null || !lastTokenDate.equals(todayStr)) {
-                    lastTokenValue = 1;
-                } else {
-                    lastTokenValue = (lastTokenValue == null) ? 1 : lastTokenValue + 1;
-                }
-
-                context.setAttribute("clinicLastTokenDate", todayStr);
-                context.setAttribute("clinicLastTokenValue", lastTokenValue);
-
+                // Create and insert new clinic order
                 clinicOrder = new ClinicOrder();
-                clinicOrder.setTolkenNo(lastTokenValue);
-                clinicOrder.setClinicId(Integer.parseInt(patient.getClinicId())); 
+                clinicOrder.setTolkenNo(nextToken);
+                clinicOrder.setClinicId(clinicId);
                 clinicOrder.setPatientId(patientId);
 
-                clinicOrder = receptionListDao.insertClinicOrder(clinicOrder);
+                receptionListDao.insertClinicOrder(clinicOrder);
+
+                // Retrieve inserted order (in case DB adds more info like ID/timestamp)
+                clinicOrder = receptionListDao.getClinicOrderByPatientIdAndDate(patientId, LocalDate.now());
             }
 
+            // Set attributes and forward to JSP
             request.setAttribute("onepatient", patient);
             request.setAttribute("clinicOrder", clinicOrder);
-
             request.getRequestDispatcher("/views/reception/receptionPatientListReserve.jsp").forward(request, response);
+
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid patient ID");
         } catch (Exception e) {
