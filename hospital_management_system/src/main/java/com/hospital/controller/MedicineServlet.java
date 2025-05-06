@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+@SuppressWarnings("serial")
 @WebServlet("/MedicineServlet")
 public class MedicineServlet extends HttpServlet {
 
