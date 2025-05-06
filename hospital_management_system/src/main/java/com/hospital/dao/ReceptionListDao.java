@@ -1,10 +1,5 @@
 package com.hospital.dao;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,11 +14,7 @@ import com.hospital.util.DBConnection;
 
 public class ReceptionListDao {
 
-    public List<Patient> searchPatient(String searchInput) {
-        List<Patient> patients = new ArrayList<>();
-        try (Connection conn = DBConnection.getConnection()) {
-            String sql;
-            PreparedStatement stmt;
+    // Existing methods...
 
     public List<Patient> searchPatient(String searchInput) {
         List<Patient> patients = new ArrayList<>();
@@ -42,13 +33,6 @@ public class ReceptionListDao {
             stmt.setString(1, searchPattern);
             stmt.setString(2, searchPattern);
 
-            try (ResultSet rs = stmt.executeQuery()) {
-                while (rs.next()) {
-                    patients.add(createPatientFromResultSet(rs));
-                }
-            }
-            stmt.close();
-
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 patients.add(createPatientFromResultSet(rs));
@@ -57,7 +41,6 @@ public class ReceptionListDao {
             rs.close();
             stmt.close();
             conn.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,15 +49,6 @@ public class ReceptionListDao {
 
     public List<Patient> getAllPatients() {
         List<Patient> patients = new ArrayList<>();
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reception_patient_registration");
-             ResultSet rs = stmt.executeQuery()) {
-
-            while (rs.next()) {
-                patients.add(createPatientFromResultSet(rs));
-            }
-
         try {
             Connection conn = DBConnection.getConnection();
             String sql = "SELECT * FROM reception_patient_registration";
@@ -88,7 +62,6 @@ public class ReceptionListDao {
             rs.close();
             stmt.close();
             conn.close();
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,17 +87,6 @@ public class ReceptionListDao {
     public Patient getPatientById(int id) throws SQLException, ClassNotFoundException {
         Patient patient = null;
 
-        String sql = "SELECT * FROM reception_patient_registration WHERE id = ?";
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
-            ps.setInt(1, id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    patient = createPatientFromResultSet(rs);
-
-
         try (Connection con = DBConnection.getConnection()) {
             String sql = "SELECT * FROM reception_patient_registration WHERE id = ?";
             
@@ -146,7 +108,6 @@ public class ReceptionListDao {
                         rs.getString("patient_guardian_name"),
                         rs.getString("patient_guardian_contact_no")
                     );
-
                 }
             }
         }
@@ -156,20 +117,11 @@ public class ReceptionListDao {
     public ClinicOrder insertClinicOrder(ClinicOrder order) throws SQLException, ClassNotFoundException {
         ClinicOrder insertedOrder = null;
 
-
-        String sql = "INSERT INTO reception_patient_clinic_records " +
-                     "(tolken_no, clinic_id, patient_id, date, doctor_complete, counter_complete) " +
-                     "VALUES (?, ?, ?, NOW(), 0, 0)";
-
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
         String sql = "INSERT INTO reception_patient_clinic_records (tolken_no, clinic_id, patient_id, date, doctor_complete, counter_complete) " +
                      "VALUES (?, ?, ?, NOW(), 0, 0)";
 
         try (Connection con = DBConnection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)) {
-
 
             ps.setInt(1, order.getTolkenNo());
             ps.setInt(2, order.getClinicId());
@@ -184,8 +136,6 @@ public class ReceptionListDao {
             try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     int newId = generatedKeys.getInt(1);
-                    insertedOrder = getClinicOrderById(newId);
-
 
                     // Retrieve the inserted record
                     String fetchSql = "SELECT * FROM reception_patient_clinic_records WHERE id = ?";
@@ -214,61 +164,6 @@ public class ReceptionListDao {
         return insertedOrder;
     }
 
-    public ClinicOrder getClinicOrderById(int id) throws SQLException, ClassNotFoundException {
-        ClinicOrder order = null;
-        String sql = "SELECT * FROM reception_patient_clinic_records WHERE id = ?";
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    order = new ClinicOrder(
-                        rs.getInt("id"),
-                        rs.getInt("tolken_no"),
-                        rs.getInt("clinic_id"),
-                        rs.getInt("patient_id"),
-                        rs.getTimestamp("date"),
-                        rs.getInt("doctor_complete"),
-                        rs.getInt("counter_complete")
-                    );
-                }
-            }
-        }
-        return order;
-    }
-
-    public int getNextTokenNoForClinicToday(int clinicId) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT MAX(tolken_no) FROM reception_patient_clinic_records " +
-                     "WHERE clinic_id = ? AND DATE(date) = CURDATE()";
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, clinicId);
-
-            try (ResultSet rs = stmt.executeQuery()) {
-                if (rs.next()) {
-                    int currentMax = rs.getInt(1);
-                    return (currentMax == 0) ? 1 : currentMax + 1;
-                }
-            }
-        }
-
-        return 1;
-    }
-
-    public ClinicOrder getClinicOrderByPatientIdAndDate(int patientId, LocalDate date)
-            throws SQLException, ClassNotFoundException {
-        ClinicOrder clinicOrder = null;
-        String sql = "SELECT * FROM reception_patient_clinic_records WHERE patient_id = ? AND DATE(date) = ?";
-
-        try (Connection conn = DBConnection.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setInt(1, patientId);
-            stmt.setDate(2, Date.valueOf(date));
     public ClinicOrder getClinicOrderByPatientId(int patientId) throws SQLException, ClassNotFoundException {
         ClinicOrder clinicOrder = null;
         String sql = "SELECT * FROM reception_patient_clinic_records WHERE patient_id = ?";
@@ -291,9 +186,6 @@ public class ReceptionListDao {
                 }
             }
         }
-
-        return clinicOrder;
-    }
         return clinicOrder;
     }
     
