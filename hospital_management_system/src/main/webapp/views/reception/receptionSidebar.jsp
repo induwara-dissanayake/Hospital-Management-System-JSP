@@ -21,22 +21,26 @@ loggedInUser.isEmpty()) { loggedInUser = "Guest Receptionist"; } %>
         <span class="nav-text">Dashboard</span>
       </div>
     </a>
+    
+	<div class="nav-item">
+  <div class="nav-header">
+    <div class="nav-icon"><i class="fas fa-hospital"></i></div>
+    <div class="nav-text">Token Counter</div>
+    <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
+  </div>
+  <div class="submenu">
+    <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" class="submenu-item">OPD</a>
+    <a href="${pageContext.request.contextPath}/ReceptionListSearchServlet" class="submenu-item">Clinic</a>
+  </div>
+</div>
 
-    <div class="nav-item">
+	<a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" class="nav-item">
       <div class="nav-header">
-        <div class="nav-icon"><i class="fas fa-hospital"></i></div>
-        <div class="nav-text">Patient Registration</div>
-        <i
-          class="fas fa-chevron-down"
-          style="margin-left: auto; font-size: 0.8rem"
-        ></i>
+        <i class="fas fa-hospital nav-icon"></i>
+        <span class="nav-text">Patient Registration</span>
       </div>
-      <div class="submenu">
-        <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" class="submenu-item">OPD</a>
-        <a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" class="submenu-item">Clinic</a>
-      </div>
-    </div>
-
+    </a>
+    
     <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" class="nav-item">
       <div class="nav-header">
         <i class="fas fa-notes-medical nav-icon"></i>
