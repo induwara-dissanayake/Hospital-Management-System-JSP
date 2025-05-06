@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-
 import com.hospital.dao.ReceptionListDao;
 import com.hospital.dao.ReceptionSearchPatientDao;
 import com.hospital.model.Patient;
@@ -34,8 +33,8 @@ public class ReceptionListReserveServlet extends HttpServlet {
                 return;
             }
 
-            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientIdAndDate(
-                patientId, LocalDate.now());
+            LocalDate today = LocalDate.now();
+            ClinicOrder clinicOrder = receptionListDao.getClinicOrderByPatientIdAndDate(patientId, today);
 
             if (clinicOrder == null) {
                 int clinicId = Integer.parseInt(patient.getClinicId());
@@ -44,21 +43,20 @@ public class ReceptionListReserveServlet extends HttpServlet {
                 clinicOrder = new ClinicOrder();
                 clinicOrder.setTolkenNo(nextToken);
                 clinicOrder.setClinicId(clinicId);
-                clinicOrder.setPatientId(patientId);  // Ensure patientId is set here
-                clinicOrder = receptionListDao.insertClinicOrder(clinicOrder); // Insert the new order
+                clinicOrder.setPatientId(patientId);
+
+                clinicOrder = receptionListDao.insertClinicOrder(clinicOrder);
             }
 
-            // Set attributes for the JSP
             request.setAttribute("onepatient", patient);
             request.setAttribute("clinicOrder", clinicOrder);
-
             request.getRequestDispatcher("/views/reception/receptionPatientListReserve.jsp").forward(request, response);
+
         } catch (NumberFormatException e) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid patient ID");
         } catch (Exception e) {
-            e.printStackTrace();  // Consider replacing with proper logging
+            e.printStackTrace();
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Error processing request");
         }
     }
 }
-
