@@ -11,7 +11,8 @@ import com.hospital.util.DBConnection;
 
 public class ReceptionListDao {
 
-    public List<Patient> searchPatient(String searchInput) throws ClassNotFoundException {
+    // 🔍 Search patients by ID or NIC
+    public List<Patient> searchPatient(String searchInput) {
         List<Patient> patients = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection()) {
             if (searchInput == null || searchInput.trim().isEmpty()) {
@@ -20,9 +21,9 @@ public class ReceptionListDao {
 
             String sql = "SELECT * FROM reception_patient_registration WHERE CAST(id AS CHAR) LIKE ? OR patient_nic LIKE ?";
             try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-                String searchPattern = "%" + searchInput + "%";
-                stmt.setString(1, searchPattern);
-                stmt.setString(2, searchPattern);
+                String pattern = "%" + searchInput + "%";
+                stmt.setString(1, pattern);
+                stmt.setString(2, pattern);
 
                 try (ResultSet rs = stmt.executeQuery()) {
                     while (rs.next()) {
@@ -30,13 +31,13 @@ public class ReceptionListDao {
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return patients;
     }
 
-    public List<Patient> getAllPatients() throws ClassNotFoundException {
+    public List<Patient> getAllPatients() {
         List<Patient> patients = new ArrayList<>();
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement("SELECT * FROM reception_patient_registration");
@@ -45,7 +46,7 @@ public class ReceptionListDao {
             while (rs.next()) {
                 patients.add(createPatientFromResultSet(rs));
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return patients;
@@ -84,9 +85,12 @@ public class ReceptionListDao {
         return patient;
     }
 
+    // ✅ Insert clinic order and return the inserted record
     public ClinicOrder insertClinicOrder(ClinicOrder order) throws SQLException, ClassNotFoundException {
         ClinicOrder insertedOrder = null;
-        String sql = "INSERT INTO reception_patient_clinic_records (tolken_no, clinic_id, patient_id, date, doctor_complete, counter_complete) " +
+
+        String sql = "INSERT INTO reception_patient_clinic_records " +
+                     "(tolken_no, clinic_id, patient_id, date, doctor_complete, counter_complete) " +
                      "VALUES (?, ?, ?, NOW(), 0, 0)";
 
         try (Connection con = DBConnection.getConnection();
@@ -105,20 +109,24 @@ public class ReceptionListDao {
                 if (generatedKeys.next()) {
                     int newId = generatedKeys.getInt(1);
                     insertedOrder = getClinicOrderById(newId);
+                } else {
+                    throw new SQLException("Inserting clinic order failed, no ID obtained.");
                 }
             }
         }
+
         return insertedOrder;
     }
 
+    // ✅ Get clinic order by primary key ID
     public ClinicOrder getClinicOrderById(int id) throws SQLException, ClassNotFoundException {
         ClinicOrder order = null;
         String sql = "SELECT * FROM reception_patient_clinic_records WHERE id = ?";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
-
             stmt.setInt(1, id);
+
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     order = new ClinicOrder(
@@ -136,24 +144,30 @@ public class ReceptionListDao {
         return order;
     }
 
+    // ✅ Get next token number for today's date
     public int getNextTokenNoForClinicToday(int clinicId) throws SQLException, ClassNotFoundException {
-        String sql = "SELECT MAX(tolken_no) FROM reception_patient_clinic_records WHERE clinic_id = ? AND DATE(date) = CURDATE()";
+        String sql = "SELECT MAX(tolken_no) FROM reception_patient_clinic_records " +
+                     "WHERE clinic_id = ? AND DATE(date) = CURDATE()";
 
         try (Connection conn = DBConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, clinicId);
+
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     int max = rs.getInt(1);
-                    return (rs.wasNull()) ? 1 : max + 1;
+                    return rs.wasNull() ? 1 : max + 1;
                 }
             }
         }
+
         return 1;
     }
 
-    public ClinicOrder getClinicOrderByPatientIdAndDate(int patientId, LocalDate date) throws SQLException, ClassNotFoundException {
+    // ✅ Get clinic order for a specific patient and date
+    public ClinicOrder getClinicOrderByPatientIdAndDate(int patientId, LocalDate date)
+            throws SQLException, ClassNotFoundException {
         ClinicOrder clinicOrder = null;
         String sql = "SELECT * FROM reception_patient_clinic_records WHERE patient_id = ? AND DATE(date) = ?";
 
@@ -177,6 +191,7 @@ public class ReceptionListDao {
                 }
             }
         }
+
         return clinicOrder;
     }
 }
