@@ -1,69 +1,63 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="com.hospital.util.DBConnection" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.hospital.model.ExtendedUser" %>
+<%@ page import="java.util.List" %>
 <html>
 <head>
     <title>User Management</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/admin.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
-    
+    <link rel="stylesheet" href="../../resources/css/admin.css">
 </head>
 <body>
-
-<div class="sidebar-wrapper">
-  <jsp:include page="adminSidebar.jsp" />
-</div>
-
-
-<div class="container">
-
-        <h2>User Management</h2>
-
-        <%
-            String message = request.getParameter("message");
-            if (message != null) {
-        %>
-            <p style="color: green;"><%= message %></p>
-        <%
-            }
-            try {
-                Connection conn = DBConnection.getConnection();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery("SELECT * FROM user_registrations");
-        %>
-
-        <table border="1" cellpadding="5">
+    <h2>User Management</h2>
+    <a href="views/admin/userRegistration.jsp">Add New User</a>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
             <tr>
-                <th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Role</th><th>Action</th>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Role</th>
+                <th>Specialization</th>
+                <th>License Number</th>
+                <th>Shift</th>
+                <th>Action</th>
             </tr>
-            <%
-                while (rs.next()) {
-            %>
+        </thead>
+        <tbody>
+        <%
+            List<ExtendedUser> users = (List<ExtendedUser>) request.getAttribute("users");
+            if (users != null && !users.isEmpty()) {
+                for (ExtendedUser user : users) {
+        %>
             <tr>
-                <td><%= rs.getInt("id") %></td>
-                <td><%= rs.getString("first_name") %> <%= rs.getString("last_name") %></td>
-                <td><%= rs.getString("email") %></td>
-                <td><%= rs.getString("phone") %></td>
-                <td><%= rs.getString("role") %></td>
+                <td><%= user.getId() %></td>
+                <td><%= user.getFirstName() %></td>
+                <td><%= user.getLastName() %></td>
+                <td><%= user.getEmail() %></td>
+                <td><%= user.getPhone() %></td>
+                <td><%= user.getAddress() %></td>
+                <td><%= user.getRole() %></td>
+                <td><%= user.getSpecialization() %></td>
+                <td><%= user.getLicenseNumber() %></td>
+                <td><%= user.getShift() %></td>
                 <td>
-                    <form method="post" action="<%= request.getContextPath() %>/deleteUser">
-
-                        <input type="hidden" name="userId" value="<%= rs.getInt("id") %>">
-                        <input type="submit" value="remove User" onclick="return confirm('Are you sure you want to delete this user?');">
+                    <form method="post" action="userManagementServlet" onsubmit="return confirm('Are you sure you want to remove this user?');">
+                        <input type="hidden" name="removeId" value="<%= user.getId() %>" />
+                        <button type="submit">Remove</button>
                     </form>
                 </td>
             </tr>
-            <%
+        <%
                 }
-                conn.close();
-            } catch (Exception e) {
-                out.println("<p style='color:red;'>Error: " + e.getMessage() + "</p>");
+            } else {
+        %>
+            <tr><td colspan="11">No users found.</td></tr>
+        <%
             }
-            %>
-        </table>
-    </div>
-    <script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>
+        %>
+        </tbody>
+    </table>
 </body>
 </html>
