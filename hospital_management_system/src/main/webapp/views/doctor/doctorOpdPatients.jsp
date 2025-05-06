@@ -28,10 +28,13 @@
 
         table {
             margin: 20px auto;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0;
             width: 90%;
             background-color: #fff;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
         th, td {
@@ -43,6 +46,10 @@
         th {
             background-color: #007BFF;
             color: white;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
         }
 
         tr {
@@ -80,7 +87,7 @@
 
 
     <!-- Main Content -->
-    <div style="flex: 1; padding: 30px;">
+    <div style="flex: 1; padding: 30px 50px 30px 50px; margin-left: 182px; background-color: #f4f6f8;">
         <h2>OPD Patient Orders</h2>
 
         <table>
