@@ -35,7 +35,6 @@ public class PatientDAO {
         return false;
     }
 
-    // Fetch a patient by ID
     public Patient getPatientById(int id) {
         String query = "SELECT * FROM patients WHERE id = ?";
         try (Connection connection = DBConnection.getConnection();

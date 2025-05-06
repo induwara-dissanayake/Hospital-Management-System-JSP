@@ -44,7 +44,7 @@ public class DoctorClinicOrderDao {
         ArrayList<ClinicOrder> orderList = new ArrayList<>();
 
         try (Connection con = DBConnection.getConnection()) {
-            String sql = "SELECT * FROM reception_patient_clinic_records WHERE clinic_id = ?";
+            String sql = "SELECT * FROM reception_patient_clinic_records WHERE clinic_id = ? AND doctor_complete=0";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, clinic_id);
             ResultSet rs = ps.executeQuery();

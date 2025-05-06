@@ -5,11 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>OPD Patient Registration Form</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionOPD.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSidebar.css">
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSideLink.css">
 </head>
 <body>
+ <div class="sidebar-wrapper">
+    <jsp:include page="receptionSidebar.jsp" />
+  </div>
   <div class="tile">
-    <form class="form-container" action="register.jsp" method="post">
+    <form class="form-container" action="${pageContext.request.contextPath}/ReceptionOPDServlet" method="post">
       <div class="form-header">OPD Patient</div>
 
       <div class="form-group">
@@ -17,10 +23,6 @@
         <input type="text" id="opdName" name="opdName" placeholder="Enter patient name" required />
       </div>
 
-      <div class="form-group">
-        <label for="opdNIC">NIC</label>
-        <input type="text" id="opdNIC" name="opdNIC" placeholder="Enter NIC" required />
-      </div>
 
       <div class="form-group">
         <label for="opdAge">Age</label>

@@ -28,4 +28,39 @@ public class ExtendedUserDAO {
             return stmt.executeUpdate() > 0;
         }
     }
+
+    // Get all users
+    public java.util.List<ExtendedUser> getAllUsers() throws SQLException, ClassNotFoundException {
+        java.util.List<ExtendedUser> users = new java.util.ArrayList<>();
+        String sql = "SELECT * FROM user_registrations";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql);
+             java.sql.ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                ExtendedUser user = new ExtendedUser();
+                user.setId(rs.getInt("id"));
+                user.setFirstName(rs.getString("first_name"));
+                user.setLastName(rs.getString("last_name"));
+                user.setEmail(rs.getString("email"));
+                user.setPhone(rs.getString("phone"));
+                user.setAddress(rs.getString("address"));
+                user.setRole(rs.getString("role"));
+                user.setSpecialization(rs.getString("specialization"));
+                user.setLicenseNumber(rs.getString("license_number"));
+                user.setShift(rs.getString("shift"));
+                users.add(user);
+            }
+        }
+        return users;
+    }
+
+    // Delete user by ID
+    public boolean deleteUserById(int id) throws SQLException, ClassNotFoundException {
+        String sql = "DELETE FROM user_registrations WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate() > 0;
+        }
+    }
 }

@@ -30,10 +30,10 @@
     <div class="dashboard-container">
         <div class="dashboard-grid">
           
-            <a href="receptionOPD.jsp" class="dashboard-card">
+            <a href="receptionPatientList.jsp" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
-                <div class="card-title">OPD</div>
-                <div class="card-desc">Manage Outpatient Department patients.</div>
+                <div class="card-title">Token Counter</div>
+                <div class="card-desc">Issueing token for OPD & clinic patients</div>
                 <span class="card-btn">Open</span>
             </a>
             <a href="receptionClinic.jsp" class="dashboard-card">
@@ -42,19 +42,19 @@
                 <div class="card-desc">Check today's clinic appointments.</div>
                 <span class="card-btn">View</span>
             </a>
-            <a href="medicalHistory.jsp" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-file-medical-alt"></i></div>
                 <div class="card-title">Medical History</div>
                 <div class="card-desc">View patient treatment records.</div>
                 <span class="card-btn">History</span>
             </a>
-            <a href="receptionPatientrecordsearch.jsp" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/ReceptionPatientSearchServlet" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-users"></i></div>
                 <div class="card-title">View Patients</div>
                 <div class="card-desc">Browse and search patient records.</div>
                 <span class="card-btn">View</span>
             </a>
-            <a href="receptionAttendance.jsp" class="dashboard-card">
+            <a href="${pageContext.request.contextPath}/ReceptionAttendanceServlet" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-user-check"></i></div>
                 <div class="card-title">Reception Attendance</div>
                 <div class="card-desc">Mark and view receptionist attendance.</div>
