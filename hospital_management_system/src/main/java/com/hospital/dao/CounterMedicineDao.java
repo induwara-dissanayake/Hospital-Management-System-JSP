@@ -16,8 +16,8 @@ public class CounterMedicineDao {
                 PreparedStatement statement = connection.prepareStatement(query)) {
 
             statement.setString(1, medicine.getMedicineName());
-            statement.setInt(2, medicine.getStockAvailability());
-            statement.setString(3, medicine.getDosage());
+            statement.setInt(2, medicine.getStockQuantity());
+            statement.setString(3, medicine.getDosageForm());
             statement.setString(4, medicine.getPrescribedFor());
 
             return statement.executeUpdate() > 0;

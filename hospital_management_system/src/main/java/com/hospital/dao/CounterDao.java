@@ -24,4 +24,30 @@ public class CounterDao {
             return false;
         }
     }
+
+    public boolean updateOPDCounterComplete(int orderId) {
+        String sql = "UPDATE reception_patient_opd_record SET counter_complete = 1 WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, orderId);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean updateClinicCounterComplete(int orderId) {
+        String sql = "UPDATE reception_patient_clinic_records SET counter_complete = 1 WHERE id = ?";
+        try (Connection conn = DBConnection.getConnection();
+                PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, orderId);
+            int rows = ps.executeUpdate();
+            return rows > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }
