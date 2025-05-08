@@ -40,7 +40,7 @@
             </div>
         </a>
 
-        <a href="${pageContext.request.contextPath}/views/counter/CounterAssignMedicine.jsp" 
+        <a href="${pageContext.request.contextPath}/CounterAssignMedicineServlet" 
            class="nav-item ${pageContext.request.servletPath.endsWith('CounterAssignMedicine.jsp') ? 'active' : ''}">
             <div class="nav-header">
                 <i class="fas fa-server nav-icon"></i>
