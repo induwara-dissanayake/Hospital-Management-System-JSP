@@ -77,8 +77,8 @@
       <tr>
         <td><%= medicine.getMedicineId() %></td>
         <td><%= medicine.getMedicineName() %></td>
-        <td><%= medicine.getStockAvailability() %></td>
-        <td><%= medicine.getDosage() %></td>
+        <td><%= medicine.getStockQuantity() %></td>
+        <td><%= medicine.getDosageForm() %></td>
         <td><%= medicine.getPrescribedFor() %></td>
       </tr>
     </tbody>

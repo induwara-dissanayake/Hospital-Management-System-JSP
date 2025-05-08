@@ -5,6 +5,20 @@
 <%@ page import="java.time.LocalDate" %>
 <%@ page import="java.time.Period" %>
 <%@ page import="java.time.format.DateTimeFormatter" %>
+<%!
+    private String getRoutineText(int routine) {
+        switch(routine) {
+            case 1: return "Morning";
+            case 2: return "Day";
+            case 3: return "Night";
+            case 4: return "Morning/Day";
+            case 5: return "Morning/Night";
+            case 6: return "Day/Night";
+            case 7: return "Morning/Day/Night";
+            default: return "Unknown";
+        }
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -318,10 +332,14 @@
                                     <tr>
                                         <td class="checkbox-cell">
                                             <input type="checkbox" name="selected_prescriptions" value="<%= opdPrescription.getPrescriptionId() %>" class="prescription-checkbox">
+                                            <input type="hidden" name="medicine_id" value="<%= prescription.getPrescription() %>">
+                                            <input type="hidden" name="qty" value="<%= opdPrescription.getQty() %>">
+                                            <input type="hidden" name="days" value="<%= opdPrescription.getDays() %>">
+                                            <input type="hidden" name="routine" value="<%= opdPrescription.getRoutine() %>">
                                         </td>
                                         <td><%= prescription.getPrescription() %></td>
                                         <td><%= prescription.getType() %></td>
-                                        <td><%= opdPrescription.getRoutine() %></td>
+                                        <td><%= getRoutineText(opdPrescription.getRoutine()) %></td>
                                         <td><%= opdPrescription.getQty() %></td>
                                         <td><%= opdPrescription.getDays() %></td>
                                     </tr>
@@ -339,10 +357,14 @@
                                     <tr>
                                         <td class="checkbox-cell">
                                             <input type="checkbox" name="selected_prescriptions" value="<%= clinicPrescription.getPrescriptionId() %>" class="prescription-checkbox">
+                                            <input type="hidden" name="medicine_id" value="<%= prescription.getPrescription() %>">
+                                            <input type="hidden" name="qty" value="<%= clinicPrescription.getQty() %>">
+                                            <input type="hidden" name="days" value="<%= clinicPrescription.getDays() %>">
+                                            <input type="hidden" name="routine" value="<%= clinicPrescription.getRoutine() %>">
                                         </td>
                                         <td><%= prescription.getPrescription() %></td>
                                         <td><%= prescription.getType() %></td>
-                                        <td><%= clinicPrescription.getRoutine() %></td>
+                                        <td><%= getRoutineText(clinicPrescription.getRoutine()) %></td>
                                         <td><%= clinicPrescription.getQty() %></td>
                                         <td><%= clinicPrescription.getDays() %></td>
                                     </tr>
