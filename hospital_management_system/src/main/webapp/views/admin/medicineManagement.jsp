@@ -17,7 +17,7 @@
     <jsp:include page="adminSidebar.jsp" />
 </div>   
 <div class="main-content">
-    <a href="addMedicine.jsp" class="btn"><i class="fas fa-plus"></i> Add New Medicine</a>
+    <a href="${pageContext.request.contextPath}/views/admin/addMedicine.jsp" class="btn"><i class="fas fa-plus"></i> Add New Medicine</a>
     <div class="table-container">
         <table class="medicine-table">
             <thead>
