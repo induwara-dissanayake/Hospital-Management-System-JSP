@@ -66,7 +66,7 @@
     </div>
 
     <div class="logout">
-        <a href="${pageContext.request.contextPath}/AdminLogoutServlet" class="nav-item">
+        <a href="${pageContext.request.contextPath}/CommonLogoutServlet" class="nav-item">
             <div class="nav-header">
                 <i class="fas fa-sign-out-alt nav-icon"></i>
                 <span class="nav-text">Logout</span>
