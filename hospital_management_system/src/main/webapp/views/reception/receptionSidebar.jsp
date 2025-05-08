@@ -31,6 +31,7 @@
         <div class="nav-text">Token Counter</div>
         <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
       </div>
+      
       <div class="submenu">
         <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" 
            class="submenu-item <%= currentPage.contains("receptionOPD.jsp") ? "active" : "" %>">
@@ -49,6 +50,7 @@
         <div class="nav-text">Patient Registration</div>
         <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem"></i>
       </div>
+      
       <div class="submenu">
         <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" 
            class="submenu-item <%= currentPage.contains("receptionOPD.jsp") ? "active" : "" %>">
