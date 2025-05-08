@@ -38,28 +38,17 @@
         </a>
         <a href="${pageContext.request.contextPath}/ReceptionListSearchServlet" 
            class="submenu-item <%= currentPage.contains("ReceptionListSearchServlet") ? "active" : "" %>">
-          Clinic
+          Patient Registration
         </a>
       </div>
     </div>
 
-    <div class="nav-item">
-      <div class="nav-header">
-        <div class="nav-icon"><i class="fas fa-hospital"></i></div>
-        <div class="nav-text">Patient Registration</div>
-        <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem"></i>
-      </div>
-      <div class="submenu">
-        <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" 
-           class="submenu-item <%= currentPage.contains("receptionOPD.jsp") ? "active" : "" %>">
-          OPD
-        </a>
-        <a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" 
-           class="submenu-item <%= currentPage.contains("receptionClinic.jsp") ? "active" : "" %>">
-          Clinic
-        </a>
-      </div>
-    </div>
+<div class="nav-item">
+  <div class="nav-header">
+    <div class="nav-icon"><i class="fas fa-user-plus"></i></div> <!-- Changed icon -->
+    <div class="nav-text">Patient Registration</div>
+  </div>
+</div>
 
     <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" 
        class="nav-item <%= currentPage.contains("ReceptionMedicalRecordSearchServlet") ? "active" : "" %>">

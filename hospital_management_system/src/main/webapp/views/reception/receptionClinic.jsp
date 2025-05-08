@@ -11,7 +11,7 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSideLink.css">
 </head>
 <body>
-
+<div class="layout-wrapper">
 <div class="sidebar-wrapper">
   <jsp:include page="receptionSidebar.jsp" />
 </div>
@@ -97,6 +97,7 @@
       <button type="submit" class="submit-btn">Register Clinic Patient</button>
 
     </form>
+  </div>
   </div>
 </section>
 </div>
