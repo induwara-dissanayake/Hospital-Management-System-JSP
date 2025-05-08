@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminDashboard.css">
@@ -20,6 +23,22 @@
         <div class="date-display" id="currentDate"></div>
     </div>
     
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Appointments</h2>
+            <div class="text-2xl font-bold">49</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Today Registered Patients</h2>
+            <div class="text-2xl font-bold">18</div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <h2 class="text-lg font-semibold mb-2">Total Patients</h2>
+            <div class="text-2xl font-bold">320</div>
+        </div>
+    </div>
+    
+
     <div class="dashboard-container">
         <div class="dashboard-grid">
             <!-- User Management Card -->

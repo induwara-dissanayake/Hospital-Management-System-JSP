@@ -32,7 +32,7 @@
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
-                <a href="userRegistration.jsp" class="submenu-item">User Registration</a>
+                <a href="${pageContext.request.contextPath}/views/admin/userRegistration.jsp" class="submenu-item">User Registration</a>
                 <a href="${pageContext.request.contextPath}/userManagementServlet" class="submenu-item">User List</a>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
-                <a href="addMedicine.jsp" class="submenu-item">Add Medicines</a>
+                <a href="${pageContext.request.contextPath}/views/admin/addMedicine.jsp" class="submenu-item">Add Medicines</a>
                 <a href="${pageContext.request.contextPath}/MedicineServlet" class="submenu-item">Medicine List</a>
             </div>
         </div>
