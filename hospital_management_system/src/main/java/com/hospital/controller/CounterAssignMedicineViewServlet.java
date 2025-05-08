@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.Arrays;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,8 +35,6 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 		String orderIdStr = request.getParameter("order_id");
 		String patientIdStr = request.getParameter("patient_id");
 
-		System.out.println("Received request - Order ID: " + orderIdStr + ", Patient ID: " + patientIdStr);
-
 		// Validate parameters
 		if (orderIdStr == null || orderIdStr.trim().isEmpty()) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Order ID is required");
@@ -47,8 +45,6 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 			int orderId = Integer.parseInt(orderIdStr);
 			int patientId = (patientIdStr != null && !patientIdStr.trim().isEmpty()) ? Integer.parseInt(patientIdStr)
 					: 0;
-
-			System.out.println("Parsed values - Order ID: " + orderId + ", Patient ID: " + patientId);
 
 			CounterAssignMedicineDao dao = new CounterAssignMedicineDao();
 
@@ -77,21 +73,16 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 				}
 			} else {
 				// Handle Clinic order
-				System.out.println("Processing Clinic order");
 				ReceptionSearchPatientDao patientDao = new ReceptionSearchPatientDao();
 				try {
 					Patient patient = patientDao.getPatientById(patientId);
 					if (patient == null) {
-						System.out.println("Patient not found for ID: " + patientId);
 						response.sendError(HttpServletResponse.SC_NOT_FOUND, "Patient not found");
 						return;
 					}
-					System.out.println("Found patient: " + patient.getPatientName());
 					request.setAttribute("patient", patient);
 
 					List<ClinicPrescription> clinicPrescriptions = dao.selectByOrderIdclinic(orderId);
-					System.out.println("Found " + (clinicPrescriptions != null ? clinicPrescriptions.size() : 0)
-							+ " clinic prescriptions");
 
 					Map<Integer, Prescription> prescriptionDetails = dao.getPrescriptionDetails(clinicPrescriptions);
 					request.setAttribute("clinicPrescriptions", clinicPrescriptions);
@@ -117,8 +108,10 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 		String orderIdStr = request.getParameter("order_id");
 		String typeStr = request.getParameter("type");
 		String[] selectedPrescriptions = request.getParameterValues("selected_prescriptions");
-
-		System.out.println("Processing POST request - Order ID: " + orderIdStr + ", Type: " + typeStr);
+		String[] medicineIds = request.getParameterValues("medicine_id");
+		String[] quantities = request.getParameterValues("qty");
+		String[] days = request.getParameterValues("days");
+		String[] routines = request.getParameterValues("routine");
 
 		// Validate parameters
 		if (orderIdStr == null || orderIdStr.trim().isEmpty() ||
@@ -139,6 +132,22 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 				// First complete the order with selected prescriptions
 				dao.completeOrder(orderId, type, selectedPrescriptions);
 
+				// Update medicine stock for each selected prescription
+				for (int i = 0; i < selectedPrescriptions.length; i++) {
+					try {
+						boolean stockUpdated = counterDao.updateMedicineStock(
+								medicineIds[i],
+								Integer.parseInt(quantities[i]),
+								Integer.parseInt(days[i]),
+								Integer.parseInt(routines[i]));
+						if (!stockUpdated) {
+							System.err.println("Failed to update stock for medicine: " + medicineIds[i]);
+						}
+					} catch (NumberFormatException e) {
+						System.err.println("Invalid number format for medicine: " + medicineIds[i]);
+					}
+				}
+
 				// Then update the counter_complete status
 				boolean updateSuccess;
 				if (type == 1) { // OPD order
@@ -148,7 +157,7 @@ public class CounterAssignMedicineViewServlet extends HttpServlet {
 				}
 
 				if (!updateSuccess) {
-					System.out.println("Warning: Failed to update counter_complete status for order ID: " + orderId);
+					System.err.println("Failed to update counter complete status for order ID: " + orderId);
 				}
 
 				// Redirect back to the main page
