@@ -41,7 +41,7 @@
                     <span class="card-btn">Manage Medicine</span>
                 </a>
 
-                <a href="CounterAssignMedicine.jsp" class="dashboard-card">
+                <a href="${pageContext.request.contextPath}/CounterAssignMedicineServlet" class="dashboard-card">
                     <div class="card-icon">
                         <i class="fas fa-server"></i>
                     </div>
@@ -50,7 +50,7 @@
                     <span class="card-btn">Assign Now</span>
                 </a>
 
-                <a href="CounterAttendance.jsp" class="dashboard-card">
+                <a href="${pageContext.request.contextPath}/CounterAttendanceServlet" class="dashboard-card">
                     <div class="card-icon">
                         <i class="fas fa-book-medical"></i>
                     </div>

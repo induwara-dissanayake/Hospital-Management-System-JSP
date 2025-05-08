@@ -26,8 +26,8 @@ body {
 .content {
     flex-grow: 1;
     padding: 2rem;
-    margin-left: 280px;
-    max-width: calc(100% - 280px);
+    margin-left: 250px;
+    max-width: calc(100% - 250px);
 }
 
 .header {
