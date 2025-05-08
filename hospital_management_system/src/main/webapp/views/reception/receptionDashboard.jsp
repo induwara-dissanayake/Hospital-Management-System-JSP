@@ -30,10 +30,10 @@
     <div class="dashboard-container">
         <div class="dashboard-grid">
           
-            <a href="receptionOPD.jsp" class="dashboard-card">
+            <a href="receptionPatientList.jsp" class="dashboard-card">
                 <div class="card-icon"><i class="fas fa-hospital-user"></i></div>
-                <div class="card-title">OPD</div>
-                <div class="card-desc">Manage Outpatient Department patients.</div>
+                <div class="card-title">Token Counter</div>
+                <div class="card-desc">Issueing token for OPD & clinic patients</div>
                 <span class="card-btn">Open</span>
             </a>
             <a href="receptionClinic.jsp" class="dashboard-card">

@@ -1,0 +1,132 @@
+@charset "UTF-8";
+
+:root {
+    --primary: #3b82f6;
+    --primary-light: #93c5fd;
+    --primary-dark: #1d4ed8;
+    --sidebar: #1e293b;
+    --sidebar-hover: #334155;
+    --text-light: #f8fafc;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 280px;
+    background-color: var(--sidebar);
+    color: var(--text-light);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    position: fixed;
+    height: 100vh;
+}
+
+.sidebar-header {
+    padding: 1.5rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    object-fit: cover;
+    border: 3px solid var(--primary-light);
+}
+
+.username {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.role {
+    font-size: 0.85rem;
+    color: var(--primary-light);
+    opacity: 0.8;
+}
+
+.nav {
+    padding: 1.5rem 0;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.nav-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    margin: 0.25rem 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.nav-item.active {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.nav-item:hover:not(.active) {
+    background-color: var(--sidebar-hover);
+}
+
+.nav-header {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1.5rem;
+    cursor: pointer;
+}
+
+.nav-icon {
+    width: 24px;
+    text-align: center;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    color: var(--primary-light);
+}
+
+.nav-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.badge {
+    margin-left: auto;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+}
+
+.logout {
+    margin-top: auto;
+    margin-bottom: 1rem;
+}
+
+/* Content wrapper for sidebar layout */
+.content-wrapper {
+    margin-left: 280px;
+    padding: 20px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content-wrapper {
+        margin-left: 0;
+    }
+}

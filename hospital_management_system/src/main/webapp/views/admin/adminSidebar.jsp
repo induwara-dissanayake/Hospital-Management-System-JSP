@@ -33,7 +33,7 @@
             </div>
             <div class="submenu">
                 <a href="userRegistration.jsp" class="submenu-item">User Registration</a>
-                <a href="userManagement.jsp" class="submenu-item">User List</a>
+                <a href="${pageContext.request.contextPath}/userManagementServlet" class="submenu-item">User List</a>
             </div>
         </div>
 
@@ -46,7 +46,7 @@
             </div>
             <div class="submenu">
                 <a href="addMedicine.jsp" class="submenu-item">Add Medicines</a>
-                <a href="medicineList.jsp" class="submenu-item">Medicine List</a>
+                <a href="${pageContext.request.contextPath}/MedicineServlet" class="submenu-item">Medicine List</a>
             </div>
         </div>
 

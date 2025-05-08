@@ -9,6 +9,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+@SuppressWarnings("serial")
 @WebServlet("/userRegister")
 public class RegisterServlet extends HttpServlet {
 

@@ -1,0 +1,88 @@
+@charset "UTF-8";
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f1f5f9;
+  }
+  
+  .tiles-container {
+    display: flex;
+    
+    padding: 20px;
+  }
+  
+  .tile {
+    width: 90%;
+    max-width: 800px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(39, 36, 36, 0.412);
+    padding: 25px;
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+    position: absolute; 
+ 	top: 50px; 
+  	left: 480px;
+  }
+  
+  .form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  .form-header {
+    font-weight: bold;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+    grid-column: span 2;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+  }
+  
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: #4f5bd5;
+    box-shadow: 0 0 0 3px rgba(79, 91, 213, 0.2);
+  }
+  
+  .submit-btn {
+    grid-column: span 2;
+    justify-self: center;
+    background-color:   #3b82f6;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .submit-btn:hover {
+    background-color:   #1d4ed8;
+  }
+  
