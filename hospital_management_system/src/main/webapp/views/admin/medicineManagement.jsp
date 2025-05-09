@@ -50,7 +50,9 @@
                         <td>${medicine.createdAt}</td>
                         <td>${medicine.updatedAt}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/MedicineServlet?action=removeMedicine&medicineId=${medicine.medicineId}" class="btn-remove">Remove</a>
+                            <a href="${pageContext.request.contextPath}/MedicineServlet?action=removeMedicine&medicineId=${medicine.medicineId}" class="btn-delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -59,5 +61,5 @@
     </div>
 </div>
 </body>
-</html>      
+</html>
 
