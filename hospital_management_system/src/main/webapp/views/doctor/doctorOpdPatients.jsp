@@ -12,69 +12,7 @@
     <title>OPD Patients</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctorSidebar.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f6f8;
-            margin: 0;
-            padding: 0;
-        }
-
-        h2 {
-            text-align: center;
-            margin-top: 20px;
-            color: #333;
-        }
-
-        table {
-            margin: 20px auto;
-            border-collapse: separate;
-            border-spacing: 0;
-            width: 90%;
-            background-color: #fff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        th {
-            background-color: #007BFF;
-            color: white;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr {
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:nth-child(even):hover {
-            background-color: #f0f0f0;
-        }
-
-        .no-patients {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-    </style>
+   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/doctoropdpatients.css">
 </head>
 <body>
 
