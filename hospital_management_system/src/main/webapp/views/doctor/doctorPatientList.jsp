@@ -29,7 +29,8 @@
             <div class="card-icon">
                 <i class="fas fa-procedures"></i>
             </div>
-            <h3>OPD</h3>
+            <h3>OPD</h3><br>
+            <h4>OPD Patient Orders</h4>
         </div>
     </a>
 
@@ -39,7 +40,8 @@
             <div class="card-icon">
                 <i class="fas fa-clinic-medical"></i>
             </div>
-            <h3>Clinic</h3>
+            <h3>Clinic</h3><br>
+            <h4>Clinic Departments</h4>
         </div>
     </a>
 </div>
