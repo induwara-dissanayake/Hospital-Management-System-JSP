@@ -11,7 +11,7 @@ body {
         display: flex;
     gap: 30px;
     position: absolute;
-    left: 50%;
+    left: 55%;
     top: 20%;
     transform: translate(-50%, -50%);
 }
@@ -20,8 +20,8 @@ body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 30px;
-    width: 400px;
+    padding: 40px;
+    width: 300px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease;
