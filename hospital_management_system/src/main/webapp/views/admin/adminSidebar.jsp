@@ -17,7 +17,7 @@
     </div>
 
     <div class="nav">
-        <a href="adminDashboard.jsp" class="nav-item active">
+        <a href="${pageContext.request.contextPath}/views/admin/adminDashboard.jsp" class="nav-item active">
             <div class="nav-header">
                 <i class="fas fa-home nav-icon"></i>
                 <span class="nav-text">Admin Panel</span>
@@ -32,7 +32,7 @@
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
-                <a href="userRegistration.jsp" class="submenu-item">User Registration</a>
+                <a href="${pageContext.request.contextPath}/views/admin/userRegistration.jsp" class="submenu-item">User Registration</a>
                 <a href="${pageContext.request.contextPath}/userManagementServlet" class="submenu-item">User List</a>
             </div>
         </div>
@@ -45,7 +45,7 @@
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
-                <a href="addMedicine.jsp" class="submenu-item">Add Medicines</a>
+                <a href="${pageContext.request.contextPath}/views/admin/addMedicine.jsp" class="submenu-item">Add Medicines</a>
                 <a href="${pageContext.request.contextPath}/MedicineServlet" class="submenu-item">Medicine List</a>
             </div>
         </div>
@@ -58,8 +58,11 @@
                 <i class="fas fa-chevron-down" style="margin-left: auto; font-size: 0.8rem;"></i>
             </div>
             <div class="submenu">
-                <a href="generateReports.jsp" class="submenu-item">Generate Reports</a>
-                <a href="viewReports.jsp" class="submenu-item">View Reports</a>
+                <a href="${pageContext.request.contextPath}/views/admin/patientReport.jsp" class="submenu-item">Patient Report</a>
+                <a href="${pageContext.request.contextPath}/views/admin/appointmentReport.jsp" class="submenu-item">Appointment Report</a>
+                <a href="${pageContext.request.contextPath}/views/admin/medicineReport.jsp" class="submenu-item">Medicine Report</a>
+                <a href="${pageContext.request.contextPath}/views/admin/doctorReport.jsp" class="submenu-item">Doctor Report</a>
+                <a href="${pageContext.request.contextPath}/views/admin/Inventory.jsp" class="submenu-item">Inventory Report</a>
             </div>
         </div>
 

@@ -40,18 +40,24 @@
             text-align: left;
         }
          .medicine-table th {
-            background-color: #93c5fd;
+            background-color: var(--primary-light, #93c5fd);
+            color: var(--text-dark, #1e293b);
+            font-weight: 600;
+            border-bottom: 2px solid var(--primary, #3b82f6);
         }
         .medicine-table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
         .medicine-table tr:hover {
-            background-color: #f1f1f1;
+            background-color: #f1f5f1;
         }
         .medicine-table td[colspan="10"] {
             text-align: center;
             font-style: italic;
             color: #666;
+        }
+        .medicine-table td {
+            color: var(--text-dark, #1e293b);
         }
         .btn- {
             display: inline-block;
@@ -73,5 +79,20 @@
         .btn-remove:hover {
             background-color: #d32f2f;
         }
-           
-        
+        .btn-delete {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 10px;
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-delete:hover {
+            background-color: #d32f2f;
+        }
+

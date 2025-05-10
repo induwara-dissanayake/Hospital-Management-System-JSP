@@ -1,112 +1,95 @@
-/* receptionClinic.css */
-
-body {
-  background-color: #f1f5f9;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.main-content {
-  margin-left: 250px; /* Assuming sidebar is 250px wide */
-  padding: 0;
-}
-
-.tiles-container {
-  display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding: 0;
-}
-
-.tile {
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 4px 8px rgba(29, 78, 216, 0.1);
-  width: calc(100% - 0px); /* Full width minus sidebar */
-  max-width: none;
-  border-left: 6px solid #1d4ed8;
-  display: flex;
-  flex-direction: column;
-  margin-left: 0;
-}
-
-.form-header {
-  margin-bottom: 2rem;
-  color:    #1d4ed8;
-  font-size: 2rem;
-  font-weight: bold;
-  border-bottom: 2px solid #93c5fd;
-  padding-bottom: 0.5rem;
-  text-align: center;
-  width: 100%;
-}
-
+/* Main form container (no sidebar impact) */
 .form-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  width: 100%;
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px auto;
+  background-color: #ffffff;
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
 }
 
-.form-group {
-  flex: 1 1 calc(50% - 1rem);
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  margin-bottom:0.5rem;
-  color: #1e293b;
+/* Form header */
+.form-header {
+  text-align: center;
+  font-size: 34px;
   font-weight: 700;
+  margin-bottom: 40px;
+  color: #222;
 }
 
-input[type="text"],
-input[type="date"],
-input[type="tel"],
-select,
-textarea {
-  width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #93c5fd;
-  border-radius: 4px;
-  font-size: 1.1rem;
-  background-color: #f1f5f9;
-  color: #1e293b;
+/* Grouped label + field layout */
+.form-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
-  outline: none;
-  border-color: #3b82f6;
+/* Label styling */
+.form-group label {
+  width: 250px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Input/select/textarea styling */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  flex: 1;
+  min-width: 300px;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+  box-sizing: border-box;
 }
 
-textarea {
+/* Textarea larger */
+.form-group textarea {
+  min-height: 100px;
   resize: vertical;
 }
-
-.submit-btn {
-  flex-basis: 100%;
-  background-color:  #4fa0a6;
-  color: white;
-  padding: 1rem 1.5rem;
-  font-size:1.1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 1.5rem;
-  transition: background-color 0.3s ease;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 350px;
+/* Make sidebar and content sit side-by-side */
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
 }
 
+/* Keep sidebar fixed width */
+.sidebar-wrapper {
+  width: 250px; /* or whatever your sidebar uses */
+  flex-shrink: 0;
+}
+
+/* Let main content fill the rest */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f6f8;
+}
+
+/* Submit button */
+.submit-btn {
+  display: block;
+  margin: 30px auto 0; /* Top margin + center horizontally */
+  padding: 12px 32px;  /* Smaller size */
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: auto;
+}
+
+
 .submit-btn:hover {
-  background-color: #3b82f6;
+  background-color: #1d4ed8;
 }

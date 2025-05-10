@@ -8,7 +8,7 @@
     <title>Medicine Management</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/medicineManagement.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminManagement.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
 </head>
@@ -18,6 +18,7 @@
 </div>   
 <div class="main-content">
     <h2>Medicine Management</h2>
+
     <a href="${pageContext.request.contextPath}/views/admin/addMedicine.jsp" class="btn"><i class="fas fa-plus"></i> Add New Medicine</a>
     <div class="table-container">
         <table class="medicine-table">
@@ -51,7 +52,9 @@
                         <td>${medicine.createdAt}</td>
                         <td>${medicine.updatedAt}</td>
                         <td>
-                            <a href="${pageContext.request.contextPath}/MedicineServlet?action=removeMedicine&medicineId=${medicine.medicineId}" class="btn-remove">Remove</a>
+                            <a href="${pageContext.request.contextPath}/MedicineServlet?action=removeMedicine&medicineId=${medicine.medicineId}" class="btn-delete" title="Delete">
+                                <i class="fas fa-trash"></i>
+                            </a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -60,5 +63,5 @@
     </div>
 </div>
 </body>
-</html>      
+</html>
 
