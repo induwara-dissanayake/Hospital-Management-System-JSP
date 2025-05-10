@@ -11,10 +11,11 @@
   <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/receptionSideLink.css">
 </head>
 <body>
+<div class="layout-wrapper">
  <div class="sidebar-wrapper">
     <jsp:include page="receptionSidebar.jsp" />
   </div>
-  <div class="tile">
+  <div class="main-content">
     <form class="form-container" action="${pageContext.request.contextPath}/ReceptionOPDServlet" method="post">
       <div class="form-header">OPD Patient</div>
 
