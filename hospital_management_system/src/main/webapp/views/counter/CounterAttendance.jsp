@@ -1,4 +1,4 @@
- <%@ page import="java.util.List" %>
+<%@ page import="java.util.List" %>
 <%@ page import="com.hospital.model.Attendance" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Date" %>
@@ -12,52 +12,111 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Counter Attendance Records</title>
-    
-    
-    <!-- Bootstrap CDN for styling -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Doctor Attendance Records</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />    
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/CounterSidebar.css">
     <style>
         body {
+            margin: 0;
+            padding: 0;
             background-color: #f8f9fa;
-            padding: 30px;
             font-family: Arial, sans-serif;
         }
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
+
+        .content-wrapper {
+            margin-left: 280px;
+            padding: 30px;
+            min-height: 100vh;
         }
-        table {
+
+        .page-title {
+            color: #1e293b;
+            font-size: 24px;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .custom-table {
+            width: 100%;
             background: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-collapse: collapse;
         }
-        th {
-            background-color:#42aaad;
+
+        .custom-table th {
+            background-color: #3b82f6;
             color: white;
+            text-align: left;
+            padding: 15px;
+            font-weight: 500;
         }
-        tr:hover {
-            background-color: #f1f1f1;
+
+        .custom-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
         }
-        .table-container {
-            display: flex;
-            justify-content: center;
+
+        .custom-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .custom-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            background-color: #10b981;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+
+        .text-muted {
+            color: #6c757d;
+        }
+
+        .icon-column {
+            width: 20px;
+            margin-right: 5px;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                margin-left: 0;
+                padding: 15px;
+            }
+            
+            .custom-table {
+                display: block;
+                overflow-x: auto;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Sidebar -->
+    <jsp:include page="CounterSidebar.jsp" />
 
-    <h2>Counter Attendance</h2>
-    <div class="table-container">
-        <table class="table table-bordered table-hover w-75">
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <h2 class="page-title">
+            <i class="fas fa-calendar-check" style="margin-right: 10px;"></i>
+            Attendance History
+        </h2>
+
+        <table class="custom-table">
             <thead>
                 <tr>
-                    <th>#</th>
-                    <th>Login Date</th>
-                    <th>Login Time</th>
-                    <th>Logout Time</th>
-                    <th>Status</th>
+                    <th><i class="fas fa-hashtag icon-column"></i>No</th>
+                    <th><i class="fas fa-calendar icon-column"></i>Date</th>
+                    <th><i class="fas fa-sign-in-alt icon-column"></i>Login Time</th>
+                    <th><i class="fas fa-sign-out-alt icon-column"></i>Logout Time</th>
+                    <th><i class="fas fa-info-circle icon-column"></i>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -72,17 +131,18 @@
                     <td><%= count++ %></td>
                     <td><%= dateFormat.format(login) %></td>
                     <td><%= timeFormat.format(login) %></td>
-                    <td>
-                        <%= logout != null ? timeFormat.format(logout) : "N/A" %>
-                    </td>
-                    <td><%= att.getStatus() %></td>
+                    <td><%= logout != null ? timeFormat.format(logout) : "<span class='text-muted'>Not logged out</span>" %></td>
+                    <td><span class="status-badge"><%= att.getStatus() %></span></td>
                 </tr>
                 <%
                         }
                     } else {
                 %>
                 <tr>
-                    <td colspan="5" class="text-center text-muted">No attendance records found.</td>
+                    <td colspan="5" style="text-align: center; color: #6c757d;">
+                        <i class="fas fa-folder-open" style="margin-right: 10px;"></i>
+                        No attendance records found
+                    </td>
                 </tr>
                 <%
                     }
