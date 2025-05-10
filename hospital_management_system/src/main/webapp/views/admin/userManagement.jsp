@@ -17,7 +17,7 @@
     <h2>User Management</h2>
     <a href="${pageContext.request.contextPath}/views/admin/userRegistration.jsp" class="btn"><i class="fas fa-plus"></i> Add New User</a>
     <div class="table-container">
-        <table class="user-table" border="1" cellpadding="8" cellspacing="0">
+        <table class="medicine-table">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -51,9 +51,9 @@
                     <td><%= user.getLicenseNumber() %></td>
                     <td><%= user.getShift() %></td>
                     <td>
-                        <form method="post" action="userManagementServlet" onsubmit="return confirm('Are you sure you want to remove this user?');">
+                        <form method="post" action="userManagementServlet" onsubmit="return confirm('Are you sure you want to remove this user?');" style="display:inline;">
                             <input type="hidden" name="removeId" value="<%= user.getId() %>" />
-                            <button type="submit" class="btn-remove">Remove</button>
+                            <button type="submit" class="btn-delete" title="Delete"><i class="fas fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
