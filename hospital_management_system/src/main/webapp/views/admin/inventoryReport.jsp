@@ -10,7 +10,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hospital Reports</title>
+  <title>Inventory Report</title>
 
   <!-- Icons and CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -137,6 +137,31 @@
       background-color: var(--primary-dark);
     }
 
+    /* Table Styling */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: var(--primary-light);
+      color: var(--text-dark);
+    }
+
+    tr:hover {
+      background-color: #f5f5f5;
+    }
+
     @media (max-width: 768px) {
       .main-content {
         margin-left: 0;
@@ -154,45 +179,13 @@
   <!-- Main Content -->
   <div class="main-content">
     <div class="header">
-      <h1 class="page-title">Hospital Reports</h1>
+      <h1 class="page-title">Inventory Report</h1>
       <div class="date-display" id="currentDate"></div>
     </div>
 
     <div class="dashboard-container">
       <div class="dashboard-grid">
-        <!-- Patient Report -->
-        <a href="patientReport.jsp" class="dashboard-card">
-          <div class="card-icon"><i class="fas fa-notes-medical"></i></div>
-          <h3 class="card-title">Patient Report</h3>
-          <p class="card-desc">View details, history, and treatments</p>
-          <span class="card-btn">View Report</span>
-        </a>
-
-        <!-- Appointment Report -->
-        <a href="appointmentReport.jsp" class="dashboard-card">
-          <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
-          <h3 class="card-title">Appointment Report</h3>
-          <p class="card-desc">View schedules by day, week, or month</p>
-          <span class="card-btn">Generate</span>
-        </a>
-
-        <!-- Doctor Performance Report -->
-        <a href="doctorPerformance.jsp" class="dashboard-card">
-          <div class="card-icon"><i class="fas fa-user-md"></i></div>
-          <h3 class="card-title">Doctor Performance</h3>
-          <p class="card-desc">Appointments, prescriptions & feedback</p>
-          <span class="card-btn">Analyze</span>
-        </a>
-
-        <!-- Login Attendance Report -->
-        <a href="loginAttendance.jsp" class="dashboard-card">
-          <div class="card-icon"><i class="fas fa-clock"></i></div>
-          <h3 class="card-title">Login Attendance</h3>
-          <p class="card-desc">Track staff logins & working hours</p>
-          <span class="card-btn">View Logs</span>
-        </a>
-
-        <!-- Inventory Report -->
+        <!-- Inventory Report Card -->
         <a href="inventoryReport.jsp" class="dashboard-card">
           <div class="card-icon"><i class="fas fa-pills"></i></div>
           <h3 class="card-title">Inventory Report</h3>
@@ -201,6 +194,36 @@
         </a>
       </div>
     </div>
+
+    <!-- Medicine Table -->
+    <table>
+      <thead>
+        <tr>
+          <th>Medicine Name</th>
+          <th>Dosage Form</th>
+          <th>Dosage Strength</th>
+          <th>Stock Quantity</th>
+          <th>Prescribed For</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% 
+          // Assuming a method fetchMedicines() that retrieves the medicines from your database
+          List<Medicine> medicines = (List<Medicine>) request.getAttribute("medicines");
+          for (Medicine medicine : medicines) {
+        %>
+        <tr>
+          <td><%= medicine.getMedicineName() %></td>
+          <td><%= medicine.getDosageForm() %></td>
+          <td><%= medicine.getDosageStrength() %></td>
+          <td><%= medicine.getStockQuantity() %></td>
+          <td><%= medicine.getPrescribedFor() %></td>
+          <td><%= medicine.getCategory() %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
   </div>
 
   <!-- Script for date -->
