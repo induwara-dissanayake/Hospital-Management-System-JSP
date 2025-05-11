@@ -22,7 +22,6 @@ body {
     min-height: 100vh;
 }
 
-/* Main Content Styles */
 .content {
     flex-grow: 1;
     padding: 2rem;
@@ -48,7 +47,6 @@ body {
     color: #64748b;
 }
 
-/* Dashboard Cards - Centered Layout */
 .dashboard-container {
     display: flex;
     justify-content: center;
@@ -56,7 +54,7 @@ body {
 
 .dashboard-grid {
     display: grid;
-    grid-template-columns:  repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
@@ -72,6 +70,12 @@ body {
     text-align: center;
     text-decoration: none;
     color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 200px;
+   
 }
 
 .dashboard-card:hover {
@@ -122,7 +126,6 @@ body {
     background-color: var(--primary-dark);
 }
 
-/* Responsive Adjustments */
 @media (max-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -144,3 +147,25 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+@media (min-width: 769px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+        display: flex; 
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    .dashboard-grid > *:nth-child(4),
+    .dashboard-grid > *:nth-child(5) {
+       flex-basis: calc(33.33% - 1rem);
+    }
+
+    .dashboard-grid > *:nth-child(1),
+    .dashboard-grid > *:nth-child(2),
+    .dashboard-grid > *:nth-child(3) {
+        flex-basis: calc(33.33% - 1rem);
+        margin-bottom: 1.5rem;
+    }
+}
+
