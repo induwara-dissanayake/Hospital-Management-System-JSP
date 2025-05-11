@@ -33,7 +33,7 @@
             </div>
             <div class="submenu">
                 <a href="${pageContext.request.contextPath}/views/admin/userRegistration.jsp" class="submenu-item">User Registration</a>
-                <a href="${pageContext.request.contextPath}/userManagementServlet" class="submenu-item">User List</a>
+                <a href="${pageContext.request.contextPath}/adminUserManagement" class="submenu-item">User List</a>
             </div>
         </div>
 

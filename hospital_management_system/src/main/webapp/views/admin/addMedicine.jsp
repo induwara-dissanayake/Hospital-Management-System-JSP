@@ -127,7 +127,7 @@
   <div class="content-wrapper">
     <div class="form-container">
       <h2>Add New Medicine</h2>
-      <form action="${pageContext.request.contextPath}/MedicineServlet" method="post">
+      <form action="${pageContext.request.contextPath}/MedicineServlet?action=addMedicine" method="post">
         <div class="input-group">
           <i class="fas fa-pills"></i>
           <input type="text" name="medicineName" placeholder="Medicine Name" required />

@@ -201,7 +201,7 @@
   <!-- Management Cards -->
   <div class="dashboard-grid">
     <!-- User Management Card -->
-    <a href="${pageContext.request.contextPath}/userManagementServlet" class="dashboard-card">
+    <a href="${pageContext.request.contextPath}/adminUserManagement" class="dashboard-card">
       <div class="card-icon"><i class="fas fa-users"></i></div>
       <h3 class="card-title">User Management</h3>
       <p class="card-desc">Current List</p>
