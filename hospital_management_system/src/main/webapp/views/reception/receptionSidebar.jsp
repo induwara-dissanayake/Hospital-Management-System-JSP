@@ -35,11 +35,11 @@
       <div class="submenu">
         <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" 
            class="submenu-item <%= currentPage.contains("receptionOPD.jsp") ? "active" : "" %>">
-          OPD
+          OPD Patients
         </a>
         <a href="${pageContext.request.contextPath}/ReceptionListSearchServlet" 
            class="submenu-item <%= currentPage.contains("ReceptionListSearchServlet") ? "active" : "" %>">
-          Patient Registration
+          Clinic Patients
         </a>
       </div>
     </div>

@@ -225,7 +225,7 @@
 
     <div class="content-wrapper">
       <section id="patient-records-search" aria-label="Patient Records Search">
-        <h2><i class="fas fa-search"></i>Search for Token Reserving</h2>
+        <h2><i class="fas fa-search"></i>Clinic Patient Token Reserving</h2>
         <form class="form-container" onsubmit="return false;">
           <div class="form-row">
             <input
