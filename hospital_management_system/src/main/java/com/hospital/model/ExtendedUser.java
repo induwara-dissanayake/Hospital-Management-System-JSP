@@ -12,6 +12,24 @@ public class ExtendedUser {
     private String licenseNumber;
     private String shift;
 
+    // No-argument constructor
+    public ExtendedUser() {}
+
+    // Constructor without ID (useful for registration)
+    public ExtendedUser(String firstName, String lastName, String email, String phone,
+                        String address, String role, String specialization,
+                        String licenseNumber, String shift) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.address = address;
+        this.role = role;
+        this.specialization = specialization;
+        this.licenseNumber = licenseNumber;
+        this.shift = shift;
+    }
+
     // Getters and Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
@@ -42,4 +60,17 @@ public class ExtendedUser {
 
     public String getShift() { return shift; }
     public void setShift(String shift) { this.shift = shift; }
+
+    // toString method for debugging
+    @Override
+    public String toString() {
+        return "ExtendedUser{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
 }

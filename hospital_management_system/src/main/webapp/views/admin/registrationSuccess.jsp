@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="3;URL=adminDashboard.jsp" />
+    <meta http-equiv="refresh" content="3;URL=${pageContext.request.contextPath}/views/admin/adminDashboard.jsp" />
     <title>Registration Successful</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/admin.css">
     <style>
