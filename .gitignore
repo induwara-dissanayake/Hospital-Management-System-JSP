@@ -5,3 +5,4 @@ hospital_management_system/.classpath
 hospital_management_system/.settings/org.eclipse.wst.common.component
 hospital_management_system/.classpath
 hospital_management_system/.settings/org.eclipse.wst.common.component
+hospital_management_system/src/main/webapp/resources/css/receptionDashboard.css
