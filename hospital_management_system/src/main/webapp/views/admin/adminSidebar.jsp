@@ -11,7 +11,7 @@
 
 <div class="sidebar">
     <div class="sidebar-header">
-        <img src="https://cdn-icons-png.flaticon.com/512/4567/4567890.png" alt="Admin Profile" class="profile-pic">
+        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="Admin Profile" class="profile-pic">
         <div class="username"><%= loggedInUser %></div>
         <div class="role">Admin</div>
     </div>
