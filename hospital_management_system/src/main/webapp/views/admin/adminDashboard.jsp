@@ -8,23 +8,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admin Dashboard</title>
 
-  <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css">
+  <!-- Icons & Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminSidebar.css"/>
+  <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/adminSideLink.css"/>
+
   <style>
     :root {
       --primary: #3b82f6;
       --primary-light: #93c5fd;
       --primary-dark: #1d4ed8;
-      --bg: #f1f5f9;
-      --text-dark: #1e293b;
       --card-bg: #ffffff;
-      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --text-dark: #1e293b;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --radius: 12px;
     }
 
@@ -36,7 +36,7 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--bg);
+      background-color: #f1f5f9;
       color: var(--text-dark);
       min-height: 100vh;
     }
@@ -56,8 +56,7 @@
     .page-title {
       font-size: 1.8rem;
       font-weight: 700;
-      margin-left: 10rem;
-      padding-top: 3rem;
+      color: var(--text-dark);
     }
 
     .date-display {
@@ -67,13 +66,9 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.5rem;
       margin-bottom: 2rem;
-      margin-top: 3rem;
-      width: 100%;
-      max-width: 1000px;
-      margin-left: 10rem;
     }
 
     .stat-card {
@@ -81,11 +76,13 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 1.5rem;
+      text-align: center;
     }
 
     .stat-title {
       font-size: 1rem;
       font-weight: 600;
+      color: var(--text-dark);
       margin-bottom: 0.5rem;
     }
 
@@ -99,11 +96,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      width: 100%;
-      max-width: 1000px;
-      margin-left: 10rem;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
     }
 
     .dashboard-card {
@@ -115,11 +107,13 @@
       text-decoration: none;
       color: inherit;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
     }
 
     .dashboard-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                  0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
 
     .card-icon {
@@ -138,13 +132,13 @@
     .card-title {
       font-size: 1.1rem;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
     }
 
     .card-desc {
       font-size: 0.9rem;
       color: #64748b;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
     .card-btn {
@@ -156,6 +150,7 @@
       border-radius: 6px;
       font-weight: 500;
       text-decoration: none;
+      transition: background-color 0.2s;
     }
 
     .card-btn:hover {
@@ -165,98 +160,120 @@
     @media (max-width: 768px) {
       .main-content {
         margin-left: 0;
-        padding: 1rem;
+      }
+      .dashboard-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- Sidebar Include -->
-<jsp:include page="adminSidebar.jsp" />
+  <jsp:include page="adminSidebar.jsp" />
 
-<!-- Main Content -->
-<div class="main-content">
-  <div class="header">
-    <h1 class="page-title">Admin Overview</h1>
-    <div class="date-display" id="currentDate"></div>
+  <div class="main-content">
+    <div class="header">
+      <h1 class="page-title">Admin Overview</h1>
+      <div class="date-display" id="currentDate"></div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h2 class="stat-title">Appointments</h2>
+        <div class="stat-value" data-target="49">0</div>
+      </div>
+      <div class="stat-card">
+        <h2 class="stat-title">Today Registered Patients</h2>
+        <div class="stat-value" data-target="18">0</div>
+      </div>
+      <div class="stat-card">
+        <h2 class="stat-title">Total Patients</h2>
+        <div class="stat-value" data-target="320">0</div>
+      </div>
+    </div>
+
+    <!-- Management Cards -->
+    <div class="dashboard-grid">
+      <a href="${pageContext.request.contextPath}/adminUserManagement" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-users"></i></div>
+        <h3 class="card-title">User Management</h3>
+        <p class="card-desc">Current List</p>
+        <span class="card-btn">View Details</span>
+      </a>
+
+      <a href="${pageContext.request.contextPath}/MedicineServlet" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-pills"></i></div>
+        <h3 class="card-title">Medicine Management</h3>
+        <p class="card-desc">Manage Medicines</p>
+        <span class="card-btn">View Details</span>
+      </a>
+
+      <a href="patientReport.jsp" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-notes-medical"></i></div>
+        <h3 class="card-title">Patient Report</h3>
+        <p class="card-desc">View details, history, and treatments</p>
+        <span class="card-btn">View Report</span>
+      </a>
+
+      <a href="appointmentReport.jsp" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3 class="card-title">Appointment Report</h3>
+        <p class="card-desc">Schedules by day/week/month</p>
+        <span class="card-btn">Generate</span>
+      </a>
+
+      <a href="inventoryReport.jsp" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-pills"></i></div>
+        <h3 class="card-title">Inventory Report</h3>
+        <p class="card-desc">Stock, expiry & reorder alerts</p>
+        <span class="card-btn">View Inventory</span>
+      </a>
+
+      <a href="doctorPerformance.jsp" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-user-md"></i></div>
+        <h3 class="card-title">Doctor Performance</h3>
+        <p class="card-desc">Appointments, feedback & more</p>
+        <span class="card-btn">Analyze</span>
+      </a>
+
+      <a href="loginAttendance.jsp" class="dashboard-card">
+        <div class="card-icon"><i class="fas fa-clock"></i></div>
+        <h3 class="card-title">Login Attendance</h3>
+        <p class="card-desc">Staff logins & working hours</p>
+        <span class="card-btn">View Logs</span>
+      </a>
+    </div>
   </div>
 
-  <!-- Quick Stats -->
-  <div class="stats-grid">
-    <div class="stat-card">
-      <h2 class="stat-title">Appointments</h2>
-      <div class="stat-value" data-target="49">0</div>
-    </div>
-    <div class="stat-card">
-      <h2 class="stat-title">Today Registered Patients</h2>
-      <div class="stat-value" data-target="18">0</div>
-    </div>
-    <div class="stat-card">
-      <h2 class="stat-title">Total Patients</h2>
-      <div class="stat-value" data-target="320">0</div>
-    </div>
-  </div>
+  <!-- Scripts -->
+  <script>
+    document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
 
-  <!-- Management Cards -->
-  <div class="dashboard-grid">
-    <!-- User Management Card -->
-    <a href="${pageContext.request.contextPath}/adminUserManagement" class="dashboard-card">
-      <div class="card-icon"><i class="fas fa-users"></i></div>
-      <h3 class="card-title">User Management</h3>
-      <p class="card-desc">Current List</p>
-      <span class="card-btn">View Details</span>
-    </a>
+    const counters = document.querySelectorAll('.stat-value');
+    const speed = 100;
 
-    <!-- Medicine Management Card -->
-    <a href="${pageContext.request.contextPath}/MedicineServlet" class="dashboard-card">
-      <div class="card-icon"><i class="fas fa-pills"></i></div>
-      <h3 class="card-title">Medicine Management</h3>
-      <p class="card-desc">Manage Medicines</p>
-      <span class="card-btn">View Details</span>
-    </a>
+    counters.forEach(counter => {
+      const animate = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = Math.ceil(target / speed);
 
-    <!-- Reports Management Card -->
-    <a href="${pageContext.request.contextPath}/views/admin/reportsManagement.jsp" class="dashboard-card">
-      <div class="card-icon"><i class="fas fa-file-alt"></i></div>
-      <h3 class="card-title">Reports Management</h3>
-      <p class="card-desc">Generate Reports</p>
-      <span class="card-btn">View Reports</span>
-    </a>
-  </div>
-</div>
-
-<!-- Script for Date -->
-<script>
-  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-US', {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  });
-  
-  const counters = document.querySelectorAll('.stat-value');
-  const speed = 100; // lower is faster
-
-  counters.forEach(counter => {
-    const animate = () => {
-      const target = +counter.getAttribute('data-target');
-      const count = +counter.innerText;
-
-      const increment = Math.ceil(target / speed);
-
-      if (count < target) {
-        counter.innerText = count + increment;
-        setTimeout(animate, 15);
-      } else {
-        counter.innerText = target;
-      }
-    };
-
-    animate();
-  });
-
-</script>
+        if (count < target) {
+          counter.innerText = count + increment;
+          setTimeout(animate, 15);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      animate();
+    });
+  </script>
 
 </body>
 </html>
