@@ -150,12 +150,14 @@
     th, td {
       padding: 12px;
       text-align: left;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 2px solid #ddd;
     }
 
     th {
-      background-color: var(--primary-light);
-      color: var(--text-dark);
+      background-color: var(--primary-light, #93c5fd);
+      color: var(--text-dark, #1e293b);
+      font-weight: 600;
+      border-bottom: 2px solid var(--primary, #3b82f6);
     }
 
     tr:hover {
