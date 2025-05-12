@@ -42,7 +42,6 @@ public class MedicineServlet extends HttpServlet {
                 List<Medicine> medicines = medicineDAO.getAllMedicines();
                 request.setAttribute("medicines", medicines);
                 // Debugging: Check if medicines list is populated
-                System.out.println("Number of medicines fetched: " + medicines.size());
                 request.getRequestDispatcher("/views/admin/medicineManagement.jsp").forward(request, response);
             } catch (SQLException | ClassNotFoundException e) {
                 throw new ServletException(e);
