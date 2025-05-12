@@ -1,99 +1,242 @@
+    /* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #e6f0f2;
-  font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(32, 104, 135));
+    background-attachment: fixed;
 }
 
-.main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+/* Main container */
+.welcome-screen {
+    overflow: hidden;
+    padding: 3rem;
 }
 
-h1 {
-  margin-bottom:150px;
-  font-size: 40px;
-  color: #000;
-  text-align: center;
-  color: #1e3d59;
+.main-container {
+    display: flex;
+    gap: 1rem;
 }
 
-.container {
-  display: grid;
-  justify-content:center;
-  grid-template-columns: repeat(2, 200px);
-  gap: 100px;
-  grid-row-gap:20px;
-
+/* Welcome section */
+.welcome-section {
+    width: 50%;
 }
 
-.card {
-  height:100px;
-  width: 200px;
-  background-color: #ffffff;
-  border: 4px solid #4fa0a6;
-  border-radius: 10px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  color: #1e3d59;
-  
-  
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    color: black;
 }
 
-.title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #FF0000;
-  margin-bottom: 10px;
+.welcome-header {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    margin-left: 3rem;
 }
 
-.login-btn {
-font-size: 10px; 
-letter-spacing: 2px; 
-text-transform: uppercase; 
-display: inline-block; 
-text-align: center; 
-font-weight: bold; 
-padding: 0.7em 2em; 
-border: 1px solid #4fa0a6; 
-border-radius: 3px; 
-position: relative; 
-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.6), 
-1px 1px rgba(0, 0, 0, 0.1); 
-color:#4fa0a6; 
-text-decoration: none; 
-transition: 0.3s ease all; 
-z-index: 1;
+.welcome-title {
+    align-self: flex-start;
+    font-size: 4rem;
+    line-height: 1;
 }
-.login-btn:before { 
-transition: 0.5s all ease; 
-position: absolute; 
-top: 0; 
-left: 50%; 
-right: 50%; 
-bottom: 0; 
-opacity: 0; 
-content:""; 
-background-color:#4fa0a6; 
-z-index: -1; 
 
-} 
-
-.login-btn:hover, login-btn:focus {
-color: white; 
-} 
-
-.login-btn:hover:before, login-btn:focus:before {
-transition: 0.5s all ease; 
-left: 0; 
-right: 0; 
-opacity: 1;
-} 
-
-login-btn:active { 
-transform: scale(0.9); 
+.hospital-name {
+    margin-top: 2rem;
+    font-size: 2.5rem;
+    line-height: 1;
 }
+
+.welcome-image {
+    object-fit: contain;
+    margin-top: 20px;
+    width: 100%;
+    aspect-ratio: 0.99;
+    max-width: 600px;
+}
+
+.navigation-section {
+    margin-left: 1rem;
+    width: 50%;
+}
+
+.navigation-container {
+    margin-top: 8rem;
+    width: 100%;
+}
+
+.navigation-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.navigation-row-bottom {
+    margin-top: 1.5rem;
+}
+
+.navigation-column {
+    width: 50%;
+}
+
+.navigation-column-right {
+    margin-left: 1rem;
+}
+
+.navigation-card {
+    height: 200px;
+    width: 100%;
+    max-width: 250px;
+    background-color: #ffffff;
+    border: 4px solid #0e1415;
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    color: #1e3d59;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none; 
+}
+
+.navigation-card:hover {
+    background-color: #f0f8ff;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+@media (max-width: 1024px) {
+    .welcome-screen {
+        padding: 2rem;
+    }
+    
+    .welcome-title {
+        font-size: 3rem;
+    }
+    
+    .hospital-name {
+        font-size: 2rem;
+    }
+    
+    .navigation-card {
+        height: 180px;
+        max-width: 220px;
+        padding: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-screen {
+        padding: 1.5rem;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .welcome-section {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .welcome-header {
+        margin-left: 0;
+    }
+
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+
+    .hospital-name {
+        margin-top: 1.5rem;
+        font-size: 1.75rem;
+    }
+
+    .navigation-section {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .navigation-container {
+        margin-top: 2rem;
+    }
+
+    .navigation-card {
+        height: 150px;
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    .navigation-row-bottom {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-title {
+        font-size: 2rem;
+    }
+    
+    .hospital-name {
+        font-size: 1.5rem;
+    }
+    
+    .navigation-card {
+        height: 120px;
+        padding: 15px;
+    }
+}
+
+        .datetime-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.374);
+            padding: 8px 12px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+        }
+        
+
+        .acknowledgment {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 12px;
+            color: #000000;
+            text-align: left;
+        }
+        
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: rgb(68, 60, 60);
+        }
+        .doctor-icon {
+            color: #4CAF50;
+        }
+        .reception-icon {
+            color: #2196F3;
+        }
+        .medical-icon {
+            color: #FF9800; 
+        }
+        .admin-icon {
+            color: #9C27B0;
+        }
+        .bold-text {
+        font-weight: bolder;
+         font-size: 1.2em; 
+        }
