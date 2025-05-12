@@ -51,7 +51,7 @@
                     <td><%= user.getLicenseNumber() %></td>
                     <td><%= user.getShift() %></td>
                     <td>
-                        <form method="post" action="userManagementServlet" onsubmit="return confirm('Are you sure you want to remove this user?');" style="display:inline;">
+                        <form method="post" action="${pageContext.request.contextPath}/adminUserManagement" onsubmit="return confirm('Are you sure you want to remove this user?');" style="display:inline;">
                             <input type="hidden" name="removeId" value="<%= user.getId() %>" />
                             <button type="submit" class="btn-delete" title="Delete"><i class="fas fa-trash"></i></button>
                         </form>

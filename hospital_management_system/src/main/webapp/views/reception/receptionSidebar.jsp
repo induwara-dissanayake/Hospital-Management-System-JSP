@@ -35,22 +35,23 @@
       <div class="submenu">
         <a href="${pageContext.request.contextPath}/views/reception/receptionOPD.jsp" 
            class="submenu-item <%= currentPage.contains("receptionOPD.jsp") ? "active" : "" %>">
-          OPD
+          OPD Patients
         </a>
         <a href="${pageContext.request.contextPath}/ReceptionListSearchServlet" 
            class="submenu-item <%= currentPage.contains("ReceptionListSearchServlet") ? "active" : "" %>">
-          Patient Registration
+          Clinic Patients
         </a>
       </div>
     </div>
 
 
-<div class="nav-item">
-  <div class="nav-header">
-    <div class="nav-icon"><i class="fas fa-user-plus"></i></div> <!-- Changed icon -->
-    <div class="nav-text">Patient Registration</div>
-  </div>
-</div>
+<a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" 
+       class="nav-item <%= currentPage.contains("receptionClinic.jsp") ? "active" : "" %>">
+      <div class="nav-header">
+        <i class="fas fa-users nav-icon"></i>
+        <span class="nav-text">Patient Registration</span>
+      </div>
+    </a>
 
 
     <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" 

@@ -14,7 +14,7 @@ import java.util.List;
 
 @SuppressWarnings("serial")
 @WebServlet("/MedicineServlet")
-public class MedicineServlet extends HttpServlet {
+public class AdminMedicineServlet extends HttpServlet {
 
     private MedicineDAO medicineDAO;
 

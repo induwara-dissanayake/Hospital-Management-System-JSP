@@ -18,7 +18,7 @@
       background: rgba(255, 255, 255, 0.95);
       padding: 40px 30px;
       border-radius: 20px;
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
       width: 400px;
       margin: 60px auto;
       backdrop-filter: blur(4px);
@@ -49,7 +49,7 @@
       position: relative;
       margin-bottom: 25px;
     }
-     .input-group i {
+    .input-group i {
       position: absolute;
       left: 15px;
       top: 50%;
@@ -64,7 +64,7 @@
       border-radius: 12px;
       font-size: 16px;
       background: #f1f5f9;
-      transition: all 0.3s ease;
+      transition: 0.3s;
       box-sizing: border-box;
     }
     input:focus, select:focus {
@@ -86,7 +86,7 @@
       font-size: 16px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: 0.3s;
       margin-top: 10px;
       display: flex;
       align-items: center;
@@ -101,7 +101,7 @@
     button:active {
       transform: translateY(0);
     }
-     .content-wrapper {
+    .content-wrapper {
       margin-left: 280px;
       padding: 40px 0;
       min-height: 100vh;
@@ -123,104 +123,105 @@
   </style>
 </head>
 <body>
-  <%@ include file="adminSidebar.jsp" %>
-  <div class="content-wrapper">
-    <div class="form-container">
-      <h2>User Registration</h2>
-      <form action="${pageContext.request.contextPath}/userRegister" method="post">
-        <!-- First Name -->
+<%@ include file="adminSidebar.jsp" %>
+<div class="content-wrapper">
+  <div class="form-container">
+    <h2>User Registration</h2>
+    <form action="${pageContext.request.contextPath}/adminUserManagement" method="post">
+      <!-- First Name -->
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="firstName" placeholder="First Name" required />
+      </div>
+
+      <!-- Last Name -->
+      <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="lastName" placeholder="Last Name" required />
+      </div>
+
+      <!-- Email -->
+      <div class="input-group">
+        <i class="fas fa-envelope"></i>
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+
+      <!-- Phone -->
+      <div class="input-group">
+        <i class="fas fa-phone"></i>
+        <input type="tel" name="phone" placeholder="Phone Number" required />
+      </div>
+
+      <!-- Role -->
+      <div class="input-group">
+        <i class="fas fa-user-tag"></i>
+        <select id="role" name="role" required>
+          <option value="" disabled selected>Select Role</option>
+          <option value="doctor">Doctor</option>
+          <option value="pharmacist">Pharmacist</option>
+          <option value="receptionist">Receptionist</option>
+        </select>
+      </div>
+
+      <!-- Address -->
+      <div class="input-group">
+        <i class="fas fa-map-marker-alt"></i>
+        <input type="text" name="address" placeholder="Address" required />
+      </div>
+
+      <!-- Doctor Field -->
+      <div id="doctorFields" style="display:none;">
         <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="firstName" placeholder="First Name" required />
+          <i class="fas fa-stethoscope"></i>
+          <input type="text" name="specialization" placeholder="Specialization" />
         </div>
+      </div>
 
-        <!-- Last Name -->
+      <!-- Pharmacist Field -->
+      <div id="pharmacistFields" style="display:none;">
         <div class="input-group">
-          <i class="fas fa-user"></i>
-          <input type="text" name="lastName" placeholder="Last Name" required />
+          <i class="fas fa-certificate"></i>
+          <input type="text" name="license" placeholder="License" />
         </div>
+      </div>
 
-        <!-- Email -->
+      <!-- Receptionist Field -->
+      <div id="receptionistFields" style="display:none;">
         <div class="input-group">
-          <i class="fas fa-envelope"></i>
-          <input type="email" name="email" placeholder="Email" required />
+          <i class="fas fa-clock"></i>
+          <input type="text" name="shift" placeholder="Shift" />
         </div>
+      </div>
 
-        <!-- Phone Number -->
-        <div class="input-group">
-          <i class="fas fa-phone"></i>
-          <input type="tel" name="phone" placeholder="Phone Number" required />
-        </div>
-
-             <!-- Role -->
-        <div class="input-group">
-          <i class="fas fa-user-tag"></i>
-          <select id="role" name="role" required>
-            <option value="" disabled selected>Select Role</option>
-            <option value="doctor">Doctor</option>
-            <option value="pharmacist">Pharmacist</option>
-            <option value="receptionist">Receptionist</option>
-          </select>
-        </div>
-
-        <!-- Address -->
-        <div class="input-group">
-          <i class="fas fa-map-marker-alt"></i>
-          <input type="text" name="address" placeholder="Address" required />
-        </div>
-
-        <!-- Role-specific fields -->
-        <div id="doctorFields" style="display:none;">
-          <div class="input-group">
-            <i class="fas fa-stethoscope"></i>
-            <input type="text" name="specialization" placeholder="Specialization" required />
-          </div>
-        </div>
-
-          <div id="pharmacistFields" style="display:none;">
-          <div class="input-group">
-            <i class="fas fa-certificate"></i>
-            <input type="text" name="license" placeholder="License" required />
-          </div>
-        </div>
-
-        <div id="receptionistFields" style="display:none;">
-          <div class="input-group">
-            <i class="fas fa-clock"></i>
-            <input type="text" name="shift" placeholder="Shift" required />
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <button type="submit">
-          <i class="fas fa-user-plus"></i>
-          Register
-        </button>
-      </form>
-    </div>
+      <!-- Submit -->
+      <button type="submit">
+        <i class="fas fa-user-plus"></i>
+        Register
+      </button>
+    </form>
   </div>
-  
-  
-  <script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>
-  <script>
-    const role = document.getElementById("role");
-    const doctorFields = document.getElementById("doctorFields");
-    const pharmacistFields = document.getElementById("pharmacistFields");
-    const receptionistFields = document.getElementById("receptionistFields");
+</div>
 
-    role.addEventListener("change", function () {
-      doctorFields.style.display = "none";
-      pharmacistFields.style.display = "none";
-      receptionistFields.style.display = "none";
+<script src="${pageContext.request.contextPath}/resources/javascript/admin.js"></script>
+<script>
+  const role = document.getElementById("role");
+  const doctorFields = document.getElementById("doctorFields");
+  const pharmacistFields = document.getElementById("pharmacistFields");
+  const receptionistFields = document.getElementById("receptionistFields");
 
-      if (this.value === "doctor") {
-        doctorFields.style.display = "block";
-      } else if (this.value === "pharmacist") {
-        pharmacistFields.style.display = "block";
-      } else if (this.value === "receptionist") {
-        receptionistFields.style.display = "block";
-      }
-    });
-  </script>
+  role.addEventListener("change", function () {
+    doctorFields.style.display = "none";
+    pharmacistFields.style.display = "none";
+    receptionistFields.style.display = "none";
+
+    if (this.value === "doctor") {
+      doctorFields.style.display = "block";
+    } else if (this.value === "pharmacist") {
+      pharmacistFields.style.display = "block";
+    } else if (this.value === "receptionist") {
+      receptionistFields.style.display = "block";
+    }
+  });
+</script>
 </body>
-</html>     
+</html>
