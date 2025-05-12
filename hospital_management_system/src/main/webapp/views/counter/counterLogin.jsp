@@ -13,6 +13,7 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(32, 104, 135));
     }
   </style>
 </head>
