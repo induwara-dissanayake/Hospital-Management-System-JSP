@@ -52,7 +52,7 @@
 
         .header h1 {
             font-size: 24px;
-            color: var(--primary-dark);
+            color: #1e293b;
         }
 
         .search-bar {
@@ -132,7 +132,7 @@
             top: 20px;
             right: 20px;
             padding: 10px 20px;
-            background-color: var(--light-red); /* Light red color */
+            background-color: #f00d0d;
             color: white;
             border: none;
             border-radius: var(--radius);
