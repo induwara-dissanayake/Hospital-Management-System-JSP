@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.hospital.model.PrintPatient" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
             --text-dark: #1e293b;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --radius: 12px;
-            --light-red: #fca5a5; /* Light red color */
+            --light-red: #fca5a5;
         }
 
         * {
@@ -41,7 +43,7 @@
             border-radius: var(--radius);
             padding: 20px;
             margin: 20px;
-            margin-left: 280px; /* Left margin */
+            margin-left: 280px;
             position: relative;
         }
 
@@ -141,7 +143,7 @@
         }
 
         .print-btn:hover {
-            background-color: #e24242; /* Darker light red on hover */
+            background-color: #e24242;
         }
     </style>
 </head>
@@ -151,13 +153,14 @@
 
         <div class="header">
             <h1>Patient Report</h1>
-            <p>Report Date: <%= new java.util.Date() %></p> <!-- Dynamic date -->
+            <p>Report Date: <%= new java.util.Date() %></p>
         </div>
 
-        <!-- Search Bar Section -->
+        <!-- Search Bar -->
         <div class="search-bar">
-            <form action="searchPatient" method="get">
-                <input type="text" name="searchTerm" placeholder="Enter NIC, Patient ID, or Name" value="<%= request.getParameter("searchTerm") != null ? request.getParameter("searchTerm") : "" %>">
+            <form action="${pageContext.request.contextPath}/searchPatient" method="get">
+                <input type="text" name="searchTerm" placeholder="Enter NIC, Patient ID, or Name"
+                       value="<%= request.getParameter("searchTerm") != null ? request.getParameter("searchTerm") : "" %>">
                 <select name="searchBy">
                     <option value="nic" <%= "nic".equals(request.getParameter("searchBy")) ? "selected" : "" %>>Search by NIC</option>
                     <option value="id" <%= "id".equals(request.getParameter("searchBy")) ? "selected" : "" %>>Search by Patient ID</option>
@@ -167,39 +170,56 @@
             </form>
         </div>
 
-        <div class="patient-info">
-            <div>
-                <h3>Patient Name</h3>
-                <p><%= patientName %></p> <!-- Dynamically display patient name -->
+        <% 
+            List<PrintPatient> patients = (List<PrintPatient>) request.getAttribute("patients");
+            if (patients != null && !patients.isEmpty()) {
+                for (PrintPatient p : patients) {
+        %>
+            <div class="patient-info">
+                <div>
+                    <h3>Patient ID</h3>
+                    <p><%= p.getId() %></p>
+                </div>
+                <div>
+                    <h3>NIC</h3>
+                    <p><%= p.getNic() %></p>
+                </div>
+                <div>
+                    <h3>Name</h3>
+                    <p><%= p.getName() %></p>
+                </div>
+                <div>
+                    <h3>Gender</h3>
+                    <p><%= p.getGender() %></p>
+                </div>
+                <div>
+                    <h3>Age</h3>
+                    <p><%= p.getAge() %></p>
+                </div>
+                <div>
+                    <h3>Contact</h3>
+                    <p><%= p.getContact() %></p>
+                </div>
+                <div>
+                    <h3>Address</h3>
+                    <p><%= p.getAddress() %></p>
+                </div>
+                <div>
+                    <h3>Registered Date</h3>
+                    <p><%= p.getCreatedAt() %></p>
+                </div>
             </div>
-            <div>
-                <h3>Patient ID</h3>
-                <p><%= patientId %></p> <!-- Dynamically display patient ID -->
-            </div>
-            <div>
-                <h3>Age</h3>
-                <p><%= patientAge %> Years</p> <!-- Dynamically display patient age -->
-            </div>
-            <div>
-                <h3>Gender</h3>
-                <p><%= patientGender %></p> <!-- Dynamically display patient gender -->
-            </div>
-        </div>
 
-        <div class="report-details">
-            <h3>Diagnosis</h3>
-            <p><%= diagnosis %></p> <!-- Dynamically display diagnosis -->
-
-            <h3>Prescribed Medications</h3>
-            <ul>
-                <% for (String medication : medications) { %>
-                    <li><%= medication %></li>
-                <% } %> <!-- Dynamically display prescribed medications -->
-            </ul>
-
-            <h3>Recommended Lifestyle Changes</h3>
-            <p><%= lifestyleChanges %></p> <!-- Dynamically display lifestyle changes -->
-        </div>
+            <div class="report-details">
+                <h3>Diagnosis</h3>
+                <p><%= p.getDiagnosis() %></p>
+            </div>
+        <% 
+                }
+            } else if (request.getParameter("searchTerm") != null) {
+        %>
+            <p style="text-align:center; color: red; font-weight: bold;">No patient records found for your search.</p>
+        <% } %>
 
         <div class="footer">
             <p>Report Generated by: Hospital Management System</p>
