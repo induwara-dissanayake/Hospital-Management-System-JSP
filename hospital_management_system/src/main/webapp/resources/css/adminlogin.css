@@ -1,6 +1,6 @@
 body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f0f8ff;
+        background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(32, 104, 135));
         margin: 0;
         padding: 0;
         display: flex;
