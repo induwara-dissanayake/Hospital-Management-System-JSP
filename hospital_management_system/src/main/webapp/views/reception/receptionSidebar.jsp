@@ -45,12 +45,13 @@
     </div>
 
 
-<div class="nav-item">
-  <div class="nav-header">
-    <div class="nav-icon"><i class="fas fa-user-plus"></i></div> <!-- Changed icon -->
-    <div class="nav-text">Patient Registration</div>
-  </div>
-</div>
+<a href="${pageContext.request.contextPath}/views/reception/receptionClinic.jsp" 
+       class="nav-item <%= currentPage.contains("receptionClinic.jsp") ? "active" : "" %>">
+      <div class="nav-header">
+        <i class="fas fa-users nav-icon"></i>
+        <span class="nav-text">Patient Registration</span>
+      </div>
+    </a>
 
 
     <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=2" 

@@ -19,7 +19,7 @@
 
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f1f5f9;
       margin: 0;
       padding: 0;
@@ -64,15 +64,17 @@
 
     th, td {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid #e2e8f0;
+      border-bottom: 2px solid #e2e8f0;
       text-align: left;
     }
 
     th {
-      background-color: #f8fafc;
-      color: #334155;
+      background-color: var(--primary-light, #93c5fd);
+      color: var(--text-dark, #1e293b);
+      font-weight: 600;
+      border-bottom: 2px solid var(--primary, #3b82f6);
     }
-
+    
     tr:hover {
       background-color: #f1f5f9;
     }
