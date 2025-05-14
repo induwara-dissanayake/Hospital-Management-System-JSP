@@ -223,11 +223,11 @@
         <span class="card-btn">Generate</span>
       </a>
 
-      <a href="inventoryReport.jsp" class="dashboard-card">
+      <a href="${pageContext.request.contextPath}/admin/lowStockReport" class="dashboard-card">
         <div class="card-icon"><i class="fas fa-pills"></i></div>
-        <h3 class="card-title">Inventory Report</h3>
+        <h3 class="card-title">low Stock Report</h3>
         <p class="card-desc">Stock, expiry & reorder alerts</p>
-        <span class="card-btn">View Inventory</span>
+        <span class="card-btn">View Stock Report</span>
       </a>
 
       <a href="doctorPerformance.jsp" class="dashboard-card">
