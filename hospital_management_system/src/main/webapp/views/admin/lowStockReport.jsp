@@ -135,8 +135,7 @@
                 <th>Strength</th>
                 <th>Stock Quantity</th>
                 <th>Category</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th>Last Updated</th>
             </tr>
         </thead>
         <tbody>
@@ -151,7 +150,6 @@
                     <td><%= med.getDosageStrength() %></td>
                     <td><%= med.getStockQuantity() %></td>
                     <td><%= med.getCategory() %></td>
-                    <td><%= med.getCreatedAt() %></td>
                     <td><%= med.getUpdatedAt() %></td>
                 </tr>
             <%
