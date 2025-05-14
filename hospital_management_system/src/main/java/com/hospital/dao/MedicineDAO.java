@@ -54,5 +54,29 @@ public class MedicineDAO {
             return statement.executeUpdate() > 0;
         }
     }
+
+    public List<Medicine> getLowStockMedicines() throws SQLException, ClassNotFoundException {
+    List<Medicine> medicines = new ArrayList<>();
+    String sql = "SELECT * FROM medicine WHERE stock_quantity < 50";
+    try (Connection connection = DBConnection.getConnection();
+         PreparedStatement statement = connection.prepareStatement(sql);
+         ResultSet rs = statement.executeQuery()) {
+        while (rs.next()) {
+            Medicine med = new Medicine();
+            med.setMedicineId(rs.getInt("medicine_id"));
+            med.setMedicineName(rs.getString("medicine_name"));
+            med.setDosageForm(rs.getString("dosage_form"));
+            med.setDosageStrength(rs.getString("dosage_strength"));
+            med.setStockQuantity(rs.getInt("stock_quantity"));
+            
+            med.setCategory(rs.getString("category"));
+            med.setCreatedAt(rs.getString("created_at"));
+            med.setUpdatedAt(rs.getString("updated_at"));
+            medicines.add(med);
+        }
+    }
+    return medicines;
+}
+
 }
 

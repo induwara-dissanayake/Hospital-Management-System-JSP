@@ -43,7 +43,6 @@
             border-radius: var(--radius);
             padding: 20px;
             margin: 20px;
-            margin-left: 280px;
             position: relative;
         }
 
