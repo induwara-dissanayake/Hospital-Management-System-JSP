@@ -68,9 +68,7 @@ public class MedicineDAO {
             med.setDosageForm(rs.getString("dosage_form"));
             med.setDosageStrength(rs.getString("dosage_strength"));
             med.setStockQuantity(rs.getInt("stock_quantity"));
-            
             med.setCategory(rs.getString("category"));
-            med.setCreatedAt(rs.getString("created_at"));
             med.setUpdatedAt(rs.getString("updated_at"));
             medicines.add(med);
         }
