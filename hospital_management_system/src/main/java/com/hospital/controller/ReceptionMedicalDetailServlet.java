@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/ReceptionMedicalDetailServlet")
 public class ReceptionMedicalDetailServlet extends HttpServlet {
@@ -34,16 +35,16 @@ public class ReceptionMedicalDetailServlet extends HttpServlet {
         }
 
         ReceptionMedicalRecordDao dao = new ReceptionMedicalRecordDao();
-        PatientReport report;
         try {
-            report = dao.getPatientReportById(patientId);
-            if (report == null) {
-                response.sendError(HttpServletResponse.SC_NOT_FOUND, "Patient report not found for ID: " + patientId);
-                return;
+            List<PatientReport> reports = dao.getPatientReportById(patientId);
+            if (reports.isEmpty()) {
+                request.setAttribute("noReports", true);
             }
 
-            request.setAttribute("report", report);
-            request.getRequestDispatcher("views/reception/receptionPatientMedicalRecord.jsp").forward(request, response);
+            request.setAttribute("reports", reports);
+            request.setAttribute("patientId", patientId);
+            request.getRequestDispatcher("views/reception/receptionPatientMedicalRecord.jsp").forward(request,
+                    response);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,4 +57,3 @@ public class ReceptionMedicalDetailServlet extends HttpServlet {
         doGet(request, response);
     }
 }
-

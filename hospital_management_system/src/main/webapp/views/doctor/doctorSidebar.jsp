@@ -14,7 +14,7 @@
     </div>
 
     <div class="nav">
-        <a href="doctorDashboard.jsp" class="nav-item active">
+        <a href="${pageContext.request.contextPath}/views/doctor/doctorDashboard.jsp" class="nav-item active">
             <div class="nav-header">
                 <i class="fas fa-home nav-icon"></i>
                 <span class="nav-text">Dashboard</span>
@@ -29,7 +29,7 @@
             </div>
             <div class="submenu">
                 <a href="${pageContext.request.contextPath}/DoctorOPDServlet" class="submenu-item">OPD</a>
-                <a href="doctorClinicDepartments.jsp" class="submenu-item">Clinic</a>
+                <a href="${pageContext.request.contextPath}/views/doctor/doctorClinicDepartments.jsp" class="submenu-item">Clinic</a>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
             </div>
             <div class="submenu">
                 <a href="${pageContext.request.contextPath}/DoctorAddPrescriptionServlet" class="submenu-item">Add Prescription</a>
-                <a href="searchPatientRecords.jsp" class="submenu-item">Search Patient Records</a>
+                <a href="${pageContext.request.contextPath}/ReceptionMedicalRecordSearchServlet?role_id=1" class="submenu-item">Search Patient Records</a>
             </div>
         </div>
 
