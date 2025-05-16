@@ -20,10 +20,9 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 - Database: MySQL And JDBC
 - Server: Apache Tomcat 9.0
 
-##🔧 Getting Started
+## 📦 Getting Started
 
-    Clone the repository
-
+    
 - git clone https://github.com/your-username/hospital-management-system.git
 - Import into your IDE (e.g., Eclipse or IntelliJ)
 - Configure your MySQL database using the provided SQL file
