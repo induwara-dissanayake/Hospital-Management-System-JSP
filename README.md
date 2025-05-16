@@ -15,10 +15,7 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 - 🏪 Inventory and pharmacy management
 
 ## 🖥️ Technologies Used
-Backend: Java Servlets, Models, Daos
-
-Frontend: Jsp, CSS, JavaScript
-
-Database: MySQL And JDBC
-
-Server: Apache Tomcat 9.0
+-Backend: Java Servlets, Models, Daos
+-Frontend: Jsp, CSS, JavaScript
+-Database: MySQL And JDBC
+-Server: Apache Tomcat 9.0
