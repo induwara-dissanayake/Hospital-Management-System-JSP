@@ -15,12 +15,10 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 - 🏪 Inventory and pharmacy management
 
 ## 🖥️ Technologies Used
-- **Java Servlets** and **JSP** for backend development 🛠️
-- Relational database for data storage and retrieval 📊
-- HTML, CSS, and JavaScript for frontend design 🎨
+Backend: Java Servlets, Models, Daos
 
-## 📦 Installation and Setup
-1. Clone this repository:
-   ```bash
-[  [ git clone https://github.com/your-username/hospital-management-system.git](https://github.com/induwara-dissanayake/hospital-management-system.git)
-](https://github.com/induwara-dissanayake/hospital-management-system.git)
+Frontend: Jsp, CSS, JavaScript
+
+Database: MySQL And JDBC
+
+Server: Apache Tomcat 9.0
