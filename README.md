@@ -4,7 +4,7 @@ The **Hospital Management System (HMS)** is a web-based application developed us
 
 ## ✨ Key Features
 - **Admin Dashboard**: Manage hospital operations, monitor system activities, and maintain user roles. ⚙️
-- **Receptionist Module**: Handle patient registrations, appointment scheduling, and provide front-desk support. 💁‍♀️📋
+- **Receptionist Module**: Handle patient registrations, appointment scheduling, and provide front-desk support. 💁‍♀️
 - **Doctor Portal**: Access patient records, view schedules, and update diagnoses and treatments. 🩺👨‍⚕️
 - **Pharmacist Interface**: Manage prescriptions, track inventory, and dispense medicines to patients. 💊📦
 
