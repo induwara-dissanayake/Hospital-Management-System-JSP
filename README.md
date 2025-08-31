@@ -48,7 +48,7 @@ The system is lightweight, modular, and can be deployed on **Apache Tomcat** wit
 ---
 
 ## 📌 Project Status
-This project is done for a university project (completed).  
+This project is done as a university project (completed).  
 
 ---
 
